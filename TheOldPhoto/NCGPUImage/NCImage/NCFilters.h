@@ -1,0 +1,63 @@
+
+typedef NS_ENUM (NSInteger, NCFilterType ){
+    RC_FILTER_NOW,
+    RC_FILTER_90_1,
+    RC_FILTER_90_2,
+    RC_FILTER_90_3,
+    RC_FILTER_90_4,
+    RC_FILTER_90_5,
+    RC_FILTER_90_6,
+    RC_FILTER_90_7,
+    RC_FILTER_90_8,
+    RC_FILTER_90_9,
+    RC_FILTER_90_10,
+    
+    RC_FILTER_80_1,
+    RC_FILTER_80_2,
+    RC_FILTER_80_3,
+    RC_FILTER_80_4,
+    RC_FILTER_80_5,
+    RC_FILTER_80_6,
+    RC_FILTER_80_7,
+    RC_FILTER_80_8,
+    RC_FILTER_80_9,
+    RC_FILTER_80_10,
+    
+    RC_FILTER_60_1,
+    RC_FILTER_60_2,
+    RC_FILTER_60_3,
+    RC_FILTER_60_4,
+    RC_FILTER_60_5,
+    RC_FILTER_60_6,
+    RC_FILTER_60_7,
+    RC_FILTER_60_8,
+    RC_FILTER_60_9,
+    RC_FILTER_60_10,
+    
+    RC_FILTER_40_1,
+    RC_FILTER_40_2,
+    RC_FILTER_40_3,
+    RC_FILTER_40_4,
+    RC_FILTER_40_5,
+    RC_FILTER_40_6,
+    RC_FILTER_40_7,
+    RC_FILTER_40_8,
+    RC_FILTER_40_9,
+    RC_FILTER_40_10,
+    
+    RC_FILTER_UNKNOW_1,
+    RC_FILTER_UNKNOW_2,
+    RC_FILTER_UNKNOW_3,
+    RC_FILTER_UNKNOW_4,
+    RC_FILTER_UNKNOW_5,
+    RC_FILTER_UNKNOW_6,
+    RC_FILTER_UNKNOW_7,
+    RC_FILTER_UNKNOW_8,
+    RC_FILTER_UNKNOW_9,
+    RC_FILTER_UNKNOW_10,
+    
+};
+
+#import "UIImage+NC.h"
+#import "NCImageFilter.h"
+#import "NCVideoCamera.h"
