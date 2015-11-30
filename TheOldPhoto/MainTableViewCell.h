@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CoverFlowView.h"
 #import "NCFilters.h"
+#import "ScreenshotBorderView.h"
 
 @interface MainTableViewCell : UITableViewCell
 
@@ -30,7 +31,7 @@
 
 //- (void)setDisplayImage:(UIImage *)Image withSceneType:(NCFilterType)type;
 
-- (BOOL)isWidthLongerThanHeightWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index;
+- (CropStyle)cropStyleWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index;
 //- (BOOL)isWidthLongerThanHeight:(NCFilterType)type;
 
 - (void)resetDisplayView;

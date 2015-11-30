@@ -33,13 +33,6 @@
     "zh_blur": 0,
     "filter_lookup": "xy_90s_lookup15.png",
     "filter_texture": [
-        {
-            "image": "null",
-            "type": 0
-        },
-        {
-            "image": "null",
-            "type": 0
-        }
+
     ]
 }

@@ -19,6 +19,7 @@
 #import "StoreObserver.h"
 #import "StoreManager.h"
 #import "MyModel.h"
+#import "UIImage+Utility.h"
 
 @interface ViewController () <UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, ImageEditDelegate,NSURLConnectionDelegate>
 {
@@ -318,12 +319,7 @@
 - (CropStyle)getCropStyleWithIndex:(NSIndexPath *)indexPath andIndex:(NSInteger)index
 {
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
-    if ([cell isWidthLongerThanHeightWithIndexpath:indexPath index:index]) {
-        return CropStyleSquareness2;
-    }else{
-        return CropStyleSquareness1;
-    }
-    return CropStyleFree;
+    return  [cell cropStyleWithIndexpath:indexPath index:index]; 
 }
 
 #pragma mark
@@ -342,7 +338,8 @@
     ImageEditViewController *editVC = [[ImageEditViewController alloc] init];
     NSLog(@"image = %@",image);
     editVC.delegate = self;
-    editVC.srcImage = image;
+//    editVC.srcImage = [image setMaxResolution:kImportImageMaxResolution imageOri:image.imageOrientation];
+    editVC.srcImage = [image fixOrientation:image.imageOrientation];
     editVC.style = self.currentCropStyle;
     [picker pushViewController:editVC animated:YES];
     

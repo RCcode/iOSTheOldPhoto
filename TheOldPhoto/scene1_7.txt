@@ -36,10 +36,6 @@
         {
             "image": "xy_90s_8_texture1_multiply.jpg",
             "type": 7
-        },
-        {
-            "image": "null",
-            "type": 0
         }
     ]
 }

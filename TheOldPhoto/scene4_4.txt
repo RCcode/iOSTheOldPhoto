@@ -1,0 +1,40 @@
+{
+    "scene_frame": {
+        "image_center": [
+            0.5,
+            0.5
+        ],
+        "imageWidth": 997,
+        "imageHeight": 1023,
+        "frame_center": [
+            0.5,
+            0.5
+        ],
+        "width": 1511,
+        "height": 1506,
+        "angle": 0
+    },
+    "filter_bg": "hl_40s_5_bg.jpg",
+"filter_acv":"cav5",
+    "filter_noise": {
+        "image": "hl_40s_5_texture1_screen",
+        " type": 2
+    },
+    "filter_frame": {
+        "type": 5,
+        "image": "hl_40s_5_photo.png",
+        "frame": [
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "zh_blur": 2,
+    "filter_lookup": "hl_40s_lookup.png",
+    "filter_texture": [
+        
+          
+        
+    ]
+}

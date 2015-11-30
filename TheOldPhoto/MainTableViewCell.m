@@ -161,9 +161,9 @@
     self.titleImageView.image = image;
 }
 
-- (BOOL)isWidthLongerThanHeightWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index
+- (CropStyle)cropStyleWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index
 {
-    return [self.displayView isWidthLongerThanHeightWithIndexPath:indexpath index:index];
+    return [self.displayView cropStyleWithIndexPath:indexpath index:index];
 //    return [self.displayView isWidthLongerThanHeight:type];
 }
 

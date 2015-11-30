@@ -155,7 +155,7 @@
             [textureArray addObject:chromKey];
             
             //blur setting
-            CGFloat blurValue = ((NSNumber *)[sceneDic objectForKey:@"filter_blur"]).floatValue;
+            CGFloat blurValue = ((NSNumber *)[sceneDic objectForKey:@"zh_blur"]).floatValue;
             sceneModel.blurValue = blurValue;
             
             //lookup setting
@@ -265,9 +265,22 @@
 //        NSLog(@"type = %lu",type);
         SceneModel *scene = self.cfgArray.firstObject;
         if (!self.previewView) {
-            self.previewView = [[GPUImageView alloc] initWithFrame: CGRectMake(0, 0, self.bounds.size.width
-                                                                               * scene.frameWidth / kSceneWidth, self.bounds.size.width
-                                                                               * scene.frameHeight / kSceneWidth)];
+            if (scene.frameWidth > 5 && scene.frameHeight >5) {
+                self.previewView = [[GPUImageView alloc] initWithFrame: CGRectMake(0, 0, self.bounds.size.width
+                                                                                   * scene.frameWidth / kSceneWidth, self.bounds.size.width
+                                                                                   * scene.frameHeight / kSceneWidth)];
+            }else{
+                CGFloat width,height;
+                if (image.size.width > image.size.height) {
+                    width = 1.0;
+                    height = 3.0/4.0;
+                }else{
+                    height = 1.0;
+                    width =  3.0 / 4.0;
+                }
+                self.previewView = [[GPUImageView alloc] initWithFrame: CGRectMake(0, 0, self.bounds.size.width * width, self.bounds.size.height * height)];
+            }
+            
             [self.imageView addSubview:self.previewView];
         }else{
             self.previewView.hidden = YES;
@@ -275,6 +288,24 @@
             [self.previewView setFrame:CGRectMake(0, 0, self.bounds.size.width
                                                  * scene.frameWidth / kSceneWidth, self.bounds.size.width
                                                   * scene.frameHeight / kSceneWidth)];
+            
+            if (scene.frameWidth > 5 && scene.frameHeight >5) {
+                [self.previewView setFrame:CGRectMake(0, 0, self.bounds.size.width
+                                                                                   * scene.frameWidth / kSceneWidth, self.bounds.size.width
+                                                                                   * scene.frameHeight / kSceneWidth)];
+            }else{
+                CGFloat width,height;
+                if (image.size.width > image.size.height) {
+                    width = 1.0;
+                    height = 3.0/4.0;
+                }else{
+                    height = 1.0;
+                    width =  3.0 / 4.0;
+                }
+                [self.previewView setFrame:CGRectMake(0, 0, self.bounds.size.width * width, self.bounds.size.height * height)];
+            }
+            
+            
         }
         NSString *backImageName = scene.backgroundImageName;
         if (![backImageName isEqualToString:@"null"]) {
@@ -336,13 +367,13 @@
             //transform
             self.transformFilter = [[GPUImageTransformFilter alloc] init];
             NSString *acvFileName = scene.acvFilterName;
-//            if (![acvFileName isEqualToString:@"null"]) {
-//                self.acvFilter = [[GPUImageToneCurveFilter alloc] initWithACV:acvFileName];
-//                [self.lookupFilter addTarget:self.acvFilter];
-//                [self.acvFilter addTarget:self.transformFilter];
-//            }else{
+            if (![acvFileName isEqualToString:@"null"]) {
+                self.acvFilter = [[GPUImageToneCurveFilter alloc] initWithACV:acvFileName];
+                [self.lookupFilter addTarget:self.acvFilter];
+                [self.acvFilter addTarget:self.transformFilter];
+            }else{
                 [self.lookupFilter addTarget:self.transformFilter];
-//            }
+            }
             
             //noise filter
             for (int i = 1; i < textureArray.count; i++) {
@@ -354,7 +385,7 @@
 //                    textureImage =  [UIImage imageNamed:frameModel.textureImageName];
                     textureImage = [self imageWithIndexpath:indexpath index:index imageName:frameModel.textureImageName];
                     NSUInteger type = frameModel.filterType;
-                    NSLog(@"%lu",type);
+                    NSLog(@"%lu",frameModel.filterType);
                     filter = [self setFilter:filter withType:type];
                 }else{
                     filter =  [self setFilter:filter withType:0];
@@ -375,14 +406,21 @@
                     }
                     [texture processImage];
                     [self.pictureArray addObject:texture];
+                }else{
+                    if (i == 1) {
+                        [self.transformFilter addTarget:filter atTextureLocation:0];
+                    }else{
+                        [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject addTarget:filter atTextureLocation:0];
+                    }
                 }
                 [self.filterArray addObject:filter];
             }
-            NSLog(@"lastObject = %@",self.filterArray.lastObject);
+            NSLog(@"filterArray = %@",self.filterArray);
             [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject addTarget:self.previewView];
 //            [self.lookupFilter addTarget:self.previewView];
                 [self.oriImage processImageWithCompletionHandler:^{
                     dispatch_async(dispatch_get_main_queue(), ^{
+                         self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
                         self.previewView.hidden = NO;
                     });
                 }];
@@ -432,7 +470,7 @@
     }
 }
 
-- (BOOL)isWidthLongerThanHeightWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index
+- (CropStyle)cropStyleWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index
 {
     [self.cfgArray removeAllObjects];
     [self.sceneArray removeAllObjects];
@@ -441,10 +479,15 @@
     [self parseDic:self.sceneArray];
     if (index < self.cfgArray.count) {
         SceneModel *scene = self.cfgArray[index];
-        return scene.imageWidth > scene.imageHeight;
-    }else{
-        return YES;
+        if (scene.frameWidth > scene.frameHeight) {
+            return CropStyleSquareness3;
+        }else if (scene.frameHeight > scene.frameWidth){
+            return CropStyleSquareness4;
+        }else{
+            return CropStyleFree;
+        }
     }
+    return CropStyleFree;
 }
 
 /*

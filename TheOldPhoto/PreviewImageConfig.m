@@ -47,7 +47,10 @@
             break;
         case 4:
         {
-            [imageNameArray addObject:@"demo4.jpg"];
+            for (int i = 0; i < 10; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"scene2_%d.jpg",i];
+                [imageNameArray addObject:imageName];
+            }
         }
             break;
         case 5:

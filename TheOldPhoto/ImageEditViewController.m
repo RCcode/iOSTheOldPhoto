@@ -91,11 +91,11 @@
     self.screenShotView.backgroundColor = [UIColor blackColor];
     self.screenShotView.srcImage = _srcImage;
     if (self.style == CropStyleFree) {
-        [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness1];
-    }else if (self.style == CropStyleSquareness1){
-        [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness1];
-    }else if (self.style == CropStyleSquareness2){
-        [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness2];
+        [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness4];
+    }else if (self.style == CropStyleSquareness4){
+        [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness4];
+    }else if (self.style == CropStyleSquareness3){
+        [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness3];
     }
 //    [self.screenShotView hiddenBorderView];
     [view addSubview:self.screenShotView];
