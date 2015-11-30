@@ -34,8 +34,11 @@ NSString *const kGPUImageOverlayBlendFragmentShaderString = SHADER_STRING
      } else {
          ba = overlay.a * base.a - 2.0 * (base.a - base.b) * (overlay.a - overlay.b) + overlay.b * (1.0 - base.a) + base.b * (1.0 - overlay.a);
      }
-     
-     gl_FragColor = vec4(ra, ga, ba, 1.0);
+     if(0.9 > base.a){
+         gl_FragColor = base;
+     }else{
+         gl_FragColor = vec4(ra, ga, ba, 1.0);
+     }
  }
 );
 #else

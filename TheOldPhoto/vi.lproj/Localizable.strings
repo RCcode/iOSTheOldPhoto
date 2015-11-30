@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Chia sẻ";
+
+/* 相机 */
+"main_camera" = "Máy ảnh";
+
+/* 保存 */
+"main_save" = "Lưu";
+
+/* 关注我们 */
+"setting_follow" = "Theo dõi chúng tôi";
+
+/* 解锁所有 */
+"iap_all" = "Mở khóa tất cả chỉ với giá $1.99";
+
+/* 年代购买 */
+"iap_one" = "Mua gói này với giá $0.99";
+
+/* 隐私政策 */
+"setting_policy" = "Chính sách quyền riêng tư";
+
+/* 优惠50% */
+"setting_off_50" = "Tiết kiệm 50%";
+
+/* 图片保存到 */
+"setting_saved" = "Ảnh được lưu vào XXX";
+
+/* 稍后评论 */
+"title_remind" = "Nhắc nhở tôi sau";
+
+/* 反馈 */
+"setting_feedback" = "Phản hồi";
+
+/* 评论我们 */
+"setting_rate_us" = "Đánh giá chúng tôi";
+
+/* 保存图片 */
+"setting_savepath" = "Lưu đường dẫn";
+
+/* 恢复购买 */
+"setting_gallary" = "Khôi phục";
+
+/* 商店 */
+"setting_store" = "Cửa hàng";
+
+/* 剪裁 */
+"main_crop" = "Xén ảnh";
+
+/* 使用条件 */
+"setting_terms" = "Điều khoản Sử dụng";
+
+/* 喜欢 xxx */
+"title_like" = "Yêu XXX?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Chia sẻ tình yêu của bạn và đánh giá chúng tôi 5 sao";
+
+/* 五星好评 */
+"title_five_star" = "5 sao";
+
+/* 相册 */
+"main_gallery" = "Thư  viện ảnh";
+
+/* 污渍 */
+"tag_dirty" = "bụi bẩn";
+
+/* 模糊 */
+"tag_blur" = "mờ ảo";
+
+/* 破损 */
+"tag_broken" = "đổ vỡ";
+
+/* 珍贵 */
+"tag_precious" = "tuyệt đẹp";
+
+/* 皱巴巴 */
+"tag_crumpled" = "nhàu nát";
+
+/* 宝丽来 */
+"tag_polaroid" = "Bóng râm";
+
+/* 划痕 */
+"tag_scratch" = "trầy xước ";
+
+/* 斑驳 */
+"tag_motley" = "sặc sỡ";
+
+/* 褪色 */
+"tag_fade" = "mờ dần";
+
+/* 彩色 */
+"tag_colorful" = "màu sắc";
+
+/* 摩登 */
+"tag_modern" = "hiện đại";
+
+/* 黑白 */
+"tag_blackwhite" = "đen & trắng";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "hư hại";
+
+/* 污点 */
+"tag_stain" = "Vết hoen gỉ";
+
+/* 尘封 */
+"tag_dusty" = "bụi bặm";
+
+/* 皱 */
+"tag_wrinkled" = "nhăn nheo";
+
+/* 压碎 */
+"tag_crushed" = "vỡ vụn";
+

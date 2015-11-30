@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Paylaş";
+
+/* 相机 */
+"main_camera" = "Kamera";
+
+/* 保存 */
+"main_save" = "Kaydet";
+
+/* 关注我们 */
+"setting_follow" = "Takip et";
+
+/* 解锁所有 */
+"iap_all" = "Hepsinin kilidini 1,99$ ile aç";
+
+/* 年代购买 */
+"iap_one" = "Bu paketi 0,99$ ile satın al";
+
+/* 隐私政策 */
+"setting_policy" = "Gizlilik Politikası";
+
+/* 优惠50% */
+"setting_off_50" = "%50 indirim kazan";
+
+/* 图片保存到 */
+"setting_saved" = "Fotoğraf XXXX konumuna kaydedildi";
+
+/* 稍后评论 */
+"title_remind" = "Sonra hatırlat";
+
+/* 反馈 */
+"setting_feedback" = "Geri bildirim";
+
+/* 评论我们 */
+"setting_rate_us" = "Puan verin";
+
+/* 保存图片 */
+"setting_savepath" = "Yolu kaydet";
+
+/* 恢复购买 */
+"setting_gallary" = "Geri Yükle";
+
+/* 商店 */
+"setting_store" = "Sakla";
+
+/* 剪裁 */
+"main_crop" = "Kırp";
+
+/* 使用条件 */
+"setting_terms" = "Kullanım Koşulları";
+
+/* 喜欢 xxx */
+"title_like" = "XXX uygulamasını sevdiniz mi?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Sevginizi paylaşın ve bize 5 yıldız verin";
+
+/* 五星好评 */
+"title_five_star" = "5 yıldız";
+
+/* 相册 */
+"main_gallery" = "Galeri";
+
+/* 污渍 */
+"tag_dirty" = "kirli";
+
+/* 模糊 */
+"tag_blur" = "bulanık";
+
+/* 破损 */
+"tag_broken" = "kırık";
+
+/* 珍贵 */
+"tag_precious" = "değerli";
+
+/* 皱巴巴 */
+"tag_crumpled" = "buruşuk";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "çizik ";
+
+/* 斑驳 */
+"tag_motley" = "karışık";
+
+/* 褪色 */
+"tag_fade" = "soluk";
+
+/* 彩色 */
+"tag_colorful" = "renkli";
+
+/* 摩登 */
+"tag_modern" = "modern";
+
+/* 黑白 */
+"tag_blackwhite" = "siyah/beyaz";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "hasarlı";
+
+/* 污点 */
+"tag_stain" = "Vitray";
+
+/* 尘封 */
+"tag_dusty" = "tozlu";
+
+/* 皱 */
+"tag_wrinkled" = "kırışık";
+
+/* 压碎 */
+"tag_crushed" = "ezik";
+

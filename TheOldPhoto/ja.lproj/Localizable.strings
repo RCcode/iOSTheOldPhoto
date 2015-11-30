@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "シェア";
+
+/* 相机 */
+"main_camera" = "カメラ";
+
+/* 保存 */
+"main_save" = "保存";
+
+/* 关注我们 */
+"setting_follow" = "フォローする";
+
+/* 解锁所有 */
+"iap_all" = "$1.99ですべてのロックを解除";
+
+/* 年代购买 */
+"iap_one" = "$0.99でこのパックを取得";
+
+/* 隐私政策 */
+"setting_policy" = "個人情報保護方針";
+
+/* 优惠50% */
+"setting_off_50" = "50％割引";
+
+/* 图片保存到 */
+"setting_saved" = "写真はXXXXに保存されました";
+
+/* 稍后评论 */
+"title_remind" = "後で";
+
+/* 反馈 */
+"setting_feedback" = "フィードバック";
+
+/* 评论我们 */
+"setting_rate_us" = "評価する";
+
+/* 保存图片 */
+"setting_savepath" = "パスを保存";
+
+/* 恢复购买 */
+"setting_gallary" = "復元";
+
+/* 商店 */
+"setting_store" = "格納";
+
+/* 剪裁 */
+"main_crop" = "クロップ";
+
+/* 使用条件 */
+"setting_terms" = "利用規約";
+
+/* 喜欢 xxx */
+"title_like" = "XXXが好きですか？";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "愛を共有し、5つ星評価を";
+
+/* 五星好评 */
+"title_five_star" = "5つ星";
+
+/* 相册 */
+"main_gallery" = "ギャラリー";
+
+/* 污渍 */
+"tag_dirty" = "汚れた";
+
+/* 模糊 */
+"tag_blur" = "ぼかし";
+
+/* 破损 */
+"tag_broken" = "壊れた";
+
+/* 珍贵 */
+"tag_precious" = "貴重な";
+
+/* 皱巴巴 */
+"tag_crumpled" = "くしゃくしゃ";
+
+/* 宝丽来 */
+"tag_polaroid" = "ポラロイド";
+
+/* 划痕 */
+"tag_scratch" = "スクラッチ";
+
+/* 斑驳 */
+"tag_motley" = "モトリー";
+
+/* 褪色 */
+"tag_fade" = "フェード";
+
+/* 彩色 */
+"tag_colorful" = "カラフル";
+
+/* 摩登 */
+"tag_modern" = "モダン";
+
+/* 黑白 */
+"tag_blackwhite" = "白黒";
+
+/* LOMO */
+"tag_lomo" = "ロモ";
+
+/* 损坏 */
+"tag_damaged" = "損傷を受けた";
+
+/* 污点 */
+"tag_stain" = "シミ";
+
+/* 尘封 */
+"tag_dusty" = "ほこりっぽい";
+
+/* 皱 */
+"tag_wrinkled" = "シワ";
+
+/* 压碎 */
+"tag_crushed" = "破砕された";
+

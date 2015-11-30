@@ -10,6 +10,13 @@
 #import "NCFilters.h"
 @interface SceneView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame oriImage:(UIImage *)oriImage andSceneType:(NCFilterType)type ;
+- (instancetype)initWithFrame:(CGRect)frame oriImage:(UIImage *)oriImage andIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index ;
+
+- (void)initFilterWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index oriImage:(UIImage *)image;
+
+- (BOOL)isWidthLongerThanHeightWithIndexPath:(NSIndexPath *)indexpatn index:(NSInteger)index;
+//- (BOOL)isWidthLongerThanHeight:(NCFilterType)index;
+
+- (void)resetPreviewFrame;
 
 @end

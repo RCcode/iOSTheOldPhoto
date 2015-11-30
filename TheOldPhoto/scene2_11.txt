@@ -1,0 +1,49 @@
+{
+    "scene_frame": {
+        "image_center": [
+            0.5,
+            0.5
+        ],
+        "imageWidth": 3,
+        "imageHeight": 4,
+        "frame_center": [
+            0.5,
+            0.5
+        ],
+        "width": 4,
+        "height": 3,
+        "angle": 0
+    },
+    "filter_acv": "null",
+    "filter_bg": "null",
+    "filter_noise": {
+        " type": 0,
+        "image": "null"
+    },
+    "filter_frame": {
+        "type": 0,
+        "image": "null",
+        "frame": [
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "zh_blur": 1.6,
+    "filter_lookup": "xy_80s_lookup12.png",
+    "filter_texture": [
+        {
+            "image": "xy_80s_12_texture1_overlay.jpg",
+            "type": 6
+        },
+        {
+            "image": "xy_80s_12_texture2_screenblend.jpg",
+            "type": 2
+        },
+        {
+            "image": "xy_80s_12_texture3_softlight.png",
+            "type": 9
+        }
+    ]
+}

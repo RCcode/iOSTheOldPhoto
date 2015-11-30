@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "แชร์";
+
+/* 相机 */
+"main_camera" = "กล้อง";
+
+/* 保存 */
+"main_save" = "บันทึก";
+
+/* 关注我们 */
+"setting_follow" = "ติดตามเรา";
+
+/* 解锁所有 */
+"iap_all" = "ปลดล็อคทั้งหมดในราคา 1.99 ดอลลาร์";
+
+/* 年代购买 */
+"iap_one" = "รับชุดนี้ในราคา 0.99 ดอลลาร์";
+
+/* 隐私政策 */
+"setting_policy" = "นโยบายความเป็นส่วนตัว";
+
+/* 优惠50% */
+"setting_off_50" = "ประหยัด 50%";
+
+/* 图片保存到 */
+"setting_saved" = "บันทึกรูปภาพไปยัง XXXX";
+
+/* 稍后评论 */
+"title_remind" = "เตือนฉันทีหลัง";
+
+/* 反馈 */
+"setting_feedback" = "เสียงตอบรับ";
+
+/* 评论我们 */
+"setting_rate_us" = "ให้คะแนนเรา";
+
+/* 保存图片 */
+"setting_savepath" = "บันทึกเส้นทาง";
+
+/* 恢复购买 */
+"setting_gallary" = "คืนค่า";
+
+/* 商店 */
+"setting_store" = "เก็บ";
+
+/* 剪裁 */
+"main_crop" = "ครอบตัด";
+
+/* 使用条件 */
+"setting_terms" = "เงื่อนไขการใช้งาน";
+
+/* 喜欢 xxx */
+"title_like" = "ชอบ XXX?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "แชร์ความชอบของคุณแล้วให้คะแนนเรา 5 ดาว";
+
+/* 五星好评 */
+"title_five_star" = "ห้าดาว";
+
+/* 相册 */
+"main_gallery" = "แกลลอรี";
+
+/* 污渍 */
+"tag_dirty" = "สกปรก";
+
+/* 模糊 */
+"tag_blur" = "เบลอ";
+
+/* 破损 */
+"tag_broken" = "ขาด";
+
+/* 珍贵 */
+"tag_precious" = "เลอค่า";
+
+/* 皱巴巴 */
+"tag_crumpled" = "ยู่ยี่";
+
+/* 宝丽来 */
+"tag_polaroid" = "โพลารอยด์";
+
+/* 划痕 */
+"tag_scratch" = "ถลอก";
+
+/* 斑驳 */
+"tag_motley" = "ปนเป";
+
+/* 褪色 */
+"tag_fade" = "จาง";
+
+/* 彩色 */
+"tag_colorful" = "สีสัน";
+
+/* 摩登 */
+"tag_modern" = "สมัยใหม่";
+
+/* 黑白 */
+"tag_blackwhite" = "ขาวดำ";
+
+/* LOMO */
+"tag_lomo" = "โลโม่";
+
+/* 损坏 */
+"tag_damaged" = "เสียหาย";
+
+/* 污点 */
+"tag_stain" = "เปื้อน";
+
+/* 尘封 */
+"tag_dusty" = "ฝุ่นเกาะ";
+
+/* 皱 */
+"tag_wrinkled" = "ยับย่น";
+
+/* 压碎 */
+"tag_crushed" = "เยิน";
+

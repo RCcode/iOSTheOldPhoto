@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Delen";
+
+/* 相机 */
+"main_camera" = "Camera";
+
+/* 保存 */
+"main_save" = "Opslaan";
+
+/* 关注我们 */
+"setting_follow" = "Volg ons";
+
+/* 解锁所有 */
+"iap_all" = "Ontgrendel alles voor $1.99";
+
+/* 年代购买 */
+"iap_one" = "Koop dit pakket voor $0.99";
+
+/* 隐私政策 */
+"setting_policy" = "Privacybeleid";
+
+/* 优惠50% */
+"setting_off_50" = "Bespaar 50%";
+
+/* 图片保存到 */
+"setting_saved" = "Foto opgeslagen in XXXX";
+
+/* 稍后评论 */
+"title_remind" = "Help mij herinneren";
+
+/* 反馈 */
+"setting_feedback" = "Feedback";
+
+/* 评论我们 */
+"setting_rate_us" = "Beoordeel ons";
+
+/* 保存图片 */
+"setting_savepath" = "Menu opslaan";
+
+/* 恢复购买 */
+"setting_gallary" = "Herstellen";
+
+/* 商店 */
+"setting_store" = "Opslaan";
+
+/* 剪裁 */
+"main_crop" = "Bijsnijden";
+
+/* 使用条件 */
+"setting_terms" = "Gebruiksvoorwaarden";
+
+/* 喜欢 xxx */
+"title_like" = "Met liefde XXX?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Deel je liefde en beoordeel ons met 5 sterrens";
+
+/* 五星好评 */
+"title_five_star" = "5 sterren";
+
+/* 相册 */
+"main_gallery" = "Galerie";
+
+/* 污渍 */
+"tag_dirty" = "vuil";
+
+/* 模糊 */
+"tag_blur" = "onscherp";
+
+/* 破损 */
+"tag_broken" = "kapot";
+
+/* 珍贵 */
+"tag_precious" = "gekunsteld";
+
+/* 皱巴巴 */
+"tag_crumpled" = "gerimpeld";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "gekrast";
+
+/* 斑驳 */
+"tag_motley" = "bont";
+
+/* 褪色 */
+"tag_fade" = "vervagen";
+
+/* 彩色 */
+"tag_colorful" = "kleurrijk";
+
+/* 摩登 */
+"tag_modern" = "modern";
+
+/* 黑白 */
+"tag_blackwhite" = "zwart/wit";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "beschadigd";
+
+/* 污点 */
+"tag_stain" = "Vlekkerig";
+
+/* 尘封 */
+"tag_dusty" = "stoffig";
+
+/* 皱 */
+"tag_wrinkled" = "gekreukeld";
+
+/* 压碎 */
+"tag_crushed" = "gebarsten";
+

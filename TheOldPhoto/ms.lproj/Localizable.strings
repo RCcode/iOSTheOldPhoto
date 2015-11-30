@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Kongsi";
+
+/* 相机 */
+"main_camera" = "Kamera";
+
+/* 保存 */
+"main_save" = "Simpan";
+
+/* 关注我们 */
+"setting_follow" = "Ikuti kami";
+
+/* 解锁所有 */
+"iap_all" = "Buka semua dengan $1.99";
+
+/* 年代购买 */
+"iap_one" = "Dapatkan pek ini dengan $0.99";
+
+/* 隐私政策 */
+"setting_policy" = "Dasar Privasi";
+
+/* 优惠50% */
+"setting_off_50" = "Jimat 50%";
+
+/* 图片保存到 */
+"setting_saved" = "Gambar disimpan ke XXXX";
+
+/* 稍后评论 */
+"title_remind" = "Ingatkan saya nanti";
+
+/* 反馈 */
+"setting_feedback" = "Maklum Balas";
+
+/* 评论我们 */
+"setting_rate_us" = "Nilaikan kami";
+
+/* 保存图片 */
+"setting_savepath" = "Tempat simpanan";
+
+/* 恢复购买 */
+"setting_gallary" = "Simpan semula";
+
+/* 商店 */
+"setting_store" = "Simpan";
+
+/* 剪裁 */
+"main_crop" = "Cantas";
+
+/* 使用条件 */
+"setting_terms" = "Terma Penggunaan";
+
+/* 喜欢 xxx */
+"title_like" = "Sukakan XXX?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Kongsi kasih sayang anda dan nilaikan kami 5 bintang ";
+
+/* 五星好评 */
+"title_five_star" = "5 bintang";
+
+/* 相册 */
+"main_gallery" = "Galeri";
+
+/* 污渍 */
+"tag_dirty" = "kekotoran";
+
+/* 模糊 */
+"tag_blur" = "kabur";
+
+/* 破损 */
+"tag_broken" = "putus-putus";
+
+/* 珍贵 */
+"tag_precious" = "berharga";
+
+/* 皱巴巴 */
+"tag_crumpled" = "renyuk";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "calar";
+
+/* 斑驳 */
+"tag_motley" = "aneka";
+
+/* 褪色 */
+"tag_fade" = "pudar";
+
+/* 彩色 */
+"tag_colorful" = "berwarna-warni";
+
+/* 摩登 */
+"tag_modern" = "moden";
+
+/* 黑白 */
+"tag_blackwhite" = "hitam & putih";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "rosak";
+
+/* 污点 */
+"tag_stain" = "Kesan";
+
+/* 尘封 */
+"tag_dusty" = "berdebu";
+
+/* 皱 */
+"tag_wrinkled" = "berkedut";
+
+/* 压碎 */
+"tag_crushed" = "ronyok";
+

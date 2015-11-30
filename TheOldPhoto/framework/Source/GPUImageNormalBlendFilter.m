@@ -43,8 +43,12 @@ NSString *const kGPUImageNormalBlendFragmentShaderString = SHADER_STRING
      outputColor.g = (c1.g * c1.a + c2.g * c2.a * (1.0 - c1.a))/alphaDivisor;
      outputColor.b = (c1.b * c1.a + c2.b * c2.a * (1.0 - c1.a))/alphaDivisor;
      outputColor.a = a;
-
-     gl_FragColor = outputColor;
+     
+     if(0.9 > c2.a){
+         gl_FragColor = texture2D(inputImageTexture, textureCoordinate);
+     }else{
+         gl_FragColor = outputColor;
+     }
  }
 );
 #else

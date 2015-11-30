@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Jaa";
+
+/* 相机 */
+"main_camera" = "Kamera";
+
+/* 保存 */
+"main_save" = "Tallenna";
+
+/* 关注我们 */
+"setting_follow" = "Seuraa meitä";
+
+/* 解锁所有 */
+"iap_all" = "Avaa kaikki hintaan 1.99$";
+
+/* 年代购买 */
+"iap_one" = "Hanki tämä paketti hintaan 0.99$";
+
+/* 隐私政策 */
+"setting_policy" = "Yksityisyyssuoja";
+
+/* 优惠50% */
+"setting_off_50" = "Säästä 50%";
+
+/* 图片保存到 */
+"setting_saved" = "Valokuva tallennettu paikkaan: XXX";
+
+/* 稍后评论 */
+"title_remind" = "Muistuta minua myöhemmin";
+
+/* 反馈 */
+"setting_feedback" = "Palaute";
+
+/* 评论我们 */
+"setting_rate_us" = "Arvioi meidät";
+
+/* 保存图片 */
+"setting_savepath" = "Tallenna polku";
+
+/* 恢复购买 */
+"setting_gallary" = "Palauta";
+
+/* 商店 */
+"setting_store" = "Tallenna (save) or Kauppa (shop)";
+
+/* 剪裁 */
+"main_crop" = "Rajaa";
+
+/* 使用条件 */
+"setting_terms" = "Käyttöehdot";
+
+/* 喜欢 xxx */
+"title_like" = "Rakastatko XXX?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Jaa rakkautesi ja anna meille 5 tähteä";
+
+/* 五星好评 */
+"title_five_star" = "5 tähteä ";
+
+/* 相册 */
+"main_gallery" = "Galleria";
+
+/* 污渍 */
+"tag_dirty" = "likainen";
+
+/* 模糊 */
+"tag_blur" = "sumea";
+
+/* 破损 */
+"tag_broken" = "rikkinäinen";
+
+/* 珍贵 */
+"tag_precious" = "kallisarvoinen";
+
+/* 皱巴巴 */
+"tag_crumpled" = "rypistynyt";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "naarmu";
+
+/* 斑驳 */
+"tag_motley" = "motley";
+
+/* 褪色 */
+"tag_fade" = "haalea";
+
+/* 彩色 */
+"tag_colorful" = "värikäs";
+
+/* 摩登 */
+"tag_modern" = "moderni";
+
+/* 黑白 */
+"tag_blackwhite" = "mustavalkoinen";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "vahingoittunut";
+
+/* 污点 */
+"tag_stain" = "Tahra";
+
+/* 尘封 */
+"tag_dusty" = "pölyinen";
+
+/* 皱 */
+"tag_wrinkled" = "ryppyinen";
+
+/* 压碎 */
+"tag_crushed" = "murskattu";
+

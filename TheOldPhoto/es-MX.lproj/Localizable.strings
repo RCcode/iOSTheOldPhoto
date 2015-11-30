@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Compartir";
+
+/* 相机 */
+"main_camera" = "Cámara";
+
+/* 保存 */
+"main_save" = "Guardar";
+
+/* 关注我们 */
+"setting_follow" = "Síguenos";
+
+/* 解锁所有 */
+"iap_all" = "Desbloquear todo por 1,99 USD";
+
+/* 年代购买 */
+"iap_one" = "Obtén este paquete por 0,99 USD";
+
+/* 隐私政策 */
+"setting_policy" = "Política de privacidad";
+
+/* 优惠50% */
+"setting_off_50" = "Ahorra un 50 %";
+
+/* 图片保存到 */
+"setting_saved" = "Foto guardada en XXXXX";
+
+/* 稍后评论 */
+"title_remind" = "Recuérdamelo más tarde";
+
+/* 反馈 */
+"setting_feedback" = "Comentarios";
+
+/* 评论我们 */
+"setting_rate_us" = "Puntúanos";
+
+/* 保存图片 */
+"setting_savepath" = "Guardar ruta";
+
+/* 恢复购买 */
+"setting_gallary" = "Restaurar";
+
+/* 商店 */
+"setting_store" = "Tienda";
+
+/* 剪裁 */
+"main_crop" = "Cortar";
+
+/* 使用条件 */
+"setting_terms" = "Términos de uso";
+
+/* 喜欢 xxx */
+"title_like" = "¿Te gusta XXXX?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Comparte tu amor y danos 5 estrellas";
+
+/* 五星好评 */
+"title_five_star" = "5 estrellas";
+
+/* 相册 */
+"main_gallery" = "Galería";
+
+/* 污渍 */
+"tag_dirty" = "sucio";
+
+/* 模糊 */
+"tag_blur" = "desenfoque";
+
+/* 破损 */
+"tag_broken" = "roto";
+
+/* 珍贵 */
+"tag_precious" = "precioso";
+
+/* 皱巴巴 */
+"tag_crumpled" = "abollado";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "rasgado";
+
+/* 斑驳 */
+"tag_motley" = "variopinto";
+
+/* 褪色 */
+"tag_fade" = "fade";
+
+/* 彩色 */
+"tag_colorful" = "colorido";
+
+/* 摩登 */
+"tag_modern" = "moderno";
+
+/* 黑白 */
+"tag_blackwhite" = "blanco y negro";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "dañado";
+
+/* 污点 */
+"tag_stain" = "mancha";
+
+/* 尘封 */
+"tag_dusty" = "polvoriento";
+
+/* 皱 */
+"tag_wrinkled" = "arrugado";
+
+/* 压碎 */
+"tag_crushed" = "machacado";
+

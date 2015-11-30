@@ -55,13 +55,15 @@
     [self initCropView];
     self.cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.cancelBtn setImage:[UIImage imageNamed:@"bc_btn_Shear_Point"] forState:UIControlStateNormal];
-    self.cancelBtn.frame = CGRectMake(0,self.screenShotView.frame.origin.y + self.screenShotView.frame.size.height, windowWidth() / 2, 44);
+    self.cancelBtn.frame = CGRectMake(0,self.screenShotView.frame.origin.y + self.screenShotView.frame.size.height + 44, windowWidth() / 2, 44);
     [self.cancelBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.cancelBtn];
     
     self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.confirmBtn setImage:[UIImage imageNamed:@"bc_btn_Shear_Point"] forState:UIControlStateNormal];
-    self.confirmBtn.frame = CGRectMake(windowWidth() / 2 + 1, self.screenShotView.frame.origin.y + self.screenShotView.frame.size.height, windowWidth() / 2, 44);
+    self.confirmBtn.frame = CGRectMake(windowWidth() / 2 + 1, self.screenShotView.frame.origin.y + self.screenShotView.frame.size.height + 44, windowWidth() / 2, 44);
     [self.confirmBtn addTarget:self action:@selector(getResultImage:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.confirmBtn];
     
 }
 
@@ -71,6 +73,7 @@
     if ([self.delegate respondsToSelector:@selector(imageEditResultImage:)]) {
         [self.delegate performSelector:@selector(imageEditResultImage:) withObject:image];
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)initCropView
@@ -85,6 +88,7 @@
     [self.view addSubview:view];
     
     self.screenShotView = [[ScreenshotBorderView alloc] initWithFrame:(CGRect){CGPointZero, view.frame.size}];
+    self.screenShotView.backgroundColor = [UIColor blackColor];
     self.screenShotView.srcImage = _srcImage;
     if (self.style == CropStyleFree) {
         [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness1];

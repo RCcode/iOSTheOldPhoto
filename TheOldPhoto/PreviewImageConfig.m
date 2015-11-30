@@ -12,40 +12,59 @@
 
 + (NSMutableArray *)getScrollViewArrayWithIndexPath:(NSIndexPath *)indexPath
 {
+    NSMutableArray *imageNameArray = [[NSMutableArray alloc] init];
     switch (indexPath.row) {
         case 0:
         {
-            return [[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"],[UIImage imageNamed:@"demo4.jpg"],[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"], nil];
-            
+             [imageNameArray addObject:@"demo3.jpg"];
         }
             break;
         case 1:
         {
-            return [[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:@"demo1.jpg.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"],[UIImage imageNamed:@"demo4.jpg"],[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"], nil];
+            for (int i = 0; i < 17; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"scene1_%d.jpg",i];
+                [imageNameArray addObject:imageName];
+            }
         }
             break;
         case 2:
         {
-            return [[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"],[UIImage imageNamed:@"demo4.jpg"],[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"], nil];
+            for (int i = 0; i < 14; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"scene2_%d.jpg",i];
+                [imageNameArray addObject:imageName];
+            }
+           
         }
             break;
         case 3:
         {
-            return [[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"],[UIImage imageNamed:@"demo4.jpg"],[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"], nil];
+            for (int i = 1; i < 9; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"qll_%d_60s.jpg",i];
+                [imageNameArray addObject:imageName];
+            }
+//            return [imageNameArray mutableCopy];
         }
             break;
         case 4:
         {
-            return [[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"],[UIImage imageNamed:@"demo4.jpg"],[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"], nil];
+            [imageNameArray addObject:@"demo4.jpg"];
+        }
+            break;
+        case 5:
+        {
+            for (int i = 1 ; i < 9 ; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"qll_%d_unknown.jpg",i];
+                [imageNameArray addObject:imageName];
+            }
         }
             break;
         default:
         {
-            return [[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"],[UIImage imageNamed:@"demo4.jpg"],[UIImage imageNamed:@"demo1.jpg"],[UIImage imageNamed:@"demo2.jpg"],[UIImage imageNamed:@"demo3.jpg"], nil];
+            [imageNameArray addObject:@"demo5.jpg"];
         }
             break;
     }
-    return nil;
+    return [imageNameArray mutableCopy];
 }
 
 @end

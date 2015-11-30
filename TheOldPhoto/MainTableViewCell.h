@@ -18,14 +18,21 @@
 @property (nonatomic, strong) CoverFlowView *coverFlowView;
 
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier target:(id)target leftSelector:(SEL)lSelector middleSelector:(SEL)mSelector rightSelector:(SEL)rSelector;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier target:(id)target leftSelector:(SEL)lSelector middleSelector:(SEL)mSelector rightSelector:(SEL)rSelector downloadSelector:(SEL)downloadSelector buySelector:(SEL)buySelector;
 
 - (void)setTitleImage:(UIImage *)image;
 
 - (void)setShowImages:(NSMutableArray *)array target:(id)target seletor:(SEL)seletor;
 
-- (void)setLeftImage:(UIImage *)lImage middleImage:(UIImage *)mImage rightImage:(UIImage *)rImage;
+- (void)setLeftImageName:(NSString *)lImage middleImageName:(NSString *)mImage rightImageName:(NSString *)rImage;
 
-- (void)setDisplayImage:(UIImage *)Image withSceneType:(NCFilterType)type;
+- (void)setDisplayImage:(UIImage *)image withIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index;
+
+//- (void)setDisplayImage:(UIImage *)Image withSceneType:(NCFilterType)type;
+
+- (BOOL)isWidthLongerThanHeightWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index;
+//- (BOOL)isWidthLongerThanHeight:(NCFilterType)type;
+
+- (void)resetDisplayView;
 
 @end

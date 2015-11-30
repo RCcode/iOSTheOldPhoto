@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Κοινοποίηση";
+
+/* 相机 */
+"main_camera" = "Κάμερα";
+
+/* 保存 */
+"main_save" = "Αποθήκευση";
+
+/* 关注我们 */
+"setting_follow" = "Ακολουθήστε μας";
+
+/* 解锁所有 */
+"iap_all" = "Ξεκλείδωμα όλων με 1,99 $";
+
+/* 年代购买 */
+"iap_one" = "Αποκτήστε αυτό το πακέτο με 0,99 $";
+
+/* 隐私政策 */
+"setting_policy" = "Πολιτική Απορρήτου";
+
+/* 优惠50% */
+"setting_off_50" = "Εξοικονομήστε 50%";
+
+/* 图片保存到 */
+"setting_saved" = "Η φωτογραφία αποθηκεύτηκε στο XXXX";
+
+/* 稍后评论 */
+"title_remind" = "Υπενθύμιση αργότερα";
+
+/* 反馈 */
+"setting_feedback" = "Σχόλια";
+
+/* 评论我们 */
+"setting_rate_us" = "Βαθμολογήστε μας";
+
+/* 保存图片 */
+"setting_savepath" = "Αποθήκευση διαδρομής";
+
+/* 恢复购买 */
+"setting_gallary" = "Αποθήκευση εκ νέου";
+
+/* 商店 */
+"setting_store" = "Αποθήκευση";
+
+/* 剪裁 */
+"main_crop" = "Περικοπή";
+
+/* 使用条件 */
+"setting_terms" = "Όροι Χρήσης";
+
+/* 喜欢 xxx */
+"title_like" = "Σας αρέσει το XXX;";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Δείξτε την αγάπη σας και βαθμολογήστε μας με 5 αστέρια";
+
+/* 五星好评 */
+"title_five_star" = "5 αστέρια";
+
+/* 相册 */
+"main_gallery" = "Συλλογή";
+
+/* 污渍 */
+"tag_dirty" = "βρώμικο";
+
+/* 模糊 */
+"tag_blur" = "θάμπωμα";
+
+/* 破损 */
+"tag_broken" = "σπασμένο";
+
+/* 珍贵 */
+"tag_precious" = "πολύτιμο";
+
+/* 皱巴巴 */
+"tag_crumpled" = "τσαλακωμένο";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "γρατζουνιά";
+
+/* 斑驳 */
+"tag_motley" = "παρδαλό";
+
+/* 褪色 */
+"tag_fade" = "ξεθωριασμένο";
+
+/* 彩色 */
+"tag_colorful" = "χρωματιστό";
+
+/* 摩登 */
+"tag_modern" = "σύγχρονο";
+
+/* 黑白 */
+"tag_blackwhite" = "ασπρόμαυρο";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "χαλασμένο";
+
+/* 污点 */
+"tag_stain" = "λεκές";
+
+/* 尘封 */
+"tag_dusty" = "σκονισμένο";
+
+/* 皱 */
+"tag_wrinkled" = "ρυτιδιασμένο";
+
+/* 压碎 */
+"tag_crushed" = "συντετριμμένο";
+

@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "공유";
+
+/* 相机 */
+"main_camera" = "카메라";
+
+/* 保存 */
+"main_save" = "저장";
+
+/* 关注我们 */
+"setting_follow" = "팔로우";
+
+/* 解锁所有 */
+"iap_all" = "$1.99에 모두 잠금해제";
+
+/* 年代购买 */
+"iap_one" = "$0.99에 이 팩 받기";
+
+/* 隐私政策 */
+"setting_policy" = "개인정보 보호정책";
+
+/* 优惠50% */
+"setting_off_50" = "50% 절약";
+
+/* 图片保存到 */
+"setting_saved" = "XXXX에 사진 저장됨";
+
+/* 稍后评论 */
+"title_remind" = "나중에 알림";
+
+/* 反馈 */
+"setting_feedback" = "피드백";
+
+/* 评论我们 */
+"setting_rate_us" = "평가";
+
+/* 保存图片 */
+"setting_savepath" = "경로 저장";
+
+/* 恢复购买 */
+"setting_gallary" = "복원";
+
+/* 商店 */
+"setting_store" = "스토어";
+
+/* 剪裁 */
+"main_crop" = "Crop";
+
+/* 使用条件 */
+"setting_terms" = "이용약관";
+
+/* 喜欢 xxx */
+"title_like" = "XXX, 마음에 드세요?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "관심을 보여주시고 별 5개를 주세요";
+
+/* 五星好评 */
+"title_five_star" = "5점";
+
+/* 相册 */
+"main_gallery" = "갤러리";
+
+/* 污渍 */
+"tag_dirty" = "더러움";
+
+/* 模糊 */
+"tag_blur" = "흐림";
+
+/* 破损 */
+"tag_broken" = "깨짐";
+
+/* 珍贵 */
+"tag_precious" = "귀함";
+
+/* 皱巴巴 */
+"tag_crumpled" = "구겨짐";
+
+/* 宝丽来 */
+"tag_polaroid" = "폴라로이드";
+
+/* 划痕 */
+"tag_scratch" = "흠집";
+
+/* 斑驳 */
+"tag_motley" = "잡다한";
+
+/* 褪色 */
+"tag_fade" = "희미함";
+
+/* 彩色 */
+"tag_colorful" = "컬러풀";
+
+/* 摩登 */
+"tag_modern" = "모던";
+
+/* 黑白 */
+"tag_blackwhite" = "흑백";
+
+/* LOMO */
+"tag_lomo" = "로모";
+
+/* 损坏 */
+"tag_damaged" = "손상";
+
+/* 污点 */
+"tag_stain" = "얼룩";
+
+/* 尘封 */
+"tag_dusty" = "먼지";
+
+/* 皱 */
+"tag_wrinkled" = "주름";
+
+/* 压碎 */
+"tag_crushed" = "짓밟힌";
+

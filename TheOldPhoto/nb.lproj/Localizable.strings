@@ -1,0 +1,123 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Dele";
+
+/* 相机 */
+"main_camera" = "Kamera";
+
+/* 保存 */
+"main_save" = "Lagre";
+
+/* 关注我们 */
+"setting_follow" = "Følge oss";
+
+/* 解锁所有 */
+"iap_all" = "Lås opp alle for $ 1,99";
+
+/* 年代购买 */
+"iap_one" = "Få denne pakken for $ 0,99";
+
+/* 隐私政策 */
+"setting_policy" = "Personvernerklæring";
+
+/* 优惠50% */
+"setting_off_50" = "Spar 50%";
+
+/* 图片保存到 */
+"setting_saved" = "Bildet lagret til XXXX";
+
+/* 稍后评论 */
+"title_remind" = "Minn meg på det senere";
+
+/* 反馈 */
+"setting_feedback" = "Tilbakemelding";
+
+/* 评论我们 */
+"setting_rate_us" = "Gi oss en rangering";
+
+/* 保存图片 */
+"setting_savepath" = "Lagre sti";
+
+/* 恢复购买 */
+"setting_gallary" = "gjenopprette";
+
+/* 商店 */
+"setting_store" = "Lagre";
+
+/* 剪裁 */
+"main_crop" = "Beskjære";
+
+/* 使用条件 */
+"setting_terms" = "Brukervilkår";
+
+/* 喜欢 xxx */
+"title_like" = "Elsker XXX?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Del og elsk oss - gi oss 5 stjerner";
+
+/* 五星好评 */
+"title_five_star" = "5-stjerners";
+
+/* 相册 */
+"main_gallery" = "Galleri";
+
+/* 污渍 */
+"tag_dirty" = "skitten";
+
+/* 模糊 */
+"tag_blur" = "uklart";
+
+/* 破损 */
+"tag_broken" = "brukket";
+
+/* 珍贵 */
+"tag_precious" = "dyrebar";
+
+/* 皱巴巴 */
+"tag_crumpled" = "krøllet";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "riper";
+
+/* 斑驳 */
+"tag_motley" = "motley (broket)";
+
+/* 褪色 */
+"tag_fade" = "falmet";
+
+/* 彩色 */
+"tag_colorful" = "fargerikt";
+
+/* 摩登 */
+"tag_modern" = "moderne";
+
+/* 黑白 */
+"tag_blackwhite" = "svart & hvitt";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "ødelagt";
+
+/* 污点 */
+"tag_stain" = "flekket";
+
+/* 尘封 */
+"tag_dusty" = "støvete";
+
+/* 皱 */
+"tag_wrinkled" = "skrukket";
+
+/* 压碎 */
+"tag_crushed" = "knust";
+

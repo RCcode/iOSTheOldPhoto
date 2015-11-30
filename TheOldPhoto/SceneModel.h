@@ -24,7 +24,8 @@
 //@property (nonatomic, strong) UIImage *noisyImage;
 @property (nonatomic, assign) CGFloat blurValue;
 //@property (nonatomic, strong) UIImage *lookupImage;
-@property (nonatomic, strong) NSString *lookupImageName;
+@property (nonatomic, copy) NSString *lookupImageName;
 @property (nonatomic, strong) NSMutableArray *textureConfigArray;
+@property (nonatomic, copy) NSString *acvFilterName;
 
 @end

@@ -1,0 +1,120 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "分享";
+
+/* 相机 */
+"main_camera" = "相机";
+
+/* 保存 */
+"main_save" = "保存";
+
+/* 解锁所有 */
+"iap_all" = "解锁全部效果仅需XX元";
+
+/* 年代购买 */
+"iap_one" = "解锁该效果包仅需XX元";
+
+/* 隐私政策 */
+"setting_policy" = "隐私政策";
+
+/* 优惠50% */
+"setting_off_50" = "省50%";
+
+/* 图片保存到 */
+"setting_saved" = "图片已保存到XXXX";
+
+/* 稍后评论 */
+"title_remind" = "稍后提醒我";
+
+/* 反馈 */
+"setting_feedback" = "反馈";
+
+/* 评论我们 */
+"setting_rate_us" = "给我们评分";
+
+/* 保存图片 */
+"setting_savepath" = "保存路径";
+
+/* 恢复购买 */
+"setting_gallary" = "回复购买";
+
+/* 商店 */
+"setting_store" = "商店";
+
+/* 剪裁 */
+"main_crop" = "裁剪";
+
+/* 使用条件 */
+"setting_terms" = "使用条款";
+
+/* 喜欢 xxx */
+"title_like" = "喜欢XXX吗？";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "喜欢我们就给我们五星好评吧";
+
+/* 五星好评 */
+"title_five_star" = "五星好评";
+
+/* 相册 */
+"main_gallery" = "相册";
+
+/* 污渍 */
+"tag_dirty" = "污渍";
+
+/* 模糊 */
+"tag_blur" = "模糊";
+
+/* 破损 */
+"tag_broken" = "破损";
+
+/* 珍贵 */
+"tag_precious" = "珍贵";
+
+/* 皱巴巴 */
+"tag_crumpled" = "皱巴巴";
+
+/* 宝丽来 */
+"tag_polaroid" = "宝丽来";
+
+/* 划痕 */
+"tag_scratch" = "划痕";
+
+/* 斑驳 */
+"tag_motley" = "斑驳";
+
+/* 褪色 */
+"tag_fade" = "褪色";
+
+/* 彩色 */
+"tag_colorful" = "彩色";
+
+/* 摩登 */
+"tag_modern" = "摩登";
+
+/* 黑白 */
+"tag_blackwhite" = "黑白";
+
+/* LOMO */
+"tag_lomo" = "LOMO";
+
+/* 损坏 */
+"tag_damaged" = "损坏";
+
+/* 污点 */
+"tag_stain" = "污点";
+
+/* 尘封 */
+"tag_dusty" = "尘封";
+
+/* 皱 */
+"tag_wrinkled" = "皱";
+
+/* 压碎 */
+"tag_crushed" = "压碎";
+
