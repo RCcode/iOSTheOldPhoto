@@ -22,7 +22,7 @@
             },
             "filter_frame": {
                 "type": 5,
-                "image": "2_frame.png",
+                "image": "qll_2_frame.png",
                 "frame": [
                     0,
                     0,
@@ -31,10 +31,10 @@
                 ]
             },
             "zh_blur": 1.5,
-            "filter_lookup": "qll_1_lookup.png",
+            "filter_lookup": "qll_2_lookup.png",
             "filter_texture": [
                 {
-                    "image": "2_zh_nomal_mc.png",
+                    "image": "qll_2_zh_normal.png",
                     "type": 10
                 },
                 {

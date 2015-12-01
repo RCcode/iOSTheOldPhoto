@@ -4,8 +4,8 @@
             0.5,
             0.5
         ],
-        "imageWidth": 997,
-        "imageHeight": 1023,
+        "imageWidth": 933,
+        "imageHeight": 933,
         "frame_center": [
             0.5,
             0.5
@@ -15,9 +15,9 @@
         "angle": 0
     },
     "filter_bg": "hl_40s_5_bg.jpg",
-"filter_acv":"cav5",
+    "filter_acv": "40s_5",
     "filter_noise": {
-        "image": "hl_40s_5_texture1_screen",
+        "image": "hl_40s_5_texture1_screen.png",
         " type": 2
     },
     "filter_frame": {
@@ -33,8 +33,9 @@
     "zh_blur": 2,
     "filter_lookup": "hl_40s_lookup.png",
     "filter_texture": [
-        
-          
-        
+        {
+            "image": "hl_40s_5_texture2_normal.png",
+            "type": 10
+        }
     ]
 }

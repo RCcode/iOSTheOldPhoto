@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Simpan";
 
-/* 关注我们 */
-"setting_follow" = "Ikuti kami";
+/* 关于我们 */
+"setting_about" = "tentang kami";
 
 /* 解锁所有 */
 "iap_all" = "Buka semua dengan $1.99";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Nilaikan kami";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Tempat simpanan";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "ronyok";
+
+/* 已购买 */
+"iap_purchased" = "Dibeli";
+
+/* 设置 */
+"setting_setting" = "Persekitaran";
 

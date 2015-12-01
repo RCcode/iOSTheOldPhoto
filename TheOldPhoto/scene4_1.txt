@@ -22,7 +22,7 @@
     },
     "filter_frame": {
         "type": 5,
-        "image": "hl_40s_photo.png",
+        "image": "hl_40s_2_photo.png",
         "frame": [
             0,
             0,

@@ -1,0 +1,129 @@
+/* Localizable.strings
+  TheOldPhoto
+
+  Created by MAXToooNG on 15/11/24.
+  Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "مشاركة";
+
+/* 相机 */
+"main_camera" = "الكاميرا";
+
+/* 保存 */
+"main_save" = "حفظ";
+
+/* 关于我们 */
+"setting_about" = "نبذة عنا";
+
+/* 解锁所有 */
+"iap_all" = "افتح جميع الخصائص مقابل 1.99 دولارًا أمريكيًا";
+
+/* 年代购买 */
+"iap_one" = "احصل على هذه الباقة مقابل 0.99 دولارًا أمريكيًا";
+
+/* 隐私政策 */
+"setting_policy" = "سياسة الخصوصية";
+
+/* 优惠50% */
+"setting_off_50" = "وفّر 50%";
+
+/* 图片保存到 */
+"setting_saved" = "تم حفظ الصورة إلى XXXX";
+
+/* 稍后评论 */
+"title_remind" = "ذكّرني لاحقًا";
+
+/* 反馈 */
+"setting_feedback" = "الملاحظات";
+
+/* 评论我们 */
+"setting_rate_us" = "التقييم";
+
+/* 保存路径 */
+"setting_savepath" = "حفظ المسار";
+
+/* 恢复购买 */
+"setting_gallary" = "استعادة";
+
+/* 商店 */
+"setting_store" = "المتجر";
+
+/* 剪裁 */
+"main_crop" = "قص";
+
+/* 使用条件 */
+"setting_terms" = "شروط الاستخدام";
+
+/* 喜欢 xxx */
+"title_like" = "أتحب XXX؟";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "شارك حبك للتطبيق وأعطنا تقييمًا بـ 5 نجوم.";
+
+/* 五星好评 */
+"title_five_star" = "5 نجوك";
+
+/* 相册 */
+"main_gallery" = "المعرض";
+
+/* 污渍 */
+"tag_dirty" = "متسخ";
+
+/* 模糊 */
+"tag_blur" = "ضبابي";
+
+/* 破损 */
+"tag_broken" = "مكسور";
+
+/* 珍贵 */
+"tag_precious" = "غالٍ";
+
+/* 皱巴巴 */
+"tag_crumpled" = "مُجعّد";
+
+/* 宝丽来 */
+"tag_polaroid" = "بولارويد";
+
+/* 划痕 */
+"tag_scratch" = "خدوش";
+
+/* 斑驳 */
+"tag_motley" = "متعدد الألوان";
+
+/* 褪色 */
+"tag_fade" = "تلاشي";
+
+/* 彩色 */
+"tag_colorful" = "ملوّن";
+
+/* 摩登 */
+"tag_modern" = "حديث";
+
+/* 黑白 */
+"tag_blackwhite" = "أسود وأبيض";
+
+/* LOMO */
+"tag_lomo" = "لومو";
+
+/* 损坏 */
+"tag_damaged" = "تالف";
+
+/* 污点 */
+"tag_stain" = "لطخات";
+
+/* 尘封 */
+"tag_dusty" = "ترابي";
+
+/* 皱 */
+"tag_wrinkled" = "تجاعيد";
+
+/* 压碎 */
+"tag_crushed" = "مهشم";
+
+/* 已购买 */
+"iap_purchased" = "تم شراؤه بالفعل";
+
+/* 设置 */
+"setting_setting" = "الإعداد";
+

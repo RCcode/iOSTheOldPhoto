@@ -10,4 +10,6 @@
 
 @interface SettingCellTableViewCell : UITableViewCell
 
+@property (nonatomic, assign) id target;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier target:(id)target;
 @end

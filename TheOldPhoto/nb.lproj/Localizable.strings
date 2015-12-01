@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Lagre";
 
-/* 关注我们 */
-"setting_follow" = "Følge oss";
+/* 关于我们 */
+"setting_about" = "om oss";
 
 /* 解锁所有 */
 "iap_all" = "Lås opp alle for $ 1,99";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Gi oss en rangering";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Lagre sti";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "knust";
+
+/* 已购买 */
+"iap_purchased" = "Allerede kjøpt";
+
+/* 设置 */
+"setting_setting" = "Innstillingen";
 

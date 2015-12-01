@@ -18,6 +18,8 @@
 - (CropStyle)cropStyleWithIndexPath:(NSIndexPath *)indexpatn index:(NSInteger)index;
 //- (BOOL)isWidthLongerThanHeight:(NCFilterType)index;
 
+- (void)setDisplayImage:(UIImage *)image;
+
 - (void)resetPreviewFrame;
 
 @end

@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Kaydet";
 
-/* 关注我们 */
-"setting_follow" = "Takip et";
+/* 关于我们 */
+"setting_about" = "Hakkımızda";
 
 /* 解锁所有 */
 "iap_all" = "Hepsinin kilidini 1,99$ ile aç";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Puan verin";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Yolu kaydet";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "ezik";
+
+/* 已购买 */
+"iap_purchased" = "Zaten satın";
+
+/* 设置 */
+"setting_setting" = "Ayarı";
 

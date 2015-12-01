@@ -196,10 +196,10 @@
     }else if (recognizer.state == UIGestureRecognizerStateEnded){
         recognizer.delegate = self.target;
 //        recognizer.view.userInteractionEnabled = YES;
-        NSLog(@"END");
+//        NSLog(@"END");
     }else if (recognizer.state == UIGestureRecognizerStateFailed){
         recognizer.delegate = self.target;
-        NSLog(@"Failed");
+//        NSLog(@"Failed");
     }
     
 }

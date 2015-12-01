@@ -15,7 +15,7 @@
         "angle": -18.2
     },
     "filter_bg": "hl_40s_4_bg.jpg",
-"filter_acv":"cav4",
+"filter_acv":"40s_4",
     "filter_noise": {
         "image": "hl_40s_4_texture1_screen",
         " type": 2
@@ -49,5 +49,9 @@
             "image": "hl_40s_4_texture5_overlay.png",
             "type": 6
         },
+        {
+            "image": "hl_40s_4_texture6_normal.png",
+            "type": 10
+        }
     ]
 }

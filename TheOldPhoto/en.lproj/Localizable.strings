@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Save";
 
-/* 关注我们 */
-"setting_follow" = "Follow us";
+/* 关于我们 */
+"setting_about" = "ABOUT US";
 
 /* 解锁所有 */
 "iap_all" = "Unlock all by $1.99";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Rate us";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Save path";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "crushed";
+
+/* 已购买 */
+"iap_purchased" = "Already purchased";
+
+/* 设置 */
+"setting_setting" = "Setting";
 

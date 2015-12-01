@@ -12,10 +12,10 @@
         ],
         "width": 1705,
         "height": 1210,
-        "angle": 9.9
+        "angle": -9.9
     },
     "filter_bg": "hl_40s_8_bg.jpg",
-"filter_acv":"cav7",
+"filter_acv":"40s_8",
     "filter_noise": {
         "image": "hl_40s_8_texture1_screen",
         " type": 2

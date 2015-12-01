@@ -73,6 +73,7 @@
 - (void)initView
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.width)];
+    self.imageView.clipsToBounds = YES;
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] init];
     swipe.direction = UISwipeGestureRecognizerDirectionLeft;
     
@@ -145,7 +146,7 @@
             noiseTexture.textureImageName = [noiseCfg objectForKey:@"image"];
             [textureArray addObject:noiseTexture];
             
-            //frame (GPUImageChromkeyFilter)
+            //frame (GPUImageChromkeyBlendFilter)
             NSDictionary *chromKeyCfg = [sceneDic objectForKey:@"filter_frame"];
             TextureModel *chromKey = [[TextureModel alloc] init];
             chromKey.filterType = ((NSNumber *)[chromKeyCfg objectForKey:@"type"]).unsignedIntegerValue;
@@ -240,7 +241,11 @@
     return nil;
 }
 
-
+- (void)setDisplayImage:(UIImage *)image
+{
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.image = image;
+}
 
 - (void)initFilterWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index oriImage:(UIImage *)image
 {
@@ -304,15 +309,25 @@
                 }
                 [self.previewView setFrame:CGRectMake(0, 0, self.bounds.size.width * width, self.bounds.size.height * height)];
             }
-            
-            
         }
+        NSLog(@"angle = %f",M_PI_2);
+        self.previewView.transform = CGAffineTransformRotate(self.previewView.transform, scene.frameAngle * M_PI / 180 );
+        
         NSString *backImageName = scene.backgroundImageName;
         if (![backImageName isEqualToString:@"null"]) {
             UIImage *image = [self imageWithIndexpath:indexpath index:index imageName:backImageName];
 //            if (image) {
-                self.imageView.image = image;
+            self.imageView.image = image;
+            [self.previewView.layer setShadowOpacity:0];
 //            }
+        }else{
+//            GPUImagePicture *ori = [[GPUImagePicture alloc] initWithImage:image];
+            GPUImageiOSBlurFilter *blur = [[GPUImageiOSBlurFilter alloc] init];
+            [blur setBlurRadiusInPixels:6];
+            self.imageView.image = [blur imageByFilteringImage:image];
+            self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+            [self.previewView.layer setShadowRadius:3];
+            [self.previewView.layer setShadowOpacity:1];
         }
  
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -323,12 +338,7 @@
             //                                        * scene.imageHeight / kSceneWidth);
             NSLog(@"self.preview.frame = %@",NSStringFromCGRect(self.previewView.frame));
             self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
-            self.imageView.image = [self imageWithIndexpath:indexpath index:index imageName:scene.backgroundImageName];
-//            self.imageView.image = [UIImage imageNamed:scene.backgroundImageName];
             self.oriImage = [[GPUImagePicture alloc] initWithImage:image];
-            
-            NSLog(@"angle = %f",M_PI_2);
-            self.previewView.transform = CGAffineTransformRotate(self.previewView.transform, scene.frameAngle * M_PI / 180 );
             
             NSArray *textureArray = scene.textureConfigArray;
             //noise filter
@@ -477,8 +487,11 @@
     self.sceneArray = [self getCfgArrayWithIndexpath:indexpath index:index];
     //    NSLog(@"cfgDic = %@",_cfgDictionary);
     [self parseDic:self.sceneArray];
-    if (index < self.cfgArray.count) {
-        SceneModel *scene = self.cfgArray[index];
+    NSLog(@"self.cfgArray = %@",self.cfgArray);
+    NSLog(@"index = %ld",index);
+    if (self.cfgArray.count > 0) {
+        SceneModel *scene = self.cfgArray.firstObject;
+        NSLog(@"scene.width = %f  scene.height = %f",scene.frameWidth, scene.frameHeight);
         if (scene.frameWidth > scene.frameHeight) {
             return CropStyleSquareness3;
         }else if (scene.frameHeight > scene.frameWidth){

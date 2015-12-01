@@ -29,11 +29,14 @@
 
 - (void)setDisplayImage:(UIImage *)image withIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index;
 
+- (void)setDisplayImage:(UIImage *)image;
 //- (void)setDisplayImage:(UIImage *)Image withSceneType:(NCFilterType)type;
 
 - (CropStyle)cropStyleWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index;
 //- (BOOL)isWidthLongerThanHeight:(NCFilterType)type;
 
 - (void)resetDisplayView;
+
+- (BOOL)isCurrentModel;
 
 @end

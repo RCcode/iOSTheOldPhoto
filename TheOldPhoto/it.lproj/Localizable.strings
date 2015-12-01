@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Salva";
 
-/* 关注我们 */
-"setting_follow" = "Seguici";
+/* 关于我们 */
+"setting_about" = "Chi Siamo";
 
 /* 解锁所有 */
 "iap_all" = "Sblocca tuto per $1,99";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Valutaci";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Salva percorso";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "frantumata";
+
+/* 已购买 */
+"iap_purchased" = "Già acquistato";
+
+/* 设置 */
+"setting_setting" = "Impostazione";
 

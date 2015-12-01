@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Opslaan";
 
-/* 关注我们 */
-"setting_follow" = "Volg ons";
+/* 关于我们 */
+"setting_about" = "Informatie";
 
 /* 解锁所有 */
 "iap_all" = "Ontgrendel alles voor $1.99";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Beoordeel ons";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Menu opslaan";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "gebarsten";
+
+/* 已购买 */
+"iap_purchased" = "Al gekocht";
+
+/* 设置 */
+"setting_setting" = "Instelling";
 

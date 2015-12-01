@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Tallenna";
 
-/* 关注我们 */
-"setting_follow" = "Seuraa meitä";
+/* 关于我们 */
+"setting_about" = "Tietoja meistä";
 
 /* 解锁所有 */
 "iap_all" = "Avaa kaikki hintaan 1.99$";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Arvioi meidät";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Tallenna polku";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "murskattu";
+
+/* 已购买 */
+"iap_purchased" = "Jo ostanut";
+
+/* 设置 */
+"setting_setting" = "Asetus";
 

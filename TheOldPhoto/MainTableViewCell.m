@@ -49,7 +49,7 @@
     self.coverView.image = [UIImage imageNamed:@"classify_shadow"];
     [self.contentView addSubview:self.coverView];
     self.displayView = [[SceneView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowWidth())];
-    self.displayView.backgroundColor = [UIColor brownColor];
+//    self.displayView.backgroundColor = [UIColor brownColor];
     [self addSubview:self.displayView];
     
     self.titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, frame.origin.y + frame.size.height + 11, windowWidth(), 12)];
@@ -139,6 +139,11 @@
 //    [self.displayView initFilterWithType:type oriImage:displayImage];
 }
 
+- (void)setDisplayImage:(UIImage *)image
+{
+    [self.displayView setDisplayImage:image];
+}
+
 - (void)resetDisplayView
 {
     NSLog(@"reset");
@@ -165,6 +170,16 @@
 {
     return [self.displayView cropStyleWithIndexPath:indexpath index:index];
 //    return [self.displayView isWidthLongerThanHeight:type];
+}
+
+- (BOOL)isCurrentModel
+{
+    if (self.displayView.frame.origin.x < 0) {
+        return NO;
+    }else{
+        return YES;
+    }
+    
 }
 
 @end

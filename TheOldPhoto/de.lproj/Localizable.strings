@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "Speichern";
 
-/* 关注我们 */
-"setting_follow" = "Uns folgen";
+/* 关于我们 */
+"setting_about" = "Über uns";
 
 /* 解锁所有 */
 "iap_all" = "Schalten Sie alles für $1,99 frei";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "Bewerten Sie uns";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "Pfad speichern";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "Gesplittert";
+
+/* 已购买 */
+"iap_purchased" = "Bereits erworben";
+
+/* 设置 */
+"setting_setting" = "Einstellung";
 

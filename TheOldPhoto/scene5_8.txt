@@ -7,8 +7,8 @@
         "imageWidth": 1283,
         "imageHeight": 1734,
         "frame_center": [
-            0.5,
-            0.5
+            0
+            0
         ],
         "width": 1283,
         "height": 1734,
@@ -40,7 +40,11 @@
         {
             "image": "hl_uns_11_texture3_multiply.png",
             " type": 7
-        }
+        },
+        {
+            "image": "hl_uns_11_texture4_normal.png",
+            " type": 10
+        },
         
     ]
 }

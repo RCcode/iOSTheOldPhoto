@@ -376,7 +376,7 @@ NSString *LocalizedString(NSString *translation_key, id none)
     
     NSString *language = @"en";
     NSArray *arr = [NSLocale preferredLanguages];
-    NSLog(@"current Language = %@",CURR_LANG);
+//    NSLog(@"current Language = %@",CURR_LANG);
     //只适配这么些种语言，其余一律用en
     if([CURR_LANG isEqualToString:@"zh-Hans"] ||
        [CURR_LANG isEqualToString:@"zh-Hant"] ||

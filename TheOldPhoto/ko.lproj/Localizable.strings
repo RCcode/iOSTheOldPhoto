@@ -13,8 +13,8 @@
 /* 保存 */
 "main_save" = "저장";
 
-/* 关注我们 */
-"setting_follow" = "팔로우";
+/* 关于我们 */
+"setting_about" = "회사소개";
 
 /* 解锁所有 */
 "iap_all" = "$1.99에 모두 잠금해제";
@@ -40,7 +40,7 @@
 /* 评论我们 */
 "setting_rate_us" = "평가";
 
-/* 保存图片 */
+/* 保存路径 */
 "setting_savepath" = "경로 저장";
 
 /* 恢复购买 */
@@ -120,4 +120,10 @@
 
 /* 压碎 */
 "tag_crushed" = "짓밟힌";
+
+/* 已购买 */
+"iap_purchased" = "이미 구입";
+
+/* 设置 */
+"setting_setting" = "설정";
 

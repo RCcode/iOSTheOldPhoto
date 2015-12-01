@@ -4,18 +4,18 @@
             0.5,
             0.5
         ],
-        "imageWidth": 1078,
-        "imageHeight": 1457,
+        "imageWidth": 1056,
+        "imageHeight": 1429,
         "frame_center": [
             0.5,
             0.5
         ],
-        "width": 1089,
-        "height": 1552,
-        "angle": 6.3
+        "width": 1111,
+        "height": 1579,
+        "angle": -6.3
     },
     "filter_bg": "hl_40s_10_bg.jpg",
-"filter_acv":"cav7",
+"filter_acv":"40s_10",
     "filter_noise": {
         "image": "hl_40s_10_texture1_screen",
         " type": 2
@@ -39,8 +39,11 @@
         },
         {
             "image": "hl_40s_10_texture3_softlight.png",
-            " type": 9
+            "type": 9
+        },
+        {
+            "image": "hl_40s_10_texture4_normal.png",
+            "type": 10
         }
-        
     ]
 }

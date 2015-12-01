@@ -7,6 +7,9 @@
 //
 
 #import "SettingCellTableViewCell.h"
+#import "SettingStoreViewController.h"
+#import "AboutViewController.h"
+
 
 @interface SettingCellTableViewCell ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic,strong) UIView *titleView;
@@ -21,9 +24,10 @@
     // Initialization code
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier target:(id)target
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.target = target;
         [self initData];
         [self initView];
     }
@@ -70,6 +74,46 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case 0:
+        {
+            //商店
+            SettingStoreViewController *store = [[SettingStoreViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:store];
+            [self.target presentViewController:nav animated:YES completion:nil];
+        }
+            break;
+        case 1:
+        {
+            //评分
+        }
+            break;
+        case 2:
+        {
+            //关于我们
+            AboutViewController *about = [[AboutViewController alloc] init];
+            
+            [self.target presentViewController:about animated:YES completion:nil];
+        }
+            break;
+        case 3:
+        {
+            //反馈
+        }
+            break;
+        case 4:
+        {
+            //使用条款
+        }
+            break;
+        case 5:
+        {
+            //隐私政策
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

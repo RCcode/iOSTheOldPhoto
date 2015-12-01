@@ -241,7 +241,7 @@
         static NSString *settingCellIde = @"settingCell";
         SettingCellTableViewCell *settingCell = [tableView dequeueReusableCellWithIdentifier:settingCellIde];
         if (!settingCell) {
-            settingCell = [[SettingCellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:settingCellIde];
+            settingCell = [[SettingCellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:settingCellIde target:self];
         }
         return settingCell;
     }
@@ -264,6 +264,8 @@
     if (self.currentImage) {
         [cell setDisplayImage:self.currentImage withIndexPath:indexPath index:0];
 //        [cell setDisplayImage:self.currentImage withSceneType:indexPath.row];
+    }else{
+        [cell setDisplayImage:[UIImage imageNamed:pics.firstObject]];
     }
     [cell resetDisplayView];
     [cell setShowImages:pics target:self seletor:@selector(openAlbum:) ];
@@ -299,6 +301,15 @@
 
 - (void)presentToImagePickerWithType:(UIImagePickerControllerSourceType)type
 {
+    CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    self.currentIndexPath = indexPath;
+    MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
+    if (cell.isCurrentModel) {
+        
+    }else{
+        self.currentCropStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
+    }
     self.imagePicker.sourceType = type;
     [self presentViewController:self.imagePicker animated:YES completion:^{
         
@@ -309,11 +320,14 @@
 - (void)openAlbum:(UITapGestureRecognizer *)tap
 {
     CropStyle style = [self getCropStyleWithIndex:_currentIndexPath andIndex:(((CoverFlowView *)tap.view).currentRenderingImageIndex)];
-    NSLog(@"tap.view.current = %d",((CoverFlowView *)tap.view).currentRenderingImageIndex);
-    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
-    NSLog(@"index = %ld",index);
+//    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
+    NSLog(@"self.currentCropStyle = %ld style = %ld",self.currentCropStyle,style);
+    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree) && self.currentImage) {
+        [self setScene];
+    }else{
+        [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
     self.currentCropStyle = style;
-    [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
 }
 
 - (CropStyle)getCropStyleWithIndex:(NSIndexPath *)indexPath andIndex:(NSInteger)index
@@ -340,24 +354,32 @@
     editVC.delegate = self;
 //    editVC.srcImage = [image setMaxResolution:kImportImageMaxResolution imageOri:image.imageOrientation];
     editVC.srcImage = [image fixOrientation:image.imageOrientation];
-    editVC.style = self.currentCropStyle;
+    if (self.currentCropStyle == CropStyleFree || self.currentCropStyle == CropStyleSquareness4 || self.currentCropStyle == CropStyleSquareness3) {
+        editVC.style = self.currentCropStyle;
+    }else{
+        editVC.style = CropStyleFree;
+    }
     [picker pushViewController:editVC animated:YES];
-    
 }
 
 - (void)imageEditResultImage:(UIImage *)image
 {
     self.currentImage = image;
+    [self setScene];
+//    [cell setDisplayImage:image withSceneType:self.currentIndexPath.row];
+}
+
+- (void)setScene
+{
     CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
-   NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
     self.currentIndexPath = indexPath;
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
     NSLog(@"cell = %@",cell );
     NSLog(@"indexPath = %ld",self.currentIndexPath.row);
     [cell resetDisplayView];
     NSInteger index = cell.coverFlowView.currentRenderingImageIndex;
-    [cell setDisplayImage:image withIndexPath:self.currentIndexPath index:index];
-//    [cell setDisplayImage:image withSceneType:self.currentIndexPath.row];
+    [cell setDisplayImage:self.currentImage withIndexPath:self.currentIndexPath index:index];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -468,7 +490,6 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection*)connection
-
 {//完成时调用
     
     NSLog(@"Finish");
