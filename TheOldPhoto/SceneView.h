@@ -11,6 +11,8 @@
 #import "ScreenshotBorderView.h"
 @interface SceneView : UIView
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipe;
+
 - (instancetype)initWithFrame:(CGRect)frame oriImage:(UIImage *)oriImage andIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index ;
 
 - (void)initFilterWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index oriImage:(UIImage *)image;

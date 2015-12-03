@@ -1,41 +1,42 @@
-{
-    "scene_frame": {
-        "image_center": [
-            0.5,
-            0.5
-        ],
-        "imageWidth": 1692,
-        "imageHeight": 1051,
-        "frame_center": [
-            0.48,
-            0.49
-        ],
-        "width": 1878,
-        "height": 1245,
-        "angle": -8.89
-    },
-    "filter_bg": "qll_8_filter_bg.jpg",
-"filter_acv":"null",
-    "filter_noise": {
-        "image": "qll_8_zh_overlay_2.png",
-        " type": 6
-    },
-    "filter_frame": {
-        "type": 5,
-        "image": "qll_8_frame.png",
-        "frame": [
-            0,
-            0,
-            0,
-            0
-        ]
-    },
-    "zh_blur": 1,
-    "filter_lookup": "qll_8_lookup.png",
-    "filter_texture": [
+
         {
-            "image": "qll_8_frame_zh_nomal_1.png",
-            "type": 10
+            "scene_frame": {
+                "image_center": [
+                    0.5,
+                    0.5
+                ],
+                "imageWidth": 1004,
+                "imageHeight": 1346,
+                "frame_center": [
+                    0.514,
+                    0.458
+                ],
+                "width": 1448,
+                "height": 2045,
+                "angle": -7.56
+            },
+            "filter_acv": "null",
+            "filter_bg": "4_filter_bg.jpg",
+            "filter_noise": {
+                "image": "4_zh_overlay_2.png",
+                "type": 6
+            },
+            "filter_frame": {
+                "type": 5,
+                "image": "4_frame.png",
+                "frame": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "zh_blur": 1.5,
+            "filter_lookup": "qll_4_lookup.png",
+            "filter_texture": [
+                {
+                    "image": "qll_4_zh_nomal_2.png",
+                    "type": 10
+                }
+            ]
         }
-    ]
-}

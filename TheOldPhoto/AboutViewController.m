@@ -9,6 +9,7 @@
 #import "AboutViewController.h"
 
 @interface AboutViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -16,12 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.titleLabel setText:[NSString stringWithFormat:@"·  %@  ·",LocalizedString(@"setting_about", nil)]];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)back:(UIButton *)sender {
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.3;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    //            animation.type = @"rippleEffect";
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionFromLeft;
+    [self.view.window.layer addAnimation:animation forKey:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 /*

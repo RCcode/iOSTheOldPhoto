@@ -38,7 +38,7 @@
             break;
         case 3:
         {
-            for (int i = 1; i < 9; i++) {
+            for (int i = 1; i < 17; i++) {
                 NSString *imageName = [NSString stringWithFormat:@"qll_%d_60s.jpg",i];
                 [imageNameArray addObject:imageName];
             }
@@ -47,15 +47,15 @@
             break;
         case 4:
         {
-            for (int i = 0; i < 10; i++) {
-                NSString *imageName = [NSString stringWithFormat:@"scene2_%d.jpg",i];
+            for (int i = 1; i < 19; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"hl_40s_%d.jpg",i];
                 [imageNameArray addObject:imageName];
             }
         }
             break;
         case 5:
         {
-            for (int i = 1 ; i < 9 ; i++) {
+            for (int i = 1 ; i < 11 ; i++) {
                 NSString *imageName = [NSString stringWithFormat:@"qll_%d_unknown.jpg",i];
                 [imageNameArray addObject:imageName];
             }

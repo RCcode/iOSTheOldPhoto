@@ -36,7 +36,7 @@
 
 - (void)initData
 {
-    self.dataArray = @[LocalizedString(@"setting_store",nil),LocalizedString(@"setting_rate_us", nil),LocalizedString(@"setting_about_us", nil), LocalizedString(@"setting_feedback", nil),LocalizedString(@"setting_terms", nil),LocalizedString(@"setting_policy", nil),LocalizedString(@"setting_version", nil)];
+    self.dataArray = @[LocalizedString(@"setting_store",nil),LocalizedString(@"setting_rate_us", nil),LocalizedString(@"setting_about", nil), LocalizedString(@"setting_feedback", nil),LocalizedString(@"setting_terms", nil),LocalizedString(@"setting_policy", nil),LocalizedString(@"setting_version", nil)];
     self.imageNameArray = @[@"setting_store",@"setting_rateus",@"setting_followus",@"setting_feedback",@"setting_terms",@"setting_privacy",@"setting_version"];
 }
 
@@ -92,8 +92,15 @@
         {
             //关于我们
             AboutViewController *about = [[AboutViewController alloc] init];
-            
-            [self.target presentViewController:about animated:YES completion:nil];
+            CATransition *animation = [CATransition animation];
+            animation.duration = 0.3;
+            animation.timingFunction = UIViewAnimationCurveEaseInOut;
+//            animation.type = @"rippleEffect";
+            animation.type = kCATransitionPush;
+            animation.subtype = kCATransitionFromRight;
+            [self.window.layer addAnimation:animation forKey:nil];
+//            [self presentModalViewController:myNextViewController animated:NO completion:nil];
+            [self.target presentViewController:about animated:NO completion:nil];
         }
             break;
         case 3:

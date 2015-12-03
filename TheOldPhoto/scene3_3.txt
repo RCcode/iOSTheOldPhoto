@@ -4,8 +4,8 @@
             0.5,
             0.5
         ],
-        "imageWidth": 1516,
-        "imageHeight": 1053,
+        "imageWidth": 1154,
+        "imageHeight": 1537,
         "frame_center": [
             0.48,
             0.49
@@ -18,7 +18,7 @@
 "filter_acv":"null",
     "filter_noise": {
         "image": "null",
-        " type": 0
+        "type": 0
     },
     "filter_frame": {
         "type": 5,
@@ -39,11 +39,11 @@
         },
         {
             "image": "qll_9_frame_zh_softlight_2.png",
-            " type": 9
+            "type": 9
         },
          {
             "image": "qll_9_frame_zh_overlay_3.png",
-            " type": 6
+            "type": 6
         }
     ]
 }

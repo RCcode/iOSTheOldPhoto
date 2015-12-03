@@ -18,7 +18,7 @@
 "filter_acv":"null",
     "filter_noise": {
         "image": "qll_15_zh_multiply_3.png",
-        " type": 7
+        "type": 7
     },
     "filter_frame": {
         "type": 5,
@@ -39,7 +39,7 @@
         },
         {
             "image": "qll_15_frame_zh_softlight_2.png",
-            " type": 9
+            "type": 9
         }
     ]
 }

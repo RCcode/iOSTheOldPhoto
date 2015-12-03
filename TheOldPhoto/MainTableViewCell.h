@@ -10,6 +10,7 @@
 #import "CoverFlowView.h"
 #import "NCFilters.h"
 #import "ScreenshotBorderView.h"
+#import "ArrowUpView.h"
 
 @interface MainTableViewCell : UITableViewCell
 
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) UIButton *middleBtn;
 @property (nonatomic, strong) UIButton *rightBtn;
 @property (nonatomic, strong) CoverFlowView *coverFlowView;
+@property (nonatomic, strong) ArrowUpView *arrow;
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier target:(id)target leftSelector:(SEL)lSelector middleSelector:(SEL)mSelector rightSelector:(SEL)rSelector downloadSelector:(SEL)downloadSelector buySelector:(SEL)buySelector;
@@ -39,4 +41,7 @@
 
 - (BOOL)isCurrentModel;
 
+- (void)disableGestureRecognizer;
+
+- (void)enableGestureRecognizer;
 @end

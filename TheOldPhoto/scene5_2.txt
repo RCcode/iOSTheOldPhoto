@@ -5,7 +5,7 @@
                     0.5,
                     0.5
                 ],
-                "imageWidth": 1002,
+                "imageWidth": 1778,
                 "imageHeight": 1350,
                 "frame_center": [
                     0.48,
@@ -18,7 +18,7 @@
             "filter_acv": "null",
             "filter_bg": "5_filter_bg.jpg",
             "filter_noise": {
-                " type": 0,
+                "type": 0,
                 "image": "null"
             },
             "filter_frame": {

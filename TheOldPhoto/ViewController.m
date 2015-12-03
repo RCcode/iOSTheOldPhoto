@@ -20,6 +20,7 @@
 #import "StoreManager.h"
 #import "MyModel.h"
 #import "UIImage+Utility.h"
+#import "DataUtil.h"
 
 @interface ViewController () <UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, ImageEditDelegate,NSURLConnectionDelegate>
 {
@@ -40,6 +41,8 @@
 @property (nonatomic, strong) NSString *filefo;
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSMutableData *data;
+@property (nonatomic, strong) UIImage *default3_4;
+@property (nonatomic, strong) UIImage *default4_3;
 //@property (nonatomic, strong) NSMutableArray *year_90Array;
 //@property (nonatomic, strong) NSMutableArray *year_80Array;
 //@property (nonatomic, strong) NSMutableArray *year_60Array;
@@ -219,20 +222,18 @@
 
 - (void)initData
 {
+    DataUtil *util = [DataUtil defaultUtil];
+    util.is3_4 = YES;
+    util.indexCfgArray = [[NSMutableArray alloc] initWithObjects:@0,@0,@0,@0,@0,@0, nil];
+    
+    self.default3_4 = [UIImage imageNamed:@"default3_4.jpg"];
+    self.default4_3 = [UIImage imageNamed:@"default4_3.jpg"];
     self.currentCropStyle = CropStyleFree;
 //    self.year_totalArray = [[NSMutableArray alloc] init];
     self.titleArray = [[NSMutableArray alloc] initWithObjects:@"home_now",@"home_90",@"home_80",@"home_60",@"home_40",@"home_un",nil];
     self.leftBtnArray = [[NSMutableArray alloc] initWithObjects:@"home_now_library",@"home_90_library",@"home_80_library",@"home_60_library",@"home_40_library",@"home_un_library", nil];
     self.middleBtnArray = [[NSMutableArray alloc] initWithObjects:@"home_now_camera",@"home_90_camera",@"home_80_camera",@"home_60_camera",@"home_40_camera",@"home_un_camera", nil];
     self.rightBtnArray = [[NSMutableArray alloc] initWithObjects:@"home_now_share",@"home_90_share",@"home_80_share",@"home_60_share",@"home_40_share",@"home_un_share", nil];
-    
-//    
-//    [self.year_totalArray addObject:@""];
-//    [self.year_totalArray addObject:self.year_90Array];
-//    [self.year_totalArray addObject:self.year_80Array];
-//    [self.year_totalArray addObject:self.year_60Array];
-//    [self.year_totalArray addObject:self.year_40Array];
-//    [self.year_totalArray addObject:self.year_unknowArray];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -261,14 +262,39 @@
     NSString *middleBtnImageName = [self.middleBtnArray objectAtIndex:indexPath.row];
     NSString *rightBtnImageName = [self.rightBtnArray objectAtIndex:indexPath.row];
     [cell setLeftImageName:leftBtnImageName middleImageName:middleBtnImageName rightImageName:rightBtnImageName];
+    NSNumber *indexNum = [DataUtil defaultUtil].indexCfgArray[indexPath.row];
+    NSInteger index = indexNum.integerValue;
     if (self.currentImage) {
-        [cell setDisplayImage:self.currentImage withIndexPath:indexPath index:0];
+        CropStyle style = [cell cropStyleWithIndexpath:indexPath index:index];
+        if ([DataUtil defaultUtil].is3_4) {
+            if ( style == CropStyleSquareness3) {
+                index = 0;
+            }
+        }else{
+            if ( style == CropStyleSquareness4) {
+                index = 1;
+            }
+        }
+        [cell setDisplayImage:self.currentImage withIndexPath:indexPath index:index];
 //        [cell setDisplayImage:self.currentImage withSceneType:indexPath.row];
     }else{
-        [cell setDisplayImage:[UIImage imageNamed:pics.firstObject]];
+        if ([DataUtil defaultUtil].is3_4) {
+            [cell setDisplayImage:self.default3_4 withIndexPath:indexPath index:index];
+        }else{
+            [cell setDisplayImage:self.default4_3 withIndexPath:indexPath index:index];
+        }
+//        cell setDisplayImage
+//        [cell setDisplayImage:[UIImage imageNamed:pics.firstObject]];
     }
+    [cell.arrow setAnimation];
     [cell resetDisplayView];
     [cell setShowImages:pics target:self seletor:@selector(openAlbum:) ];
+    if (indexPath.row == 0) {
+        [cell disableGestureRecognizer];
+    }else{
+        [cell enableGestureRecognizer];
+    }
+    
     return cell;
 }
 
@@ -299,6 +325,7 @@
     NSLog(@"share");
 }
 
+
 - (void)presentToImagePickerWithType:(UIImagePickerControllerSourceType)type
 {
     CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
@@ -322,12 +349,17 @@
     CropStyle style = [self getCropStyleWithIndex:_currentIndexPath andIndex:(((CoverFlowView *)tap.view).currentRenderingImageIndex)];
 //    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
     NSLog(@"self.currentCropStyle = %ld style = %ld",self.currentCropStyle,style);
-    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree) && self.currentImage) {
+    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree)) {
         [self setScene];
     }else{
         [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
-    self.currentCropStyle = style;
+    if (self.currentImage) {
+        self.currentCropStyle = style;
+    }
+    if (_currentIndexPath.row<3) {
+        self.currentCropStyle = CropStyleFree;
+    }
 }
 
 - (CropStyle)getCropStyleWithIndex:(NSIndexPath *)indexPath andIndex:(NSInteger)index
@@ -379,7 +411,29 @@
     NSLog(@"indexPath = %ld",self.currentIndexPath.row);
     [cell resetDisplayView];
     NSInteger index = cell.coverFlowView.currentRenderingImageIndex;
-    [cell setDisplayImage:self.currentImage withIndexPath:self.currentIndexPath index:index];
+    if (self.currentImage) {
+        if (self.currentImage.size.width > self.currentImage.size.height) {
+            [DataUtil defaultUtil].is3_4 = NO;
+        }else{
+            [DataUtil defaultUtil].is3_4 = YES;
+        }
+        [cell setDisplayImage:self.currentImage withIndexPath:self.currentIndexPath index:index];
+    }else{
+        CropStyle style = [cell cropStyleWithIndexpath:self.currentIndexPath index:index];
+        if ( style == CropStyleSquareness4) {
+             [cell setDisplayImage:self.default3_4 withIndexPath:self.currentIndexPath index:index];
+            [DataUtil defaultUtil].is3_4 = YES;
+        }else if(style == CropStyleSquareness3){
+             [cell setDisplayImage:self.default4_3 withIndexPath:self.currentIndexPath index:index];
+            [DataUtil defaultUtil].is3_4 = NO;
+        }else{
+            if ([DataUtil defaultUtil].is3_4) {
+                [cell setDisplayImage:self.default3_4 withIndexPath:self.currentIndexPath index:index];
+            }else{
+                [cell setDisplayImage:self.default4_3 withIndexPath:self.currentIndexPath index:index];
+            }
+        }
+    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer

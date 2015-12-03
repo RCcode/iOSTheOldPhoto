@@ -18,7 +18,7 @@
     "filter_acv": "40s_5",
     "filter_noise": {
         "image": "hl_40s_5_texture1_screen.png",
-        " type": 2
+        "type": 2
     },
     "filter_frame": {
         "type": 5,

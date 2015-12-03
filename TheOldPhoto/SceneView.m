@@ -39,6 +39,7 @@
 @property (nonatomic, strong) SceneModel *sceneModel;
 @property (nonatomic, strong) TextureModel *textureModel;
 
+
 @end
 
 @implementation SceneView
@@ -74,11 +75,12 @@
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.width)];
     self.imageView.clipsToBounds = YES;
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] init];
-    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    self.imageView.backgroundColor = [UIColor whiteColor];
+    self.swipe = [[UISwipeGestureRecognizer alloc] init];
+   self.swipe.direction = UISwipeGestureRecognizerDirectionLeft;
     
-    [swipe addTarget:self action:@selector(swipePage:)];
-    [self addGestureRecognizer:swipe];
+    [self.swipe addTarget:self action:@selector(swipePage:)];
+    [self addGestureRecognizer:self.swipe];
     [self addSubview:self.imageView];
 }
 
@@ -157,7 +159,8 @@
             
             //blur setting
             CGFloat blurValue = ((NSNumber *)[sceneDic objectForKey:@"zh_blur"]).floatValue;
-            sceneModel.blurValue = blurValue;
+#warning to fix
+            sceneModel.blurValue = 0;
             
             //lookup setting
             sceneModel.lookupImageName = [sceneDic objectForKey:@"filter_lookup"];
@@ -262,11 +265,14 @@
     [self parseDic:self.sceneArray];
     @autoreleasepool {
         [self.pictureArray removeAllObjects];
+        for (GPUImageOutput<GPUImageInput> *filter in self.filterArray) {
+            [filter removeAllTargets];
+        }
         [self.filterArray removeAllObjects];
         [self.oriImage removeAllTargets];
         self.screenTexture = nil;
         self.lookupPicture = nil;
-        
+        [self.acvFilter removeAllTargets];
 //        NSLog(@"type = %lu",type);
         SceneModel *scene = self.cfgArray.firstObject;
         if (!self.previewView) {
@@ -314,20 +320,21 @@
         self.previewView.transform = CGAffineTransformRotate(self.previewView.transform, scene.frameAngle * M_PI / 180 );
         
         NSString *backImageName = scene.backgroundImageName;
+//        self.imageView.backgroundColor = [UIColor whiteColor];
         if (![backImageName isEqualToString:@"null"]) {
             UIImage *image = [self imageWithIndexpath:indexpath index:index imageName:backImageName];
 //            if (image) {
             self.imageView.image = image;
-            [self.previewView.layer setShadowOpacity:0];
+//            [self.previewView.layer setShadowOpacity:0];
 //            }
         }else{
 //            GPUImagePicture *ori = [[GPUImagePicture alloc] initWithImage:image];
-            GPUImageiOSBlurFilter *blur = [[GPUImageiOSBlurFilter alloc] init];
-            [blur setBlurRadiusInPixels:6];
-            self.imageView.image = [blur imageByFilteringImage:image];
-            self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-            [self.previewView.layer setShadowRadius:3];
-            [self.previewView.layer setShadowOpacity:1];
+//            GPUImageiOSBlurFilter *blur = [[GPUImageiOSBlurFilter alloc] init];
+//            [blur setBlurRadiusInPixels:6];
+            self.imageView.image = nil;
+//            self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+//            [self.previewView.layer setShadowRadius:3];
+//            [self.previewView.layer setShadowOpacity:1];
         }
  
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -376,6 +383,15 @@
             
             //transform
             self.transformFilter = [[GPUImageTransformFilter alloc] init];
+            CGAffineTransform transform = self.transformFilter.affineTransform;
+            CGFloat scaleX = scene.imageWidth / scene.frameWidth;
+            CGFloat scaleY = scene.imageHeight / scene.frameHeight;
+            CGFloat moveX = scene.imageCenter.x - 0.5;
+            CGFloat moveY = scene.imageCenter.y - 0.5;
+            NSLog(@"\n scale x = %f \n scale y = %f \n move x = %f \n move y = %f",scaleX, scaleY,moveX,moveY);
+            transform = CGAffineTransformScale(transform, scaleX, scaleY);
+            transform = CGAffineTransformTranslate(transform, moveX, moveY);
+            self.transformFilter.affineTransform = transform;
             NSString *acvFileName = scene.acvFilterName;
             if (![acvFileName isEqualToString:@"null"]) {
                 self.acvFilter = [[GPUImageToneCurveFilter alloc] initWithACV:acvFileName];
@@ -427,7 +443,7 @@
             }
             NSLog(@"filterArray = %@",self.filterArray);
             [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject addTarget:self.previewView];
-//            [self.lookupFilter addTarget:self.previewView];
+//            [self.transformFilter addTarget:self.previewView];
                 [self.oriImage processImageWithCompletionHandler:^{
                     dispatch_async(dispatch_get_main_queue(), ^{
                          self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);

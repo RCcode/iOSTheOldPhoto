@@ -382,7 +382,28 @@
     UIImage *img = [UIImage imageWithCGImage:cgimg];
     CGContextRelease(ctx);
     CGImageRelease(cgimg);
-    return img;
+    float multiple = 0.0 ,newHeight = 0.0 ,newWidth = 0.0;
+    float dustWidth = kImportImageMaxResolution;
+    if (dustWidth >= MAX(img.size.width, img.size.height)) {
+        return img;
+    }
+    
+    if (img.size.height >= img.size.width) {
+        multiple = img.size.height/dustWidth;
+        newHeight = dustWidth;
+        newWidth = img.size.width/multiple;
+    }
+    else
+    {
+        multiple = img.size.width/dustWidth;
+        newWidth = dustWidth;
+        newHeight = img.size.height/multiple;
+    }
+    UIImage *scaleImage = [img resize:CGSizeMake(newWidth, newHeight)];
+    
+    return scaleImage;
+    
+//    return img;
 }
 
 

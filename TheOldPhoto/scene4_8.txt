@@ -18,7 +18,7 @@
 "filter_acv":"40s_9",
     "filter_noise": {
         "image": "hl_40s_9_texture1_screen",
-        " type": 2
+        "type": 2
     },
     "filter_frame": {
         "type": 5,
@@ -39,7 +39,7 @@
         },
         {
             "image": "hl_40s_9_texture3_multiply.png",
-            " type": 7
+            "type": 7
         },
         {
             "image": "hl_40s_9_texture4_normal.png",

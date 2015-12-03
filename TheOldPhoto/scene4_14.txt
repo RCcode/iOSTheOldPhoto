@@ -1,0 +1,54 @@
+{
+    "scene_frame": {
+        "image_center": [
+            0.5,
+            0.5
+        ],
+        "imageWidth": 1204,
+        "imageHeight": 858,
+        "frame_center": [
+            0.5,
+            0.5
+        ],
+        "width": 1347,
+        "height": 978,
+        "angle": 8.35
+    },
+    "filter_bg": "hl_40s_15_bg.jpg",
+"filter_acv":"cav15",
+    "filter_noise": {
+        "image": "hl_40s_15_texture1_screen",
+        "type": 2
+    },
+    "filter_frame": {
+        "type": 5,
+        "image": "hl_40s_15_photo.png",
+        "frame": [
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "zh_blur": 0.5,
+    "filter_lookup": "hl_40s_lookup.png",
+    "filter_texture": [
+        {
+            "image": "hl_40s_15_texture2_normal.png",
+            "type": 10
+        },
+        {
+            "image": "hl_40s_15_texture3_multiply.png",
+            "type": 7
+        },
+        {
+            "image": "hl_40s_15_texture4_overlay.png",
+            "type": 6
+        },
+        {
+            "image": "hl_40s_15_texture5_softlight.png",
+            "type": 9
+        }
+        
+    ]
+}

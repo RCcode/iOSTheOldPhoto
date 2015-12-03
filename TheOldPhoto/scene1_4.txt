@@ -17,7 +17,7 @@
     "filter_acv": "null",
     "filter_bg": "null",
     "filter_noise": {
-        " type": 0,
+        "type": 0,
         "image": "null"
     },
     "filter_frame": {

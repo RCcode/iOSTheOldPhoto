@@ -8,6 +8,7 @@
 
 #import "MainTableViewCell.h"
 #import "SceneView.h"
+#import "DataUtil.h"
 
 @interface MainTableViewCell ()
 
@@ -106,6 +107,9 @@
     [self.contentView addSubview:self.middleBtn];
     [self.contentView addSubview:self.rightBtn];
     
+    self.arrow = [[ArrowUpView alloc] initWithFrame:CGRectMake(windowWidth() / 2 - 18 / 2, windowHeight() - 12 - 18, 19, 18)];
+    [self.contentView addSubview:self.arrow];
+    
 }
 
 - (void)setTarget:(id)target leftSeletor:(SEL)leftS middleSelector:(SEL)middleS rightSeletor:(SEL)rightS downloadSelector:(SEL)downloadSelector buySelector:(SEL)buySelector
@@ -135,7 +139,10 @@
 
 - (void)setDisplayImage:(UIImage *)image withIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index
 {
+    
     [self.displayView initFilterWithIndexPath:indexpath index:index oriImage:image];
+    [[DataUtil defaultUtil].indexCfgArray removeObjectAtIndex:indexpath.row];
+    [[DataUtil defaultUtil].indexCfgArray insertObject:[NSNumber numberWithInteger:index] atIndex:indexpath.row];
 //    [self.displayView initFilterWithType:type oriImage:displayImage];
 }
 
@@ -180,6 +187,16 @@
         return YES;
     }
     
+}
+
+- (void)disableGestureRecognizer
+{
+    self.displayView.swipe.enabled = NO;
+}
+
+- (void)enableGestureRecognizer
+{
+    self.displayView.swipe.enabled = YES;
 }
 
 @end
