@@ -227,6 +227,8 @@
     util.indexCfgArray = [[NSMutableArray alloc] initWithObjects:@0,@0,@0,@0,@0,@0, nil];
     
     self.default3_4 = [UIImage imageNamed:@"default3_4.jpg"];
+//    self.default3_4 = [UIImage imageNamed:@"1103素材1.jpg"];
+//    self.default3_4 = [UIImage imageNamed:@"80s效果"];
     self.default4_3 = [UIImage imageNamed:@"default4_3.jpg"];
     self.currentCropStyle = CropStyleFree;
 //    self.year_totalArray = [[NSMutableArray alloc] init];

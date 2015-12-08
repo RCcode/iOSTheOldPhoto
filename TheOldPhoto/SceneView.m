@@ -238,6 +238,13 @@
         case 10:
             NSLog(@"Normal");
             return [[GPUImageNormalBlendFilter alloc] init];
+        case 12:
+            NSLog(@"Lighten");
+            return [[GPUImageLightenBlendFilter alloc] init];
+        case 13:
+            NSLog(@"Darken");
+            return [[GPUImageDarkenBlendFilter alloc] init];
+            
         default:
             break;
     }
@@ -361,22 +368,23 @@
             }
             [self.oriImage addTarget:self.noiseFilter atTextureLocation:0];
             if (noiseImage) {
+                NSLog(@"noiseImage = %@",noiseModel.textureImageName);
                 self.screenTexture = [[GPUImagePicture alloc] initWithImage:noiseImage];
                 [self.screenTexture addTarget:self.noiseFilter atTextureLocation:1];
                 [self.screenTexture processImage];
             }
             
             //gauss
-            self.gaussianFIlter = [[GPUImageGaussianBlurFilter alloc] init];
-            [self.noiseFilter addTarget:self.gaussianFIlter atTextureLocation:0];
-            //    [self.gaussianFIlter setBlurPasses:2];
-            [self.gaussianFIlter setBlurRadiusInPixels:scene.blurValue];
+//            self.gaussianFIlter = [[GPUImageGaussianBlurFilter alloc] init];
+//            [self.noiseFilter addTarget:self.gaussianFIlter atTextureLocation:0];
+//            //    [self.gaussianFIlter setBlurPasses:2];
+//            [self.gaussianFIlter setBlurRadiusInPixels:scene.blurValue];
             
             self.lookupFilter = [[GPUImageLookupFilter alloc] init];
             NSLog(@"lookupImageName = %@",scene.lookupImageName);
 //            self.lookupPicture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:scene.lookupImageName]];
             self.lookupPicture = [[GPUImagePicture alloc] initWithImage:[self imageWithIndexpath:indexpath index:index imageName:scene.lookupImageName]];
-            [self.gaussianFIlter addTarget:self.lookupFilter atTextureLocation:0];
+            [self.noiseFilter addTarget:self.lookupFilter atTextureLocation:0];
             [self.lookupPicture addTarget:self.lookupFilter atTextureLocation:1];
             [self.lookupPicture processImage];
             //     [self.oriImage processImage];
@@ -416,12 +424,12 @@
                 }else{
                     filter =  [self setFilter:filter withType:0];
                 }
-                
+                NSLog(@"textureName = %@",frameModel.textureImageName);
                 //        [self.transformFilter addTarget:self.filter1];
                 if (textureImage) {
                     texture = [[GPUImagePicture alloc] initWithImage:textureImage];
+                    
                     if (i == 1) {
-                        NSLog(@"textureName = %@",frameModel.textureImageName);
                         [((GPUImageChromaKeyBlendFilter *)filter) setColorToReplaceRed:0 green:1 blue:0];
                         [texture addTarget:filter atTextureLocation:0];
                         [self.transformFilter addTarget:filter atTextureLocation:1];
@@ -442,12 +450,21 @@
                 [self.filterArray addObject:filter];
             }
             NSLog(@"filterArray = %@",self.filterArray);
+//            int i = 1;
+//            if (self.filterArray.count > i) {
+//                [(GPUImageOutput <GPUImageInput> *)self.filterArray[i] addTarget:self.previewView];
+//            }else{
+//            }
             [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject addTarget:self.previewView];
-//            [self.transformFilter addTarget:self.previewView];
+//            [self.lookupFilter addTarget:self.previewView];
                 [self.oriImage processImageWithCompletionHandler:^{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                         self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
+                        self.previewView.alpha = 0;
                         self.previewView.hidden = NO;
+                        self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
+                        [UIView animateWithDuration:0.5 animations:^{
+                            self.previewView.alpha =1;
+                        }];
                     });
                 }];
         });

@@ -4,20 +4,20 @@
             0.5,
             0.5
         ],
-        "imageWidth": 1056,
-        "imageHeight": 1429,
+        "imageWidth": 1116,
+        "imageHeight": 1474,
         "frame_center": [
             0.5,
             0.5
         ],
         "width": 1111,
-        "height": 1579,
+        "height": 1582,
         "angle": -6.3
     },
     "filter_bg": "hl_40s_10_bg.jpg",
 "filter_acv":"40s_10",
     "filter_noise": {
-        "image": "hl_40s_10_texture1_screen",
+        "image": "hl_40s_10_texture1_screen.png",
         "type": 2
     },
     "filter_frame": {
@@ -43,7 +43,7 @@
         },
         {
             "image": "hl_40s_10_texture4_normal.png",
-            "type": 10
+            "type": 13
         }
     ]
 }

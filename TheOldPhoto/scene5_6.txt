@@ -15,9 +15,9 @@
                 "angle": 3.81
             },
             "filter_acv": "null",
-            "filter_bg": "2_filter_bg.jpg",
+            "filter_bg": "qll_2_filter_bg.jpg",
             "filter_noise": {
-                 "image": "2_zh__multiply_2.png",
+                 "image": "qll_2_zh_multiply_2.png",
                  "type": 7
             },
             "filter_frame": {
@@ -33,13 +33,13 @@
             "zh_blur": 1.5,
             "filter_lookup": "qll_2_lookup.png",
             "filter_texture": [
-                {
-                    "image": "qll_2_zh_normal.png",
-                    "type": 10
-                },
-                {
-                    "image": "2_frame_normal_1.png",
-                    "type": 10
-                }
+{
+"image":"qll_2_frame_multiply_1.png",
+"type": 7
+},
+{
+"image":"qll_2_frame_lighten.png",
+"type": 12
+}
             ]
         }

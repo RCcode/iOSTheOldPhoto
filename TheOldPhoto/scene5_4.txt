@@ -18,8 +18,8 @@
             "filter_acv": "null",
             "filter_bg": "1_filter_bg.jpg",
             "filter_noise": {
-                "type": 3,
-                "image": "1_zh_multiply_3.png"
+                "type": 7,
+                "image": "1_zh_multiply_3"
             },
             "filter_frame": {
                 "type": 5,
@@ -39,8 +39,8 @@
                     "type": 9
                 },
                 {
-                    "image": "1_frame_zh_normal_1.png",
-                    "type": 10
+                    "image": "qll_1_frame_zh_softlight_1.png",
+                    "type": 9
                 }
             ]
         }

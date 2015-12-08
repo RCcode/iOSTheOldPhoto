@@ -34,7 +34,7 @@
     "filter_lookup": "xy_80s_lookup10.png",
     "filter_texture": [
         {
-            "image": "xy_80s_10_texture1_overlay.jpg",
+            "image": "xy_80s_10_texture3_overlay.png",
             "type": 6
         },
         {
@@ -42,7 +42,7 @@
             "type": 7
         },
         {
-            "image": "xy_80s_10_texture3_overlay.png",
+            "image": "xy_80s_10_texture1_overlay.jpg",
             "type": 6
         }
     ]

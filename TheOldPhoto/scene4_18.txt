@@ -1,0 +1,41 @@
+{
+    "scene_frame": {
+        "image_center": [
+            0.469,
+            0.429
+        ],
+        "imageWidth": 1046,
+        "imageHeight": 1391,
+        "frame_center": [
+            0.511,
+            0.500
+        ],
+        "width": 1387,
+        "height": 2048,
+        "angle":0
+    },
+    "filter_acv": "null",
+    "filter_bg": "xy_40s_1_bg.jpg",
+    "filter_noise": {
+        "type": 0,
+        "image": "null"
+    },
+    "filter_frame": {
+        "type": 5,
+        "image": "xy_40s_1_photo.png",
+        "frame": [
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "zh_blur": 0,
+    "filter_lookup": "xy_lookup_40s_1.jpg",
+    "filter_texture": [
+        {
+            "image": "xy_40s_1_texture1_overlay.png",
+            "type": 6
+        }
+    ]
+}

@@ -8,22 +8,22 @@
                 "imageWidth": 1778,
                 "imageHeight": 1350,
                 "frame_center": [
-                    0.48,
-                    0.49
+                    0.502,
+                    0.508
                 ],
                 "width": 1862,
                 "height": 1535,
                 "angle": 0
             },
             "filter_acv": "null",
-            "filter_bg": "5_filter_bg.jpg",
+            "filter_bg": "qll_5_filter_bg.jpg",
             "filter_noise": {
                 "type": 0,
                 "image": "null"
             },
             "filter_frame": {
                 "type": 5,
-                "image": "5_frame.png",
+                "image": "qll_5_frame.png",
                 "frame": [
                     0,
                     0,
@@ -33,18 +33,19 @@
             },
             "zh_blur": 1.5,
             "filter_lookup": "qll_5_lookup.png",
-            "filter_texture": [
-                {
-                    "image": "5_zh_ softlight_3.png",
-                    "type": 9
-                },
-                {
-                    "image": "5_zh_overlay_2.png",
-                    "type": 6
-                },
-                {
-                    "image": "5_zh_nomal_1.png",
-                    "type": 10
-                }
-            ]
+"filter_texture": [
+{
+"image":"qll_5_frame_zh_screenblend_1.png",
+"type": 9
+},
+{
+"image":"qll_5_frame_zh_overlay_2.png",
+"type": 6
+},
+{
+"image":"qll_5_frame_zh_overlay_4.png",
+"type": 6
+}
+
+]
         }

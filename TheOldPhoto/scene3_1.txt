@@ -7,10 +7,10 @@
         "imageWidth": 1692,
         "imageHeight": 1269,
         "frame_center": [
-            0.48,
-            0.49
+            0.514,
+            0.547
         ],
-        "width": 1878,
+        "width": 1853,
         "height": 1245,
         "angle": -8.89
     },
@@ -34,8 +34,8 @@
     "filter_lookup": "qll_8_lookup.png",
     "filter_texture": [
         {
-            "image": "qll_8_frame_zh_nomal_1.png",
-            "type": 10
+            "image": "qll_8_frame_zh_multiply _1.png",
+            "type": 7
         }
     ]
 }

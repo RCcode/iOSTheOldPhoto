@@ -17,7 +17,7 @@
     "filter_bg": "hl_40s_8_bg.jpg",
 "filter_acv":"40s_8",
     "filter_noise": {
-        "image": "hl_40s_8_texture1_screen",
+        "image": "hl_40s_8_texture1_screen.png",
         "type": 2
     },
     "filter_frame": {
@@ -33,30 +33,45 @@
     "zh_blur": 2,
     "filter_lookup": "hl_40s_lookup.png",
     "filter_texture": [
-        {
-            "image": "hl_40s_8_texture2_hardlight.png",
-            "type": 8
-        },
-        {
-            "image": "hl_40s_8_texture3_softlight.png",
-            "type": 9
-        },
-        {
-            "image": "hl_40s_8_texture4_screen.png",
-            "type": 2
-        },
-        {
-            "image": "hl_40s_8_texture5_overlay.png",
-            "type": 6
-        },
-        {
-            "image": "hl_40s_8_texture6_multiply.png",
-            "type": 7
-        },
-        {
-            "image": "hl_40s_8_texture7_normal.png",
-            "type": 10
-        }
-        
+{
+"image": "hl_40s_8_texture2_screen.png",
+"type": 6
+},
+{
+"image": "hl_40s_8_texture3_softlight.png",
+"type": 9
+},
+{
+"image": "hl_40s_8_texture4_multiply.png",
+"type": 7
+},
+{
+"image": "hl_40s_8_texture5_screen.png",
+"type": 2
+},
+{
+"image": "hl_40s_8_texture6_normal.png",
+"type": 10
+},
+{
+"image": "hl_40s_8_texture7_multiply.png",
+"type": 7
+},
+{
+"image": "hl_40s_8_texture8_overlay.png",
+"type": 6
+},
+{
+"image": "hl_40s_8_texture9_normal.png",
+"type": 10
+},
+{
+"image": "hl_40s_8_texture10_multiply.png",
+"type": 7
+},
+{
+"image": "hl_40s_8_texture11_normal.png",
+"type": 10
+}
     ]
 }

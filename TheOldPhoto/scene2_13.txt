@@ -34,7 +34,15 @@
     "filter_lookup": "xy_80s_lookup14.png",
     "filter_texture": [
         {
-            "image": "xy_80s_14_texture1_multiply.png",
+            "image": "xy_80s_14_texture5_softlight.png",
+            "type": 9
+        },
+        {
+            "image": "xy_80s_14_texture4_hardlight.png",
+            "type": 8
+        },
+        {
+            "image": "xy_80s_14_texture3_multiply.jpg",
             "type": 7
         },
         {
@@ -42,16 +50,8 @@
             "type": 6
         },
         {
-            "image": "xy_80s_14_texture3_multiply.jpg",
+            "image": "xy_80s_14_texture1_multiply.png",
             "type": 7
-        },
-        {
-            "image": "xy_80s_14_texture4_hardlight.png",
-            "type": 8
-        },
-        {
-            "image": "xy_80s_14_texture5_softlight.png",
-            "type": 9
         }
     ]
 }

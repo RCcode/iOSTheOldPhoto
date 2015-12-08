@@ -7,10 +7,10 @@
         "imageWidth": 1778,
         "imageHeight": 1350,
         "frame_center": [
-            0.48,
+            0.505,
             0.49
         ],
-        "width": 1954,
+        "width": 1949,
         "height": 1267,
         "angle": 0
     },

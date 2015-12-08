@@ -1,13 +1,13 @@
  {
     "scene_frame": {
         "image_center": [
-            0.5,
-            0.5
+            0.45,
+            0.44
         ],
         "imageWidth": 2083,
         "imageHeight":1563,
         "frame_center": [
-            0.52,
+            0.515,
             0.475
         ],
         "width": 1985,
@@ -34,8 +34,8 @@
     "filter_lookup": "qll_12_lookup.png",
     "filter_texture": [
         {
-            "image": "qll_12_frame_zh_normal_1.png",
-            "type": 10
+            "image": "qll_12_frame_zh_hardlight_1.png",
+            "type": 8
         },
         {
             "image": "qll_12_frame_zh_softlight_2.png",

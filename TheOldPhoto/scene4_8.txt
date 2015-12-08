@@ -43,11 +43,12 @@
         },
         {
             "image": "hl_40s_9_texture4_normal.png",
-            "type": 10
+            "type": 12
         },
         {
             "image": "hl_40s_9_texture5_overlay.png",
             "type": 6
         }
+
     ]
 }

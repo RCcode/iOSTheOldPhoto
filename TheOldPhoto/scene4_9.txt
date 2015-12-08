@@ -17,7 +17,7 @@
     "filter_bg": "hl_40s_1_bg.jpg",
 "filter_acv":"null",
     "filter_noise": {
-        "image": "hl_40s_1_texture1_screen",
+        "image": "hl_40s_1_texture1_screen.png",
         "type": 2
     },
     "filter_frame": {
@@ -38,7 +38,7 @@
             "type": 7
         },
         {
-            "image": "hl_40s_1_texture3_hardlight",
+            "image": "hl_40s_1_texture3_hardlight.png",
             "type": 8
         },
         {

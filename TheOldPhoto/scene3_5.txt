@@ -7,8 +7,8 @@
         "imageWidth": 1752,
         "imageHeight": 1314,
         "frame_center": [
-            0.48,
-            0.49
+            0.505,
+            0.536
         ],
         "width": 1930,
         "height": 1360,

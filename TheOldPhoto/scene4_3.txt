@@ -4,13 +4,13 @@
             0.5,
             0.5
         ],
-        "imageWidth": 1805,
-        "imageHeight": 1236,
+        "imageWidth": 1905,
+        "imageHeight": 1312,
         "frame_center": [
             0.5,
             0.5
         ],
-        "width": 2000,
+        "width": 2036,
         "height": 1446,
         "angle": -18.2
     },
@@ -34,24 +34,28 @@
     "filter_lookup": "hl_40s_lookup.png",
     "filter_texture": [
         {
-            "image": "hl_40s_4_texture2_hardlight.png",
-            "type": 8
-        },
-        {
-            "image": "hl_40s_4_texture3_softlight.png",
+            "image": "hl_40s_4_texture2_softlight.png",
             "type": 9
         },
         {
-            "image": "hl_40s_4_texture4_screenblend.png",
+            "image": "hl_40s_4_texture3_hardlight.png",
+            "type": 8
+        },
+        {
+            "image": "hl_40s_4_texture4_screen.png",
             "type": 2
         },
         {
-            "image": "hl_40s_4_texture5_overlay.png",
+            "image": "hl_40s_4_texture5_multiply.png",
+            "type": 7
+        },
+        {
+            "image": "hl_40s_4_texture6_overlay.png",
             "type": 6
         },
         {
-            "image": "hl_40s_4_texture6_normal.png",
-            "type": 10
+            "image": "hl_40s_4_texture7_normal.png",
+            "type": 12
         }
     ]
 }

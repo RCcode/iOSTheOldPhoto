@@ -15,7 +15,7 @@
         "angle": 0
     },
     "filter_bg": "hl_40s_13_bg.jpg",
-"filter_acv":"cav13",
+"filter_acv":"40s_13",
     "filter_noise": {
         "image": "hl_40s_13_texture1_screen",
         "type": 2

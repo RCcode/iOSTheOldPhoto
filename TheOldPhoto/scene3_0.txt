@@ -33,13 +33,17 @@
     "zh_blur": 1.5,
     "filter_lookup": "qll_3_lookup.png",
     "filter_texture": [
-
-        {
-            "image": "qll_3_frame_zh_multiply_2.png",
-            "type": 7
-},{
-"image": "qll_3_frame_nomal_1.png",
+{
+"image":"qll_3_frame_zh_softlight_1.png",
+"type": 9
+},
+{
+"image":"qll_3_frame_nomal_1.png",
 "type": 10
+},
+{
+"image":"qll_3_frame_zh_multiply_2.png",
+"type": 7
 }
     ]
 }

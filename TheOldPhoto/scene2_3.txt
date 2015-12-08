@@ -34,12 +34,12 @@
     "filter_lookup": "xy_80s_lookup4.png",
     "filter_texture": [
         {
-            "image": "xy_80s_4_texture1_overlay.jpg",
-            "type": 6
-        },
-        {
             "image": "xy_80s_4_texture2_softlight.jpg",
             "type": 9
+        },
+        {
+            "image": "xy_80s_4_texture1_overlay.jpg",
+            "type": 6
         }
     ]
 }

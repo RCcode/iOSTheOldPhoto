@@ -1,0 +1,53 @@
+{
+    "scene_frame": {
+        "image_center": [
+            0.49,
+            0.498
+        ],
+        "imageWidth": 910,
+        "imageHeight": 1212,
+        "frame_center": [
+            0.567,
+            0.458
+        ],
+        "width": 1005,
+        "height": 1266,
+        "angle": -6
+    },
+    "filter_acv": "null",
+    "filter_bg": "xy_40s_2_bg.jpg",
+    "filter_noise": {
+        "type": 0,
+        "image": "null"
+    },
+    "filter_frame": {
+        "type": 5,
+        "image": "xy_40s_2_photo.png",
+        "frame": [
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "zh_blur": 0,
+    "filter_lookup": "xy_lookup_40s_2.jpg",
+    "filter_texture": [
+        {
+            "image": "xy_40s_2_texture4_overlay.png",
+            "type": 6
+        },
+        {
+            "image": "xy_40s_2_texture3_overlay.png",
+            "type": 6
+        },
+        {
+            "image": "xy_40s_2_texture2_overlay.png",
+            "type": 6
+        },
+        {
+            "image": "xy_40s_2_texture1_normal.png",
+            "type": 6
+        }
+    ]
+}

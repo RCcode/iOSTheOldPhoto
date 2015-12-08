@@ -12,12 +12,12 @@
         ],
         "width": 1714,
         "height": 2254,
-        "angle": 12.5
+        "angle": -12.5
     },
     "filter_bg": "hl_40s_12_bg.jpg",
-"filter_acv":"cav12",
+"filter_acv":"40s_12",
     "filter_noise": {
-        "image": "hl_40s_12_texture1_screen",
+        "image": "hl_40s_12_texture1_screen.png",
         "type": 2
     },
     "filter_frame": {
@@ -49,6 +49,7 @@
             "image": "hl_40s_12_texture5_overlay.png",
             "type": 6
         },
+        {
             "image": "hl_40s_12_texture6_hardlight.png",
             "type": 8
         }

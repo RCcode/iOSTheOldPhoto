@@ -34,11 +34,11 @@
     "filter_lookup": "xy_80s_lookup5.jpg",
     "filter_texture": [
         {
-            "image": "xy_80s_5_texture1_softlight.jpg",
+            "image": "xy_80s_5_texture2_softlight.png",
             "type": 9
         },
         {
-            "image": "xy_80s_5_texture2_softlight.png",
+            "image": "xy_80s_5_texture1_softlight.jpg",
             "type": 9
         }
     ]

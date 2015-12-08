@@ -30,16 +30,16 @@
             0
         ]
     },
-    "zh_blur": 2,
-    "filter_lookup": "xy_80s_lookup2.png",
+    "zh_blur": 1.6,
+    "filter_lookup": "xy_80s_lookup1.jpg",
     "filter_texture": [
         {
-            "image": "xy_80s_2_texture1_multiply.jpg",
+            "image": "xy_80s_1_texture2_multiply.png",
             "type": 7
         },
         {
-            "image": "xy_80s_2_texture2_screenblend.jpg",
-            "type": 2
+            "image": "xy_80s_1_texture1_multiply.png",
+            "type": 7
         }
     ]
 }

@@ -1,0 +1,41 @@
+{
+    "scene_frame": {
+        "image_center": [
+            0.5,
+            0.48
+        ],
+        "imageWidth": 1554,
+        "imageHeight":1167,
+        "frame_center": [
+            0.496,
+            0.496
+        ],
+        "width": 1811,
+        "height":1315,
+        "angle": -3.51
+    },
+    "filter_bg": "qll_17_filter_bg.jpg",
+"filter_acv":"null",
+    "filter_noise": {
+        "image": "qll_17_zh_softlight_3.png",
+        "type":9
+    },
+    "filter_frame": {
+        "type": 5,
+        "image": "qll_17_frame.png",
+        "frame": [
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "zh_blur": 0,
+    "filter_lookup": "qll_17_lookup.png",
+    "filter_texture": [
+        {
+            "image": "qll_17_frame_zh_normal_1.png",
+            "type": 12
+        }
+    ]
+}
