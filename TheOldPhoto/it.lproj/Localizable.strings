@@ -127,3 +127,10 @@
 /* 设置 */
 "setting_setting" = "Impostazione";
 
+/* 版本号 */
+"setting_version" = "Versione";
+
+"main_download_failed" = "Scaricamento annullato, scarica di nuovo";
+"main_cancel" = "Annulla";
+
+"main_confirm" = "Conferma";

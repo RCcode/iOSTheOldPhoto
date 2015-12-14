@@ -169,7 +169,7 @@ GLfloat mirrorCoor_q2[] = {0.25f, 0.25f, 0.75f, 0.25f, 0.25f, 0.75f, 0.75f, 0.75
     //        [[NSUserDefaults standardUserDefaults] synchronize];
     //    }
     currentFilterType = type;
-    NSLog(@"%u",type);
+    NSLog(@"%lu",type);
     self.internalSourcePicture1 = nil;
     self.internalSourcePicture2 = nil;
     self.internalMirrorPicture1 = nil;

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingStoreViewController : UIViewController
-
+@property (nonatomic, assign) BOOL isPush;
 @end

@@ -127,3 +127,11 @@
 /* 设置 */
 "setting_setting" = "Настройка";
 
+/* 版本号 */
+"setting_version" = "Версия";
+
+"main_download_failed" = "Сбой загрузки. Загрузите снова";
+
+"main_cancel" = "Отмена";
+
+"main_confirm" = "OK";

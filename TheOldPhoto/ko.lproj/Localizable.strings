@@ -127,3 +127,11 @@
 /* 设置 */
 "setting_setting" = "설정";
 
+/* 版本号 */
+"setting_version" = "버전";
+
+"main_download_failed" = "다운 실패, 다시 다운 받기";
+
+"main_cancel" = "취소";
+
+"main_confirm" = "확인";

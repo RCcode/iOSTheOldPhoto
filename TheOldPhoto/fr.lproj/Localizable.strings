@@ -5,128 +5,133 @@
   Copyright © 2015年 MaxToooNG. All rights reserved. */
 
 /* 分享 */
-"main_share" = "Share";
+"main_share" = "Partager";
 
 /* 相机 */
-"main_camera" = "Camera";
+"main_camera" = "Appareil photo";
 
 /* 保存 */
-"main_save" = "Save";
+"main_save" = "Enregistrer";
 
 /* 关于我们 */
-"setting_about" = "About us";
+"setting_about" = "Qui sommes-nous";
 
 /* 解锁所有 */
-"iap_all" = "Unlock all by $1.99";
+"iap_all" = "Tout déverrouiller pour 1,99 $";
 
 /* 年代购买 */
-"iap_one" = "Get this pack by $0.99";
+"iap_one" = "Recevez ce pack pour 0,99 $";
 
 /* 隐私政策 */
-"setting_policy" = "Privacy Policy";
+"setting_policy" = "Politique de confidentialité";
 
 /* 优惠50% */
-"setting_off_50" = "Save 50%";
+"setting_off_50" = "Economisez 50 %";
 
 /* 图片保存到 */
-"setting_saved" = "Photo saved to XXXX";
+"setting_saved" = "Photo enregistrée sur XXXX";
 
 /* 稍后评论 */
-"title_remind" = "Remind me later";
+"title_remind" = "Me le rappeler plus tard";
 
 /* 反馈 */
-"setting_feedback" = "Feedback";
+"setting_feedback" = "Commentaires";
 
 /* 评论我们 */
-"setting_rate_us" = "Rate us";
+"setting_rate_us" = "Evaluez-nous";
 
 /* 保存路径 */
-"setting_savepath" = "Save path";
+"setting_savepath" = "Enregistrer le chemin";
 
 /* 恢复购买 */
-"setting_gallary" = "Restore";
+"setting_gallary" = "Restaurer";
 
 /* 商店 */
-"setting_store" = "Store";
+"setting_store" = "Boutique";
 
 /* 剪裁 */
-"main_crop" = "Crop";
+"main_crop" = "Redimensionner";
 
 /* 使用条件 */
-"setting_terms" = "Terms of Use";
+"setting_terms" = "Conditions d'utilisation";
 
 /* 喜欢 xxx */
-"title_like" = "Love XXX?";
+"title_like" = "Vous aimez XXX ?";
 
 /* 喜欢我们去评5星 */
-"title_rate_five" = "Share your love and rate us 5 stars";
+"title_rate_five" = "Partagez votre affection et donnez-nous 5 étoiles";
 
 /* 五星好评 */
-"title_five_star" = "5-star";
+"title_five_star" = "5 étoiles";
 
 /* 相册 */
-"main_gallery" = "Gallery";
+"main_gallery" = "Galerie";
 
 /* 污渍 */
-"tag_dirty" = "dirty";
+"tag_dirty" = "sale";
 
 /* 模糊 */
-"tag_blur" = "blur";
+"tag_blur" = "flou";
 
 /* 破损 */
-"tag_broken" = "broken";
+"tag_broken" = "cassé";
 
 /* 珍贵 */
-"tag_precious" = "precious";
+"tag_precious" = "précieux";
 
 /* 皱巴巴 */
-"tag_crumpled" = "crumpled";
+"tag_crumpled" = "froissé";
 
 /* 宝丽来 */
-"tag_polaroid" = "Polaroid";
+"tag_polaroid" = "Polaroïd";
 
 /* 划痕 */
-"tag_scratch" = "scratch ";
+"tag_scratch" = "éraflé ";
 
 /* 斑驳 */
-"tag_motley" = "motley";
+"tag_motley" = "bigarré";
 
 /* 褪色 */
-"tag_fade" = "fade";
+"tag_fade" = "passé";
 
 /* 彩色 */
-"tag_colorful" = "colorful";
+"tag_colorful" = "coloré";
 
 /* 摩登 */
-"tag_modern" = "modern";
+"tag_modern" = "moderne";
 
 /* 黑白 */
-"tag_blackwhite" = "black & white";
+"tag_blackwhite" = "noir et blanc";
 
 /* LOMO */
-"tag_lomo" = "lomo";
+"tag_lomo" = "lomographie";
 
 /* 损坏 */
-"tag_damaged" = "damaged";
+"tag_damaged" = "endommagé";
 
 /* 污点 */
-"tag_stain" = "Stain";
+"tag_stain" = "tâche";
 
 /* 尘封 */
-"tag_dusty" = "dusty";
+"tag_dusty" = "poussiéreux";
 
 /* 皱 */
-"tag_wrinkled" = "wrinkled";
+"tag_wrinkled" = "plissé";
 
 /* 压碎 */
-"tag_crushed" = "crushed";
+"tag_crushed" = "cassé";
 
 /* 已购买 */
-"iap_purchased" = "Already purchased";
+"iap_purchased" = "Déjà acheté";
 
 /* 设置 */
-"setting_setting" = "Setting";
+"setting_setting" = "Réglage";
 
 /* 版本号 */
 "setting_version" = "Version";
 
+"main_download_failed" = "Le téléchargement a échoué, téléchargez à nouveau s'il vous plaît";
+
+"main_cancel" = "Annuler";
+
+"main_confirm" = "Terminer";

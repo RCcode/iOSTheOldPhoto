@@ -39,7 +39,7 @@
     NSMutableArray *_images;
     NSMutableArray *_imageLayers;
     NSMutableArray *_templateLayers;
-    int _currentRenderingImageIndex;
+//    int _currentRenderingImageIndex;
     UIPageControl *_pageControl;
     int _sideVisibleImageCount;
     CGFloat _sideVisibleImageScale;
@@ -55,7 +55,6 @@
 @synthesize sideVisibleImageCount = _sideVisibleImageCount;
 @synthesize sideVisibleImageScale = _sideVisibleImageScale;
 @synthesize middleImageScale = _middleImageScale;
-
 
 - (void)adjustReflectionBounds:(CALayer *)layer scale:(CGFloat)scale {
     // set originLayer's reflection bounds
@@ -211,7 +210,6 @@
     flowView.sideVisibleImageCount = sideCount;
     flowView.sideVisibleImageScale = sideImageScale;
     flowView.middleImageScale = middleImageScale;
-    
     //default set middle image to the first image in the source images array
     flowView.currentRenderingImageIndex = 0;
     NSMutableArray *rawArray = [[NSMutableArray alloc]init];
@@ -227,9 +225,9 @@
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:flowView action:@selector(handleGesture:)];
     flowView.target = target;
     gestureRecognizer.delegate = target;
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:target action:selector];
+    flowView.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:target action:selector];
     [flowView addGestureRecognizer:gestureRecognizer];
-    [flowView addGestureRecognizer:tapGestureRecognizer];
+    [flowView addGestureRecognizer:flowView.tapGestureRecognizer];
 
     //now almost setup
     [flowView setupTemplateLayers];
@@ -245,6 +243,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         //set up perspective
+        _currentRenderingImageIndex = 0;
         CATransform3D transformPerspective = CATransform3DIdentity;
         transformPerspective.m34 = -1.0 / 500.0;
         self.layer.sublayerTransform = transformPerspective;

@@ -19,9 +19,24 @@
 #endif
 
 #define kImageSN @"rcplatformcc"
-
-#define kBaseUrl @"http://mimage.rcplatform.cn/"
+#define PIC_SAVE_PATH @"Documents/TimePhotoStudio.jpg"
+#define kBaseUrl @"http://mimage.rcplatformhk.net/oldpic/"
+#define kBaseUrlCN @"http://mimage.rcplatform.cn/oldpic/"
 #define kImportImageMaxResolution 3500.f
+#define k1940sPack @"Oldphoto_1940"
+#define k1960sPack @"Oldphoto_1960"
+#define k1980sPack @"Oldphoto_1980"
+#define kUnknowPack @"Oldphoto_unknown"
+#define kAllPacks @"Oldphoto_all"
+#define kRateUserDefaultKey @"isRated"
+#define kUseTimesKey @"useTimes"
+
+#define kAppStoreScoreURLPre @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id="
+#define kAppStoreScoreURL [NSString stringWithFormat:@"%@%@", kAppStoreScoreURLPre, APPLE_ID]
+#define kFeedbackEmail @"rcplatform.help@gmail.com"
+#define APPLE_ID @"1060473978"
+#define WEBVIEW_TERMS @"http://privacy.rcplatformhk.com/policy/bestmeselfiecamera_termsofservice.html"
+#define WEBVIEW_PRIVACY @"http://privacy.rcplatformhk.com/policy/bestmeselfiecamera_privacy.html"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #ifdef DEBUG

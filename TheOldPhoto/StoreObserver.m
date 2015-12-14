@@ -211,6 +211,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 {
 	for(SKPaymentTransaction * transaction in transactions)
 	{
+        hideMBProgressHUD();
 		NSLog(@"%@ was removed from the payment queue.", transaction.payment.productIdentifier);
 	}
 }
@@ -219,6 +220,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 // Called when an error occur while restoring purchases. Notify the user about the error.
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
 {
+    hideMBProgressHUD();
     if (error.code != SKErrorPaymentCancelled)
     {
         self.status = IAPRestoredFailed;

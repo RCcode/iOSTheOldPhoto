@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NCFilters.h"
 #import "ScreenshotBorderView.h"
+#import "ArrowLeftView.h"
 @interface SceneView : UIView
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipe;
@@ -24,4 +25,8 @@
 
 - (void)resetPreviewFrame;
 
+- (UIImage *)getResultImage;
+
+- (BOOL)isDownloadFileWithIndexPath:(NSIndexPath *)indexpath andIndex:(int)index;
+@property (nonatomic, strong) ArrowLeftView *arrow;
 @end

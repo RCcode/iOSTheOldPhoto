@@ -130,3 +130,5 @@
 /* 版本号 */
 "setting_version" = "Versión";
 
+"main_download_failed" = "descarga fallida, por favor descargue de nuevo";
+

@@ -28,7 +28,7 @@
 - (IBAction)back:(UIButton *)sender {
     CATransition *animation = [CATransition animation];
     animation.duration = 0.3;
-    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     //            animation.type = @"rippleEffect";
     animation.type = kCATransitionPush;
     animation.subtype = kCATransitionFromLeft;

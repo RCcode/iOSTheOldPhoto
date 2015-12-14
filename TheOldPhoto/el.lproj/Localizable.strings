@@ -127,3 +127,6 @@
 /* 设置 */
 "setting_setting" = "Ρύθμιση";
 
+/* 版本号 */
+"setting_version" = "Έκδοση";
+

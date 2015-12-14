@@ -40,7 +40,7 @@
     [leftBtn setFrame:CGRectMake(0, 0, 44, 44)];
     [leftBtn setImage:image forState:UIControlStateNormal];
     [leftBtn setImage:[UIImage imageNamed:@"crop_back_pressed"] forState:UIControlStateHighlighted];
-    [leftBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     UIBarButtonItem *negativeSeperator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSeperator.width = -16;
@@ -74,9 +74,13 @@
 
 }
 
-- (void)back:(UIButton *)btn
+- (void)back
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_isNav) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)initView
@@ -88,7 +92,7 @@
     [self.cancelBtn setBackgroundImage:[UIImage imageNamed:@"crop_cancel_pressed"] forState:UIControlStateHighlighted];
     self.cancelBtn.imageView.contentMode = UIViewContentModeScaleToFill;
     self.cancelBtn.frame = CGRectMake(0,self.screenShotView.frame.origin.y + self.screenShotView.frame.size.height + 44, windowWidth() / 2, 44);
-    [self.cancelBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cancelBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.cancelBtn];
     
     self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];

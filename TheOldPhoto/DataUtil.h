@@ -12,6 +12,9 @@
 
 @property (nonatomic, assign) BOOL is3_4;
 @property (nonatomic, strong) NSMutableArray *indexCfgArray;
+@property (nonatomic, strong) UIImage *fullImage;
+@property (nonatomic, assign) NSInteger downloadingIndex;
+@property (nonatomic, strong) NSIndexPath *downloadingIndexpath;
 
 + (DataUtil *)defaultUtil;
 

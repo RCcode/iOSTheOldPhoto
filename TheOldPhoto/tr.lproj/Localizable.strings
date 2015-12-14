@@ -127,3 +127,6 @@
 /* 设置 */
 "setting_setting" = "Ayarı";
 
+/* 版本号 */
+"setting_version" = "Sürüm";
+

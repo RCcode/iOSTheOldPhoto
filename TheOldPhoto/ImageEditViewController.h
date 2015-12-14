@@ -20,5 +20,6 @@
 @property (nonatomic, strong) UIImage *srcImage;
 @property (nonatomic, assign) CropStyle style;
 @property (nonatomic, assign) id<ImageEditDelegate> delegate;
+@property (nonatomic, assign) BOOL isNav;
 
 @end

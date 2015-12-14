@@ -127,3 +127,11 @@
 /* 设置 */
 "setting_setting" = "設定";
 
+/* 版本号 */
+"setting_version" = "バージョン";
+
+"main_download_failed" = "ダウンロードに失敗しました。もう一度お試しください";
+
+"main_cancel" = "キャンセル";
+
+"main_confirm" = "はい";

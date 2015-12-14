@@ -17,10 +17,10 @@
 "setting_about" = "关于我们";
 
 /* 解锁所有 */
-"iap_all" = "解锁全部效果仅需XX元";
+"iap_all" = "解锁全部效果仅需12元";
 
 /* 年代购买 */
-"iap_one" = "解锁该效果包仅需XX元";
+"iap_one" = "解锁该效果包仅需6元";
 
 /* 隐私政策 */
 "setting_policy" = "隐私政策";
@@ -127,3 +127,10 @@
 /* 设置 */
 "setting_setting" = "设置";
 
+/* 版本号 */
+"setting_version" = "版本号";
+
+"main_download_failed" = "下载失败，请重新下载";
+"main_cancel" = "取消";
+
+"main_confirm" = "确定";

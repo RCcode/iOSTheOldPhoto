@@ -13,7 +13,7 @@
 #import "CoverFlowView.h"
 #import "ImageEditViewController.h"
 #import "ScreenshotBorderView.h"
-#import "StoreViewController.h"
+#import "SettingStoreViewController.h"
 #import "ZipArchive.h"
 #import <StoreKit/StoreKit.h>
 #import "StoreObserver.h"
@@ -21,9 +21,12 @@
 #import "MyModel.h"
 #import "UIImage+Utility.h"
 #import "DataUtil.h"
+#import <Social/Social.h>
+#import "RateGuideView.h"
 
-@interface ViewController () <UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, ImageEditDelegate,NSURLConnectionDelegate>
+@interface ViewController () <UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, ImageEditDelegate,NSURLConnectionDelegate,UIDocumentInteractionControllerDelegate>
 {
+    UIDocumentInteractionController *_documetnInteractionController;
      long long totalBytes;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -43,12 +46,7 @@
 @property (nonatomic, strong) NSMutableData *data;
 @property (nonatomic, strong) UIImage *default3_4;
 @property (nonatomic, strong) UIImage *default4_3;
-//@property (nonatomic, strong) NSMutableArray *year_90Array;
-//@property (nonatomic, strong) NSMutableArray *year_80Array;
-//@property (nonatomic, strong) NSMutableArray *year_60Array;
-//@property (nonatomic, strong) NSMutableArray *year_40Array;
-//@property (nonatomic, strong) NSMutableArray *year_unknowArray;
-//@property (nonatomic, strong) NSMutableArray *year_totalArray;
+@property (nonatomic, assign) CropStyle tempStyle;
 
 @end
 
@@ -63,10 +61,17 @@
     self.imagePicker = [[UIImagePickerController alloc] init];
     self.imagePicker.delegate = self;
     [self getInAppPurchasesList];
+//    [self showActivityAlert];
 //    self.imagePicker.allowsEditing = YES;
     
     //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)getInAppPurchasesList
@@ -80,7 +85,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handlePurchasesNotification:)
-                                                 name:IAPPurchaseNotification
+                                                 name:@"IAPPurchaseNotification"
                                                object:[StoreObserver sharedInstance]];
     [self fetchProductInformation];
 }
@@ -90,9 +95,11 @@
 // Update the UI according to the product request notification result
 -(void)handleProductRequestNotification:(NSNotification *)notification
 {
+    hideMBProgressHUD();
     StoreManager *productRequestNotification = (StoreManager*)notification.object;
     IAPProductRequestStatus result = (IAPProductRequestStatus)productRequestNotification.status;
-    
+    NSLog(@"-------%@",productRequestNotification.availableProducts);
+    NSLog(@"======%@",productRequestNotification.invalidProductIds);
     if (result == IAPProductRequestResponse)
     {
         for (MyModel *model in productRequestNotification.productRequestResponse) {
@@ -126,9 +133,9 @@
 // Update the UI according to the purchase request notification result
 -(void)handlePurchasesNotification:(NSNotification *)notification
 {
+    hideMBProgressHUD();
     StoreObserver *purchasesNotification = (StoreObserver *)notification.object;
     IAPPurchaseNotificationStatus status = (IAPPurchaseNotificationStatus)purchasesNotification.status;
-    
     switch (status)
     {
         case IAPPurchaseFailed:
@@ -137,12 +144,33 @@
             // Switch to the iOSPurchasesList view controller when receiving a successful restore notification
         case IAPRestoredSucceeded:
         {
+            for (SKPaymentTransaction *paymentTransaction in [StoreObserver sharedInstance].productsRestored) {
+//                NSArray *purchases = model.elements;
+//                SKPaymentTransaction *paymentTransaction = purchases[indexPath.row];
+                NSString *title = paymentTransaction.payment.productIdentifier;
+                
+                [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:title];
+            }
+            
+            
             
 //            self.segmentedControl.selectedSegmentIndex = 1;
 //            self.restoreWasCalled = YES;
 //            
 //            [self cycleFromViewController:self.currentViewController toViewController:self.purchasesList];
 //            [self.purchasesList reloadUIWithData:[self dataSourceForPurchasesUI]];
+        }
+            break;
+        case IAPPurchaseSucceeded:
+        {
+            for (SKPaymentTransaction *paymentTransaction in [StoreObserver sharedInstance].productsPurchased) {
+                
+                NSString *title = paymentTransaction.payment.productIdentifier;
+                
+                [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:title];
+                
+                NSLog(@"title  =  %@",title);
+            }
         }
             break;
         case IAPRestoredFailed:
@@ -226,12 +254,25 @@
     util.is3_4 = YES;
     util.indexCfgArray = [[NSMutableArray alloc] initWithObjects:@0,@0,@0,@0,@0,@0, nil];
     
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:k1940sPack]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:k1940sPack];
+    }
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:k1960sPack]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:k1960sPack];
+    }
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:k1980sPack]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:k1980sPack];
+    }
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:kUnknowPack]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:kUnknowPack];
+    }
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:kAllPacks]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:kAllPacks];
+    }
+    
     self.default3_4 = [UIImage imageNamed:@"default3_4.jpg"];
-//    self.default3_4 = [UIImage imageNamed:@"1103素材1.jpg"];
-//    self.default3_4 = [UIImage imageNamed:@"80s效果"];
     self.default4_3 = [UIImage imageNamed:@"default4_3.jpg"];
     self.currentCropStyle = CropStyleFree;
-//    self.year_totalArray = [[NSMutableArray alloc] init];
     self.titleArray = [[NSMutableArray alloc] initWithObjects:@"home_now",@"home_90",@"home_80",@"home_60",@"home_40",@"home_un",nil];
     self.leftBtnArray = [[NSMutableArray alloc] initWithObjects:@"home_now_library",@"home_90_library",@"home_80_library",@"home_60_library",@"home_40_library",@"home_un_library", nil];
     self.middleBtnArray = [[NSMutableArray alloc] initWithObjects:@"home_now_camera",@"home_90_camera",@"home_80_camera",@"home_60_camera",@"home_40_camera",@"home_un_camera", nil];
@@ -266,20 +307,27 @@
     [cell setLeftImageName:leftBtnImageName middleImageName:middleBtnImageName rightImageName:rightBtnImageName];
     NSNumber *indexNum = [DataUtil defaultUtil].indexCfgArray[indexPath.row];
     NSInteger index = indexNum.integerValue;
+    CropStyle style = [cell cropStyleWithIndexpath:indexPath index:index];
+
     if (self.currentImage) {
-        CropStyle style = [cell cropStyleWithIndexpath:indexPath index:index];
         if ([DataUtil defaultUtil].is3_4) {
-            if ( style == CropStyleSquareness3) {
+            if (style == CropStyleSquareness3) {
                 index = 0;
             }
         }else{
             if ( style == CropStyleSquareness4) {
-                index = 1;
+                index = 2;
             }
         }
         [cell setDisplayImage:self.currentImage withIndexPath:indexPath index:index];
 //        [cell setDisplayImage:self.currentImage withSceneType:indexPath.row];
     }else{
+        if ( style == CropStyleSquareness3) {
+            [DataUtil defaultUtil].is3_4 = NO;
+        }else if (style == CropStyleSquareness4){
+            [DataUtil defaultUtil].is3_4 = YES;
+        }
+
         if ([DataUtil defaultUtil].is3_4) {
             [cell setDisplayImage:self.default3_4 withIndexPath:indexPath index:index];
         }else{
@@ -288,6 +336,7 @@
 //        cell setDisplayImage
 //        [cell setDisplayImage:[UIImage imageNamed:pics.firstObject]];
     }
+    [cell setCoverFlowCurrentIndex:index];
     [cell.arrow setAnimation];
     [cell resetDisplayView];
     [cell setShowImages:pics target:self seletor:@selector(openAlbum:) ];
@@ -325,8 +374,68 @@
 - (void)shareImage:(UIButton *)btn
 {
     NSLog(@"share");
+    CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    self.currentIndexPath = indexPath;
+    MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
+    UIImage *result = [cell getResultImage];
+    
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:PIC_SAVE_PATH];
+    unlink([path UTF8String]);
+    [UIImageJPEGRepresentation(result,0.7) writeToFile:path atomically:YES];
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
+    _documetnInteractionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+    
+    NSLog(@"document = %@",_documetnInteractionController.icons);
+    _documetnInteractionController.delegate = self;
+    [_documetnInteractionController presentOptionsMenuFromRect:CGRectMake(0, 0, 0, 0) inView:self.view animated:YES];
+    
 }
 
+- (void)documentInteractionControllerWillPresentOptionsMenu:(UIDocumentInteractionController *)controller
+{
+    NSLog(@"OPEN");
+
+}
+
+- (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller
+{
+    NSNumber *isRated = [[NSUserDefaults standardUserDefaults] valueForKey:kRateUserDefaultKey];
+    NSNumber *useTimes = [[NSUserDefaults standardUserDefaults] valueForKey:kUseTimesKey];
+    if (!isRated) {
+        isRated = @NO;
+    }
+    if (!useTimes) {
+        useTimes = @0;
+    }
+    if (isRated.boolValue) {
+        
+    }else{
+        useTimes = [NSNumber numberWithInt:useTimes.intValue + 1];
+        if (useTimes.intValue == 2 || (useTimes.intValue - 2) % 3 == 0) {
+            [self showActivityAlert];
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:useTimes forKey:kUseTimesKey];
+    }
+   
+    NSLog(@"DISMISS");
+}
+
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application
+{
+    NSLog(@"SENDED");
+}
+
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application
+{
+    NSLog(@"WILL SEND");
+}
+
+//- (BOOL)documentInteractionController:(UIDocumentInteractionController *)controller performAction:(SEL)action
+//{
+//    NSLog(@"save");
+//    return YES;
+//}
 
 - (void)presentToImagePickerWithType:(UIImagePickerControllerSourceType)type
 {
@@ -335,9 +444,10 @@
     self.currentIndexPath = indexPath;
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
     if (cell.isCurrentModel) {
-        
+        self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
     }else{
-        self.currentCropStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
+        self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
+//        self.currentCropStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
     }
     self.imagePicker.sourceType = type;
     [self presentViewController:self.imagePicker animated:YES completion:^{
@@ -351,17 +461,33 @@
     CropStyle style = [self getCropStyleWithIndex:_currentIndexPath andIndex:(((CoverFlowView *)tap.view).currentRenderingImageIndex)];
 //    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
     NSLog(@"self.currentCropStyle = %ld style = %ld",self.currentCropStyle,style);
-    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree)) {
+    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree) || !self.currentImage) {
         [self setScene];
     }else{
-        [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [self resubImageWithStyle:style];
+//        [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
+
+}
+
+- (void)resubImageWithStyle:(CropStyle)style
+{
+    ImageEditViewController *editVC = [[ImageEditViewController alloc] init];
+    editVC.delegate = self;
+    editVC.srcImage = [DataUtil defaultUtil].fullImage;
     if (self.currentImage) {
-        self.currentCropStyle = style;
+        self.tempStyle = style;
+        //        self.currentCropStyle = style;
     }
     if (_currentIndexPath.row<3) {
-        self.currentCropStyle = CropStyleFree;
+        self.tempStyle = style;
+        //        self.currentCropStyle = CropStyleFree;
     }
+    editVC.style = self.tempStyle;
+//    [self pushViewController:editVC animated:YES];
+    editVC.isNav = NO;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (CropStyle)getCropStyleWithIndex:(NSIndexPath *)indexPath andIndex:(NSInteger)index
@@ -385,14 +511,16 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     ImageEditViewController *editVC = [[ImageEditViewController alloc] init];
     NSLog(@"image = %@",image);
+    editVC.isNav = YES;
     editVC.delegate = self;
-//    editVC.srcImage = [image setMaxResolution:kImportImageMaxResolution imageOri:image.imageOrientation];
     editVC.srcImage = [image fixOrientation:image.imageOrientation];
-    if (self.currentCropStyle == CropStyleFree || self.currentCropStyle == CropStyleSquareness4 || self.currentCropStyle == CropStyleSquareness3) {
-        editVC.style = self.currentCropStyle;
-    }else{
-        editVC.style = CropStyleFree;
-    }
+    [DataUtil defaultUtil].fullImage = editVC.srcImage;
+//    if (self.currentCropStyle == CropStyleFree || self.currentCropStyle == CropStyleSquareness4 || self.currentCropStyle == CropStyleSquareness3) {
+//        editVC.style = self.currentCropStyle;
+//    }else{
+//        editVC.style = CropStyleFree;
+//    }
+    editVC.style = self.tempStyle;
     [picker pushViewController:editVC animated:YES];
 }
 
@@ -405,6 +533,7 @@
 
 - (void)setScene
 {
+    self.currentCropStyle = self.tempStyle;
     CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
     self.currentIndexPath = indexPath;
@@ -450,14 +579,18 @@
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
     NSInteger index = cell.coverFlowView.currentRenderingImageIndex;
     NSString *fileName = [NSString stringWithFormat:@"scene%ld_%ld",indexPath.row,index];
-    NSString *downloadPath = [NSString stringWithFormat:@"%@%@.zip",kBaseUrl,fileName];
+    
+    NSString *downloadPath = [NSString stringWithFormat:@"%@%@.zip",isChinese()?kBaseUrlCN:kBaseUrl,fileName];
     NSString *basePath =  [NSHomeDirectory() stringByAppendingString:@"/Documents/Scene"];
     [self downloadFileURL:downloadPath savePath:basePath fileName:fileName tag:0];
+    showMBProgressHUD(@"downloading", YES);
+    [DataUtil defaultUtil].downloadingIndex = index;
+    [DataUtil defaultUtil].downloadingIndexpath = indexPath;
 }
 
 - (void)iapEvent:(UIButton *)btn
 {
-    StoreViewController *store = [[StoreViewController alloc] init];
+    SettingStoreViewController *store = [[SettingStoreViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:store];
     
     [self presentViewController:nav animated:YES completion:nil];
@@ -488,7 +621,7 @@
     //下载附件
     NSURL *url = [[NSURL alloc] initWithString:aUrl];
     NSLog(@"aUrl = %@",aUrl);
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15];
     connection = nil;
     connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
  }
@@ -519,6 +652,9 @@
     NSLog(@"faild");
     //    if (error.code != -999) {
     [[[UIAlertView alloc] initWithTitle:nil message:LocalizedString(@"main_download_failed", nil) delegate:nil cancelButtonTitle:LocalizedString(@"main_confirm", nil) otherButtonTitles:nil, nil] show];
+    hideMBProgressHUD();
+    [DataUtil defaultUtil].downloadingIndexpath = nil;
+    [DataUtil defaultUtil].downloadingIndex = HUGE;
     //    }
 //    self.asProgressView.hidden = YES;
 //    self.downloadView.hidden = NO;
@@ -529,12 +665,12 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [_data appendData:data];
-//    NSLog(@"data.length = %d",[_data length]);
-//    NSLog(@"totalBytes = %lld",totalBytes);
-//    NSUInteger currentData = [_data length];
-//    float progress = (CGFloat)((currentData / 1.0f)/(totalBytes / 1.0f));
-    
-    NSLog(@"is download：%lld",([_data length])/totalBytes);
+    NSLog(@"data.length = %lu",(unsigned long)[_data length]);
+    NSLog(@"totalBytes = %lld",totalBytes);
+    NSUInteger currentData = [_data length];
+    float progress = (CGFloat)((currentData / 1.0f)/(totalBytes / 1.0f));
+    NSLog(@"data.length = %f",progress);
+//    NSLog(@"is download：%lld",([_data length])/totalBytes);
     //             [_progressView setProgress:progress animated:YES];
     
 //    [self.asProgressView setProgress:progress animated:YES];
@@ -589,25 +725,14 @@
             if (res) {
                 NSLog(@"delete File Success");
             }
-            //                    NSFileManager * fm = [NSFileManager defaultManager];
-            //                     NSArray * filels = [fm contentsOfDirectoryAtPath:fileFolder error:nil];
-//            NSLog(@"sid = %d , folderPath = %@",self.dataModel.stickerId,self.filefo);
-            NSDate *date = [NSDate date];
-            long time = (long)[date timeIntervalSince1970];
-//            if (self.type == kStickerShop) {
-//                [[Sticker_SQLiteManager shareStance] updateStickerInfo:self.dataModel.stickerId withDownloadDir:self.filefo andDownloadTime:time andType:@"sticker"];
-//                [[Sticker_SQLiteManager shareStance] updateSitckerInfo:self.dataModel.stickerId withIsLooked:0 andType:@"sticker"];
-//                NSArray *array = [[Sticker_SQLiteManager shareStance] getStickerDataWithType:@"sticker"];
-//                [Sticker_DataUtil defaultDateUtil].stickerModelArray = array;
-//            }else if (self.type == kBackgroundShop){
-//                [[Sticker_SQLiteManager shareStance] updateStickerInfo:self.dataModel.stickerId withDownloadDir:self.filefo andDownloadTime:time andType:@"background"];
-//                [[Sticker_SQLiteManager shareStance] updateSitckerInfo:self.dataModel.stickerId withIsLooked:0 andType:@"background"];
-//                NSArray *array = [[Sticker_SQLiteManager shareStance] getStickerDataWithType:@"background"];
-//                [Sticker_DataUtil defaultDateUtil].stickerModelArray = array;
-//            }
+            
         }
         [za UnzipCloseFile];
-        
+        CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+        self.currentIndexPath = indexPath;
+        MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
+            [cell updateDownloadBtnWithIndexPath:[DataUtil defaultUtil].downloadingIndexpath andIndex:[DataUtil defaultUtil].downloadingIndex];
     }else{
         NSLog(@"UnzipFaild");
         BOOL ret =  [fileManager removeItemAtPath:self.finalFileName error:nil];
@@ -619,8 +744,13 @@
 //        self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
 //        self.completeBtn.hidden = YES;
         
-        return ;
+//        return ;
     }
+    hideMBProgressHUD();
+
+
+    [DataUtil defaultUtil].downloadingIndexpath = nil;
+    [DataUtil defaultUtil].downloadingIndex = HUGE;
 }
 
 
@@ -632,6 +762,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)showActivityAlert
+{
+    NSLog(@"弹出评论引导");
+    RateGuideView *guide = [[RateGuideView alloc] initWithFrame:CGRectZero];
+//    guide.userInteractionEnabled = YES;
+    guide.target = self;
+    [self.view addSubview:guide];
+    [self.view bringSubviewToFront:guide];
 
+}
 
 @end

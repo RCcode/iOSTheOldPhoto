@@ -16,7 +16,7 @@
     switch (indexPath.row) {
         case 0:
         {
-             [imageNameArray addObject:@"demo3.jpg"];
+             [imageNameArray addObject:@"default3_4.jpg"];
         }
             break;
         case 1:
@@ -38,8 +38,8 @@
             break;
         case 3:
         {
-            for (int i = 1; i < 19; i++) {
-                NSString *imageName = [NSString stringWithFormat:@"qll_%d_60s.jpg",i];
+            for (int i = 0 ; i < 16 ; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"scene3_%d.jpg",i];
                 [imageNameArray addObject:imageName];
             }
 //            return [imageNameArray mutableCopy];
@@ -47,16 +47,16 @@
             break;
         case 4:
         {
-            for (int i = 1; i < 21; i++) {
-                NSString *imageName = [NSString stringWithFormat:@"hl_40s_%d.jpg",i];
+            for (int i = 0 ; i < 18 ; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"scene4_%d.jpg",i];
                 [imageNameArray addObject:imageName];
             }
         }
             break;
         case 5:
         {
-            for (int i = 1 ; i < 13 ; i++) {
-                NSString *imageName = [NSString stringWithFormat:@"qll_%d_unknown.jpg",i];
+            for (int i = 0 ; i < 16 ; i++) {
+                NSString *imageName = [NSString stringWithFormat:@"scene5_%d.jpg",i];
                 [imageNameArray addObject:imageName];
             }
         }

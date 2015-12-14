@@ -127,3 +127,11 @@
 /* 设置 */
 "setting_setting" = "الإعداد";
 
+/* 版本号 */
+"setting_version" = "الإصدار";
+
+"main_download_failed" = "فشل التحميل يرجى تحميل مرة أخرى";
+
+"main_cancel" = "إلغاء";
+
+"main_confirm" = "تأكيد";

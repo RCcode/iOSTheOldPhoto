@@ -20,4 +20,5 @@ static DataUtil *dataUtil = nil;
     return dataUtil;
 }
 
+
 @end

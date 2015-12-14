@@ -6,7 +6,9 @@
 
 
 @interface CoverFlowView : UIView <UIGestureRecognizerDelegate>
-
+{
+    int _currentRenderingImageIndex;
+}
 
 //setup numbers of images
 @property (nonatomic) int sideVisibleImageCount;
@@ -32,6 +34,7 @@
 //show the progress of browser : pagecontrol
 @property (nonatomic, retain) UIPageControl *pageControl;
 
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UIGestureRecognizer *ges;
 
 //factory method

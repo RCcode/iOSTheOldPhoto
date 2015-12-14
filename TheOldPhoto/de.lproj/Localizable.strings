@@ -130,3 +130,9 @@
 /* 版本号 */
 "setting_version" = "Version";
 
+"main_download_failed" = "Download fehlgeschlagen, versuch es bitte noch einmal";
+
+
+"main_cancel" = "Abbrechen";
+
+"main_confirm" = "Bestätigen";

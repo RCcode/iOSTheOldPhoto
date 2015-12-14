@@ -127,3 +127,11 @@
 /* 设置 */
 "setting_setting" = "Pengaturan";
 
+/* 版本号 */
+"setting_version" = "Versi";
+
+"main_download_failed" = "Unduh gagal, silakan unduh lagi";
+
+"main_cancel" = "batalkan";
+
+"main_confirm" = "Konfirmasi";

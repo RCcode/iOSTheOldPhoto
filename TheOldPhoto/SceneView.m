@@ -13,6 +13,7 @@
 #import "JSONKit.h"
 #import <math.h>
 
+
 #define kSceneWidth 2048
 
 @interface SceneView ()
@@ -38,6 +39,8 @@
 
 @property (nonatomic, strong) SceneModel *sceneModel;
 @property (nonatomic, strong) TextureModel *textureModel;
+@property (nonatomic, strong) UIImage *resultImage;
+
 
 
 @end
@@ -74,6 +77,9 @@
 - (void)initView
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.width)];
+    self.arrow = [[ArrowLeftView alloc] initWithFrame:CGRectMake(windowWidth() - 19 - 5, self.imageView.center.y - 9, 18, 19)];
+    [self.imageView addSubview:self.arrow];
+    [self.arrow setAnimation];
     self.imageView.clipsToBounds = YES;
     self.imageView.backgroundColor = [UIColor whiteColor];
     self.swipe = [[UISwipeGestureRecognizer alloc] init];
@@ -91,7 +97,8 @@
 //    for (int i = 1; i < 8; i++) {
 //        [arr addObject:[NSString stringWithFormat:@"scene_%d",i]];
 //    }
-    NSString *fileName = [NSString stringWithFormat:@"scene%ld_%ld",indexPath.row, index];
+    NSString *folderName = [NSString stringWithFormat:@"scene%ld_%ld",indexPath.row,index];
+    NSString *fileName = [NSString stringWithFormat:@"FinalScene%ld_%ld",indexPath.row, index];
 //    for (NSString *fileName in arr) {
           NSString *pathString = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];
         if (pathString != nil)
@@ -104,7 +111,8 @@
             [resultArray addObject:returnDic];
             
         }else{
-            NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/Documents/Scene/%@/%@.txt",fileName,fileName]];
+            NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/Documents/Scene/%@/%@.txt",folderName,fileName]];
+            NSLog(@"filePath = %@",filePath);
             NSData *data = [NSData dataWithContentsOfFile:filePath];
             if (data ) {
                 NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -456,11 +464,23 @@
 //            }else{
 //            }
             [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject addTarget:self.previewView];
+            [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject useNextFrameForImageCapture];
 //            [self.lookupFilter addTarget:self.previewView];
                 [self.oriImage processImageWithCompletionHandler:^{
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.imageView bringSubviewToFront:self.arrow];
+                        
+                        if (indexpath.row == 0) {
+//                            [self.arrow removeFromSuperview];
+                            self.arrow.alpha = 0;
+                        }else{
+                            self.arrow.alpha = 1;
+                            [self.arrow setAnimation];
+                        }
                         self.previewView.alpha = 0;
                         self.previewView.hidden = NO;
+                        self.resultImage = [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject  imageFromCurrentFramebuffer];
+                        NSLog(@"image %@",NSStringFromCGSize(image.size));
                         self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
                         [UIView animateWithDuration:0.5 animations:^{
                             self.previewView.alpha =1;
@@ -525,15 +545,61 @@
     if (self.cfgArray.count > 0) {
         SceneModel *scene = self.cfgArray.firstObject;
         NSLog(@"scene.width = %f  scene.height = %f",scene.frameWidth, scene.frameHeight);
-        if (scene.frameWidth > scene.frameHeight) {
+        if (scene.imageWidth > scene.imageHeight) {
             return CropStyleSquareness3;
-        }else if (scene.frameHeight > scene.frameWidth){
+        }else if (scene.imageHeight > scene.imageWidth){
             return CropStyleSquareness4;
         }else{
             return CropStyleFree;
         }
     }
     return CropStyleFree;
+}
+
+- (UIImage *)getResultImage
+{
+//    [((GPUImageFilter *)self.filterArray.lastObject) useNextFrameForImageCapture];
+//    [self.oriImage processImage];
+    if (self.imageView.image) {
+        CGFloat width = 1500.f;
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,width, width)];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowWidth())];
+        imageView.image = self.imageView.image;
+        UIImageView *mainImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+//        UIImage *imaggg = [((GPUImageFilter *)self.filterArray.lastObject) imageFromCurrentFramebuffer];
+//        NSLog(@"imaggg.size = %@",NSStringFromCGSize(imaggg.size));
+        mainImageView.image = self.resultImage;
+        mainImageView.frame = self.previewView.frame;
+        mainImageView.transform = self.previewView.transform;
+//        mainImageView.center = self.previewView.center
+        [imageView addSubview:mainImageView];
+        [view addSubview:imageView];
+        imageView.center = CGPointMake(width/2, width/2);
+        CGAffineTransform tra = CGAffineTransformMakeScale(width / windowWidth() , width / windowWidth());
+        imageView.transform = tra;
+        UIGraphicsBeginImageContext(view.frame.size);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [view.layer renderInContext:context];
+        //    [view drawViewHierarchyInRect:imageview.frame afterScreenUpdates:YES];
+        UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return img;
+        
+        
+    }else{
+        return self.resultImage;
+    }
+}
+
+- (BOOL)isDownloadFileWithIndexPath:(NSIndexPath *)indexpath andIndex:(int)index
+{
+    NSMutableArray *array = [self getCfgArrayWithIndexpath:indexpath index:index];
+    if (!array || array.count == 0) {
+        return NO;
+    }
+    return YES;
 }
 
 /*

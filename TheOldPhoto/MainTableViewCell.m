@@ -22,8 +22,12 @@
 @property (nonatomic, strong) UILabel *rightLabel;
 @property (nonatomic, strong) UIImageView *backgroundImage;
 @property (nonatomic, strong) UIImageView *coverView;
-@property (nonatomic, strong) UIButton *unlockBtn;
+@property (nonatomic, strong) UIButton *downloadBtn;
 @property (nonatomic, strong) UIButton *buyBtn;
+@property (nonatomic, strong) NSArray *iapArray;
+@property (nonatomic, strong) NSString *categoryName;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) UIProgressView *progressView;
 @end
 
 @implementation MainTableViewCell
@@ -31,6 +35,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier target:(id)target leftSelector:(SEL)lSelector middleSelector:(SEL)mSelector rightSelector:(SEL)rSelector downloadSelector:(SEL)downloadSelector buySelector:(SEL)buySelector
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+         self.iapArray = @[@"nowPack",@"1990packs",k1980sPack,k1960sPack,k1940sPack,kUnknowPack];
         [self initView];
         [self setTarget:target leftSeletor:lSelector middleSelector:mSelector rightSeletor:rSelector downloadSelector:downloadSelector buySelector:buySelector];
     }
@@ -62,19 +67,23 @@
     self.shadowView.image = [UIImage imageNamed:@"home_shadow_all"];
     [self.contentView addSubview:self.shadowView];
     
-    self.unlockBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.unlockBtn.frame = CGRectMake(windowWidth() - 70 - 8, windowWidth() - 70 - 8, 36, 36);
-    [self.unlockBtn setImage:[UIImage imageNamed:@"classify_unlock_normal"] forState:UIControlStateNormal];
-    [self.unlockBtn setImage:[UIImage imageNamed:@"classify_unlock_pressed"] forState:UIControlStateHighlighted];
-    [self.contentView addSubview:self.unlockBtn];
-    self.unlockBtn.alpha = 0;
+    self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.downloadBtn.frame = CGRectMake(windowWidth() - 70 - 15, windowWidth() - 70 - 15, 36, 36);
+    [self.downloadBtn setImage:[UIImage imageNamed:@"classify_unlock_normal"] forState:UIControlStateNormal];
+    [self.downloadBtn setImage:[UIImage imageNamed:@"classify_unlock_pressed"] forState:UIControlStateHighlighted];
+    [self.contentView addSubview:self.downloadBtn];
+    self.downloadBtn.alpha = 0;
+    self.progressView = [[UIProgressView alloc] initWithFrame:self.downloadBtn.frame];
+    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault];
+    [self.contentView addSubview:self.progressView];
     
     self.buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.buyBtn.frame = self.unlockBtn.frame;
+    self.buyBtn.frame = self.downloadBtn.frame;
     [self.buyBtn setImage:[UIImage imageNamed:@"classify_buy_normal"] forState:UIControlStateNormal];
     [self.buyBtn setImage:[UIImage imageNamed:@"classify_buy_pressed"] forState:UIControlStateHighlighted];
     [self.contentView addSubview:self.buyBtn];
-//    self.buyBtn.alpha = 0;
+    self.buyBtn.alpha = 0;
+    
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.leftBtn setTitle:@"Album" forState:UIControlStateNormal];
@@ -110,6 +119,7 @@
     self.arrow = [[ArrowUpView alloc] initWithFrame:CGRectMake(windowWidth() / 2 - 18 / 2, windowHeight() - 12 - 18, 19, 18)];
     [self.contentView addSubview:self.arrow];
     
+    
 }
 
 - (void)setTarget:(id)target leftSeletor:(SEL)leftS middleSelector:(SEL)middleS rightSeletor:(SEL)rightS downloadSelector:(SEL)downloadSelector buySelector:(SEL)buySelector
@@ -117,24 +127,31 @@
     [self.leftBtn addTarget:target action:leftS forControlEvents:UIControlEventTouchUpInside];
     [self.middleBtn addTarget:target action:middleS forControlEvents:UIControlEventTouchUpInside];
     [self.rightBtn addTarget:target action:rightS forControlEvents:UIControlEventTouchUpInside];
-    [self.unlockBtn addTarget:target action:downloadSelector forControlEvents:UIControlEventTouchUpInside];
+    [self.downloadBtn addTarget:target action:downloadSelector forControlEvents:UIControlEventTouchUpInside];
     [self.buyBtn addTarget:target action:buySelector forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setShowImages:(NSMutableArray *)array target:(id)target seletor:(SEL)seletor
 {
     NSLog(@"array.count = %lu",(unsigned long)array.count);
+    if (self.coverFlowView != nil) {
+         [self.coverFlowView removeObserver:self forKeyPath:@"currentRenderingImageIndex"];
+    }
     [self.coverFlowView removeFromSuperview];
     self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:0.4 middleImageScale:0.6 target:target selector:seletor];
-    
+    if (self.coverFlowView != nil) {
+//
+        [self.coverFlowView addObserver:self forKeyPath:@"currentRenderingImageIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    }
+   
     self.coverFlowView.backgroundColor = [UIColor clearColor];
     self.coverFlowView.layer.masksToBounds = YES;
     //    self.mainImageView = [[UIImageView alloc] initWithFrame:self.scrollView.bounds];
     //    self.scrollView.bounces = YES;
     [self.contentView addSubview:self.coverFlowView];
     [self.contentView bringSubviewToFront:self.coverView];
+    [self.contentView bringSubviewToFront:self.downloadBtn];
     [self.contentView bringSubviewToFront:self.buyBtn];
-    [self.contentView bringSubviewToFront:self.unlockBtn];
 }
 
 - (void)setDisplayImage:(UIImage *)image withIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index
@@ -175,7 +192,9 @@
 
 - (CropStyle)cropStyleWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index
 {
-    return [self.displayView cropStyleWithIndexPath:indexpath index:index];
+    self.categoryName = self.iapArray[indexpath.row];
+    self.indexPath = indexpath;
+        return [self.displayView cropStyleWithIndexPath:indexpath index:index];
 //    return [self.displayView isWidthLongerThanHeight:type];
 }
 
@@ -198,5 +217,80 @@
 {
     self.displayView.swipe.enabled = YES;
 }
+
+- (UIImage *)getResultImage
+{
+    return [self.displayView getResultImage];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"currentRenderingImageIndex"]) {
+           NSNumber *index = [self.coverFlowView valueForKey:keyPath];
+        NSNumber *purAll = [[NSUserDefaults standardUserDefaults] objectForKey:kAllPacks];
+        NSNumber *pur = [[NSUserDefaults standardUserDefaults] objectForKey:self.categoryName];
+        if (![self.categoryName isEqualToString:@"1990packs"]) {
+            if ((purAll.boolValue || pur.boolValue) ) {
+                self.buyBtn.alpha = 0;
+            }else{
+                if (index.intValue > 7 ) {
+                    self.buyBtn.alpha = 1;
+                }else{
+                    self.buyBtn.alpha = 0;
+                }
+            }
+        }
+        if (self.buyBtn.alpha == 0) {
+            if (![self.displayView isDownloadFileWithIndexPath:self.indexPath andIndex:index.intValue]) {
+                self.downloadBtn.alpha = 1;
+            }else{
+                self.downloadBtn.alpha = 0;
+            }
+        }else{
+            self.downloadBtn.alpha = 0;
+        }
+        
+        if (self.buyBtn.alpha == 1) {
+            self.coverFlowView.tapGestureRecognizer.enabled = NO;
+        }else{
+            self.coverFlowView.tapGestureRecognizer.enabled = YES;
+        }
+        
+        if (self.downloadBtn.alpha == 1) {
+            self.coverFlowView.tapGestureRecognizer.enabled = NO;
+        }else{
+            self.coverFlowView.tapGestureRecognizer.enabled = YES;
+        }
+//        if ([DataUtil defaultUtil].downloadingIndexpath.row == self.indexPath.row && [DataUtil defaultUtil].downloadingIndex == index.integerValue) {
+//            if (self.downloadBtn.alpha == 1) {
+//                self.progressView.alpha = 1;
+//            }else{
+//                self.progressView.alpha = 0;
+//            }
+//        }else{
+//            if (self.downloadBtn.alpha == 1) {
+//                self.downloadBtn.enabled = NO;
+//            }else{
+//                self.downloadBtn.enabled = YES;
+//            }
+//        }
+    }
+}
+
+- (void)updateDownloadBtnWithIndexPath:(NSIndexPath *)indexPath andIndex:(NSInteger)index
+{
+    self.downloadBtn.alpha = 0;
+    self.coverFlowView.tapGestureRecognizer.enabled = YES;
+}
+
+- (void)setCoverFlowCurrentIndex:(NSInteger)index
+{
+    self.coverFlowView.currentRenderingImageIndex = index;
+}
+
+//- (void)dealloc{
+//    [self.coverFlowView removeObserver:self forKeyPath:@"currentRenderingImageIndex"];
+////    [self.coverFlowView addObserver:self forKeyPath:@"currentRenderingImageIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+//}
 
 @end

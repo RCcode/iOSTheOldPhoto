@@ -268,49 +268,82 @@ NSData* toJSONData(id theData)
     }
 }
 
-//MBProgressHUD *mb;
-//MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView)
-//{
-//    //显示LoadView
-//    @try {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            if (mb==nil) {
-//                UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-//                mb = [[MBProgressHUD alloc] initWithView:window];
-//                mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
-//                [window addSubview:mb];
-//                //如果设置此属性则当前的view置于后台
-//                //            mb.dimBackground = YES;
-//                mb.labelText = content;
-//            }else{
-//                mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
-//                mb.labelText = content;
-//            }
-//            [mb show:YES];
-//            mb.color = [UIColor colorWithWhite:0 alpha:0.7];
-//        });
-//        
-//    }
-//    @catch (NSException *exception) {
-//        NSLog(@"catch error for mbhud!!!!");
-//    }
-//    @finally {
-//        
-//    }
-//    
-//    return mb;
-//}
+MBProgressHUD *mb;
+MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView)
+{
+    //显示LoadView
+    @try {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (mb==nil) {
+                UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+                mb = [[MBProgressHUD alloc] initWithView:window];
+                mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+                [window addSubview:mb];
+                //如果设置此属性则当前的view置于后台
+                //            mb.dimBackground = YES;
+                mb.labelText = content;
+            }else{
+                mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+                mb.labelText = content;
+            }
+            [mb show:YES];
+            mb.color = [UIColor colorWithWhite:0 alpha:0.7];
+        });
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"catch error for mbhud!!!!");
+    }
+    @finally {
+        
+    }
+    
+    return mb;
+}
 
-//void hideMBProgressHUD()
-//{
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        mb.removeFromSuperViewOnHide = YES;
-//        [mb hide:YES];
-//        //    [mb removeFromSuperview];
-//        mb = nil;
-//        
-//    });
-//}
+//MBProgressHUD *mbHud;
+MBProgressHUD * showMBProgressHUDWithoutText()
+{
+    //显示LoadView
+    @try {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (mb==nil) {
+                UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+                mb = [[MBProgressHUD alloc] initWithView:window];
+                mb.mode = YES?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+                [window addSubview:mb];
+                //如果设置此属性则当前的view置于后台
+                //            mb.dimBackground = YES;
+//                mb.labelText = content;
+            }else{
+                mb.mode = YES?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+//                mb.labelText = content;
+            }
+            [mb show:YES];
+            mb.color = [UIColor colorWithWhite:0 alpha:0.7];
+        });
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"catch error for mbhud!!!!");
+    }
+    @finally {
+        
+    }
+    
+    return mb;
+}
+
+void hideMBProgressHUD()
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mb.removeFromSuperViewOnHide = YES;
+        [mb hide:YES];
+        //    [mb removeFromSuperview];
+        mb = nil;
+        
+    });
+}
 
 //MBProgressHUD *mbWithoutView;
 //MBProgressHUD * showMBProgressHUDWithoutView(NSString *content,BOOL showView)
@@ -457,25 +490,25 @@ NSString *doDevicePlatform()
 }
 
 
-//MBProgressHUD *HUD;
-//void showLabelHUD(NSString *content)
-//{
-//    //显示LoadView
-//    if (HUD==nil) {
-//        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-//        HUD = [[MBProgressHUD alloc] initWithView:window];
-//        HUD.mode = MBProgressHUDModeText;
-//        [window addSubview:HUD];
-//        //如果设置此属性则当前的view置于后台
-//    }
-//    HUD.labelText = content;
-//    [HUD showAnimated:YES whileExecutingBlock:^{
-//        sleep(1.5);
-//    } completionBlock:^{
-//        [HUD removeFromSuperview];
-//        HUD = nil;
-//    }];
-//}
+MBProgressHUD *HUD;
+void showLabelHUD(NSString *content)
+{
+    //显示LoadView
+    if (HUD==nil) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        HUD = [[MBProgressHUD alloc] initWithView:window];
+        HUD.mode = MBProgressHUDModeText;
+        [window addSubview:HUD];
+        //如果设置此属性则当前的view置于后台
+    }
+    HUD.labelText = content;
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        sleep(1.5);
+    } completionBlock:^{
+        [HUD removeFromSuperview];
+        HUD = nil;
+    }];
+}
 
 CGFloat statusBarHeight()
 {

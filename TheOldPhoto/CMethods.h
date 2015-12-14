@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #include <stdio.h>
 #import <UIKit/UIKit.h>
-//#import "MBProgressHUD.h"
+#import "MBProgressHUD.h"
 
 @interface CMethods : NSObject
 {
@@ -68,11 +68,12 @@ CGFloat setH(CGFloat Height);
 //NSDictionary *getEurFilterConfig();
 //NSArray*getFilterPreviewArray();
 
-//MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView);
-//void hideMBProgressHUD();
+MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView);
+void hideMBProgressHUD();
 NSString *doDevicePlatform();
 BOOL isChineseS();
 BOOL isChinese();
+MBProgressHUD *showMBProgressHUDWithoutText();
 //MBProgressHUD *setProgressHudWithCustom();
 CGFloat statusBarHeight();
 @end

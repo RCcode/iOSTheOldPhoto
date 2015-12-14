@@ -9,9 +9,10 @@
 #import "SettingCellTableViewCell.h"
 #import "SettingStoreViewController.h"
 #import "AboutViewController.h"
+#import <MessageUI/MessageUI.h>
+#import "HelpViewController.h"
 
-
-@interface SettingCellTableViewCell ()<UITableViewDelegate, UITableViewDataSource>
+@interface SettingCellTableViewCell ()<UITableViewDelegate, UITableViewDataSource,MFMailComposeViewControllerDelegate>
 @property (nonatomic,strong) UIView *titleView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
@@ -46,7 +47,7 @@
     self.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), setH(44))];
     self.titleView.backgroundColor = [UIColor whiteColor];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-    NSString *titleString = [NSString stringWithFormat:@"·    %@    ·",LocalizedString(@"Setting", nil)];
+    NSString *titleString = [NSString stringWithFormat:@"·    %@    ·",LocalizedString(@"setting_setting", nil)];
     [label setText:titleString];
     label.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.titleView];
@@ -80,12 +81,20 @@
             //商店
             SettingStoreViewController *store = [[SettingStoreViewController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:store];
-            [self.target presentViewController:nav animated:YES completion:nil];
+            CATransition *animation = [CATransition animation];
+            animation.duration = 0.3;
+            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            //            animation.type = @"rippleEffect";
+            animation.type = kCATransitionMoveIn;
+            animation.subtype = kCATransitionFromRight;
+            [self.window.layer addAnimation:animation forKey:nil];
+            [self.target presentViewController:nav animated:NO completion:nil];
         }
             break;
         case 1:
         {
             //评分
+             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreScoreURL]];
         }
             break;
         case 2:
@@ -94,9 +103,9 @@
             AboutViewController *about = [[AboutViewController alloc] init];
             CATransition *animation = [CATransition animation];
             animation.duration = 0.3;
-            animation.timingFunction = UIViewAnimationCurveEaseInOut;
+            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 //            animation.type = @"rippleEffect";
-            animation.type = kCATransitionPush;
+            animation.type = kCATransitionMoveIn;
             animation.subtype = kCATransitionFromRight;
             [self.window.layer addAnimation:animation forKey:nil];
 //            [self presentModalViewController:myNextViewController animated:NO completion:nil];
@@ -106,16 +115,57 @@
         case 3:
         {
             //反馈
+            // app名称 版本
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            
+            NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            
+            //设备型号 系统版本
+            NSString *deviceName = doDevicePlatform();
+            NSString *deviceSystemName = [[UIDevice currentDevice] systemName];
+            NSString *deviceSystemVer = [[UIDevice currentDevice] systemVersion];
+            
+            //设备分辨率
+            //            CGFloat scale = [UIScreen mainScreen].scale;
+            //            CGFloat resolutionW = [UIScreen mainScreen].bounds.size.width * scale;
+            //            CGFloat resolutionH = [UIScreen mainScreen].bounds.size.height * scale;
+            //            NSString *resolution = [NSString stringWithFormat:@"%.f * %.f", resolutionW, resolutionH];
+            
+            //本地语言
+            NSString *language = [[NSLocale preferredLanguages] firstObject];
+
+            //            NSString *diveceInfo = @"app版本号 手机型号 手机系统版本 语言";
+            NSString *diveceInfo = [NSString stringWithFormat:@"%@, %@, %@ %@, %@", app_Version, deviceName, deviceSystemName, deviceSystemVer, language];
+            
+            //直接发邮件
+            MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+            if(!picker) break;
+            picker.mailComposeDelegate =self;
+            NSString *subject = [NSString stringWithFormat:@"%@ %@ (iOS)",LocalizedString(@"Time Photo Studio", nil),LocalizedString(@"setting_feedback", nil)];
+            [picker setSubject:subject];
+            [picker setToRecipients:@[kFeedbackEmail]];
+            [picker setMessageBody:diveceInfo isHTML:NO];
+            [self.target presentViewController:picker animated:YES completion:nil];
         }
             break;
         case 4:
         {
             //使用条款
+            HelpViewController *hvc = [[HelpViewController alloc] init];
+            hvc.type = kWebViewTerms;
+//            [self.navigationController pushViewController:hvc animated:YES];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:hvc];
+            [self.target presentViewController:nav animated:YES completion:nil];
         }
             break;
         case 5:
         {
             //隐私政策
+            HelpViewController *hvc = [[HelpViewController alloc] init];
+            hvc.type = kWebViewPrivacy;
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:hvc];
+//            [self.navigationController pushViewController:hvc animated:YES];
+            [self.target presentViewController:nav animated:YES completion:nil];
         }
             break;
         default:
@@ -141,6 +191,11 @@
     cell.contentView.backgroundColor = colorWithHexString(@"#f6f6f6");
     cell.backgroundColor = colorWithHexString(@"#f6f6f6");
     cell.textLabel.text = title;
+    UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 44, 100)];
+    label.textAlignment = NSTextAlignmentRight;
+    label.textColor = [UIColor lightGrayColor];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    label.text = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     if (indexPath.row != self.dataArray.count -1) {
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -148,8 +203,21 @@
     }else{
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView = label;
     }
     return cell;
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    [controller dismissViewControllerAnimated:YES completion:^{
+        if(MFMailComposeResultSent == result){
+            showMBProgressHUD(@"success", NO);
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                hideMBProgressHUD();
+            });
+        }
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
