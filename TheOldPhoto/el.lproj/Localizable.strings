@@ -29,7 +29,7 @@
 "setting_off_50" = "Εξοικονομήστε 50%";
 
 /* 图片保存到 */
-"setting_saved" = "Η φωτογραφία αποθηκεύτηκε στο XXXX";
+"setting_saved" = "Η φωτογραφία αποθηκεύτηκε στο Time Photo StudioX";
 
 /* 稍后评论 */
 "title_remind" = "Υπενθύμιση αργότερα";
@@ -55,8 +55,8 @@
 /* 使用条件 */
 "setting_terms" = "Όροι Χρήσης";
 
-/* 喜欢 xxx */
-"title_like" = "Σας αρέσει το XXX;";
+/* 喜欢 Time Photo Studio */
+"title_like" = "Σας αρέσει το Time Photo Studio;";
 
 /* 喜欢我们去评5星 */
 "title_rate_five" = "Δείξτε την αγάπη σας και βαθμολογήστε μας με 5 αστέρια";

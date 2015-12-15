@@ -55,6 +55,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initSplashView];
     [self initData];
     self.tableView.delaysContentTouches = NO;
     [self.tableView setPagingEnabled:YES];
@@ -67,6 +68,18 @@
     
     //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)initSplashView
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowHeight())];
+    imageView.image = [UIImage imageNamed:@"LaunchImage"];
+    [[UIApplication sharedApplication].keyWindow addSubview:imageView];
+    [UIView animateWithDuration:0.3 delay:4 options:0 animations:^{
+        imageView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [imageView removeFromSuperview];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -465,7 +478,7 @@
     CropStyle style = [self getCropStyleWithIndex:_currentIndexPath andIndex:(((CoverFlowView *)tap.view).currentRenderingImageIndex)];
 //    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
     NSLog(@"self.currentCropStyle = %ld style = %ld",self.currentCropStyle,style);
-    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree) && !self.currentImage) {
+    if (( style == CropStyleFree )|| (self.currentCropStyle == style && self.currentCropStyle != CropStyleFree ) || !self.currentImage) {
         [self setScene];
     }else{
         [self resubImageWithStyle:style];

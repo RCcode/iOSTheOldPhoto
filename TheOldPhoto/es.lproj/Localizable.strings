@@ -29,7 +29,7 @@
 "setting_off_50" = "Ahorra un 50 %";
 
 /* 图片保存到 */
-"setting_saved" = "Foto guardada en XXXXX";
+"setting_saved" = "Foto guardada en Time Photo StudioXX";
 
 /* 稍后评论 */
 "title_remind" = "Recuérdamelo más tarde";
@@ -55,8 +55,8 @@
 /* 使用条件 */
 "setting_terms" = "Términos de uso";
 
-/* 喜欢 xxx */
-"title_like" = "¿Te gusta XXXX?";
+/* 喜欢 Time Photo Studio */
+"title_like" = "¿Te gusta Time Photo StudioX?";
 
 /* 喜欢我们去评5星 */
 "title_rate_five" = "Comparte tu amor y danos 5 estrellas";

@@ -29,7 +29,7 @@
 "setting_off_50" = "50％割引";
 
 /* 图片保存到 */
-"setting_saved" = "写真はXXXXに保存されました";
+"setting_saved" = "写真はTime Photo StudioXに保存されました";
 
 /* 稍后评论 */
 "title_remind" = "後で";
@@ -55,8 +55,8 @@
 /* 使用条件 */
 "setting_terms" = "利用規約";
 
-/* 喜欢 xxx */
-"title_like" = "XXXが好きですか？";
+/* 喜欢 Time Photo Studio */
+"title_like" = "Time Photo Studioが好きですか？";
 
 /* 喜欢我们去评5星 */
 "title_rate_five" = "愛を共有し、5つ星評価を";

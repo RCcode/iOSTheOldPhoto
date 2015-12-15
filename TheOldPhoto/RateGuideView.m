@@ -39,7 +39,7 @@
 - (void)initViews
 {
     self.alertView.backgroundColor = [UIColor whiteColor];
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake((setW(270) - setW(50)) / 2, setH(9), setW(50), setW(50))];
+    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake((setW(280) - setW(50)) / 2, setH(9), setW(50), setW(50))];
 //    logo.center = CGPointMake(self.frame.size.width / 2, logo.center.y - 5);
     logo.image = [UIImage imageNamed:@"love"];
     [self.alertView addSubview:logo];

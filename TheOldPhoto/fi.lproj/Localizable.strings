@@ -29,7 +29,7 @@
 "setting_off_50" = "Säästä 50%";
 
 /* 图片保存到 */
-"setting_saved" = "Valokuva tallennettu paikkaan: XXX";
+"setting_saved" = "Valokuva tallennettu paikkaan: Time Photo Studio";
 
 /* 稍后评论 */
 "title_remind" = "Muistuta minua myöhemmin";
@@ -55,8 +55,8 @@
 /* 使用条件 */
 "setting_terms" = "Käyttöehdot";
 
-/* 喜欢 xxx */
-"title_like" = "Rakastatko XXX?";
+/* 喜欢 Time Photo Studio */
+"title_like" = "Rakastatko Time Photo Studio?";
 
 /* 喜欢我们去评5星 */
 "title_rate_five" = "Jaa rakkautesi ja anna meille 5 tähteä";

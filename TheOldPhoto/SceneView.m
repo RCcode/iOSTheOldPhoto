@@ -202,6 +202,8 @@
  8. hardlight
  9. softlight
  10.normal
+ 12.lighten
+ 13.darken
  */
 - (GPUImageOutput <GPUImageInput> *)setFilter:(GPUImageOutput <GPUImageInput> *)filter withType:(NSUInteger)type
 {

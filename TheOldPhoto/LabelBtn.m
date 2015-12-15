@@ -26,14 +26,15 @@
     if (self.lLabel) {
         [self.lLabel removeFromSuperview];
     }
-    self.lLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width * 4 / 5 - 5, self.frame.size.height - 5)];
+    self.lLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width * 3.5 / 5 - 5, self.frame.size.height - 5)];
     
     self.lLabel.text = LocalizedString(@"iap_all", nil);
     self.lLabel.textColor = colorWithHexString(@"#fdcf03");
     self.lLabel.textAlignment = NSTextAlignmentRight;
     self.lLabel.adjustsFontSizeToFitWidth = YES;
     self.lLabel.minimumScaleFactor = 0.5;
-    self.rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width * 4 / 5, 5, self.frame.size.width * 1 / 5, self.frame.size.height - 5)];
+    self.lLabel.font = [UIFont systemFontOfSize:15];
+    self.rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width * 3.5 / 5, 5, self.frame.size.width * 1.5 / 5, self.frame.size.height - 5)];
 //    self.lLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width * 4 / 5 - 5, self.frame.size.height - 5)];
 //    
 //    self.lLabel2.text = LocalizedString(@"iap_all", nil);
@@ -44,11 +45,11 @@
 
 
     self.rightLabel.text = [NSString stringWithFormat:@"- %@",LocalizedString(@"setting_off_50", nil)];
-    self.rightLabel.textColor = [UIColor redColor];
+    self.rightLabel.textColor = colorWithHexString(@"#fa5745");
     self.rightLabel.textAlignment = NSTextAlignmentLeft;
     self.rightLabel.adjustsFontSizeToFitWidth = YES;
     self.rightLabel.minimumScaleFactor = 0.5;
-    
+    self.rightLabel.font = [UIFont systemFontOfSize:15];
     self.lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 1, self.frame.size.width, 1)];
     self.lineLabel.backgroundColor = colorWithHexString(@"#fdcf03");
     [self addSubview:self.lLabel];
@@ -66,6 +67,12 @@
     self.lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 1, self.frame.size.width, 1)];
     self.lineLabel.backgroundColor = colorWithHexString(@"#fdcf03");
     [self addSubview:self.lineLabel];
+}
+
+- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state
+{
+    [super setTitleColor:color forState:state];
+
 }
 
 /*

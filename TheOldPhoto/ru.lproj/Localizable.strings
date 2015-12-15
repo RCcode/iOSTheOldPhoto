@@ -29,7 +29,7 @@
 "setting_off_50" = "Экономия 50%";
 
 /* 图片保存到 */
-"setting_saved" = "Фото сохранено на XXXX";
+"setting_saved" = "Фото сохранено на Time Photo StudioX";
 
 /* 稍后评论 */
 "title_remind" = "Напомнить позже";
@@ -55,8 +55,8 @@
 /* 使用条件 */
 "setting_terms" = "Правила пользования";
 
-/* 喜欢 xxx */
-"title_like" = "Нравится XXX?";
+/* 喜欢 Time Photo Studio */
+"title_like" = "Нравится Time Photo Studio?";
 
 /* 喜欢我们去评5星 */
 "title_rate_five" = "Поделитесь своей любовью и дайте нам 5-звёздную оценку";

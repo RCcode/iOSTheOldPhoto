@@ -251,6 +251,7 @@
     
     if (dispatch_semaphore_wait(imageUpdateSemaphore, DISPATCH_TIME_NOW) != 0)
     {
+        NSLog(@"returen NO");
         return NO;
     }
     

@@ -29,7 +29,7 @@
 "setting_off_50" = "Spar 50%";
 
 /* 图片保存到 */
-"setting_saved" = "Bildet lagret til XXXX";
+"setting_saved" = "Bildet lagret til Time Photo StudioX";
 
 /* 稍后评论 */
 "title_remind" = "Minn meg på det senere";
@@ -55,8 +55,8 @@
 /* 使用条件 */
 "setting_terms" = "Brukervilkår";
 
-/* 喜欢 xxx */
-"title_like" = "Elsker XXX?";
+/* 喜欢 Time Photo Studio */
+"title_like" = "Elsker Time Photo Studio?";
 
 /* 喜欢我们去评5星 */
 "title_rate_five" = "Del og elsk oss - gi oss 5 stjerner";

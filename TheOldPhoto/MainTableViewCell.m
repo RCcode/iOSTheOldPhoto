@@ -93,6 +93,9 @@
     [self.leftLabel setText:LocalizedString(@"main_gallery", nil)];
     self.leftLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.leftLabel];
+    if (isChinese()) {
+        self.leftLabel.font = [UIFont systemFontOfSize:16];
+    }
     
     self.middleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.middleBtn setTitle:@"Camera" forState:UIControlStateNormal];
@@ -102,6 +105,9 @@
     [self.middleLabel setText:LocalizedString(@"main_camera", nil)];
     self.middleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.middleLabel];
+    if (isChinese()) {
+        self.middleLabel.font = [UIFont systemFontOfSize:16];
+    }
     
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.rightBtn setTitle:@"Share" forState:UIControlStateNormal];
@@ -111,6 +117,9 @@
     [self.rightLabel setText:LocalizedString(@"main_share", nil)];
     self.rightLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.rightLabel];
+    if (isChinese()) {
+        self.rightLabel.font = [UIFont systemFontOfSize:16];
+    }
     
     [self.contentView addSubview:self.leftBtn];
     [self.contentView addSubview:self.middleBtn];
