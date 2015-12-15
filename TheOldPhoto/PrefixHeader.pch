@@ -26,6 +26,7 @@
 #define k1940sPack @"Oldphoto_1940"
 #define k1960sPack @"Oldphoto_1960"
 #define k1980sPack @"Oldphoto_1980"
+
 #define kUnknowPack @"Oldphoto_unknown"
 #define kAllPacks @"Oldphoto_all"
 #define kRateUserDefaultKey @"isRated"
