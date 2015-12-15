@@ -56,6 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initData];
+    self.tableView.delaysContentTouches = NO;
     [self.tableView setPagingEnabled:YES];
     self.tableView.backgroundColor = [UIColor yellowColor];
     self.imagePicker = [[UIImagePickerController alloc] init];
@@ -361,18 +362,21 @@
 
 - (void)intentToAlbum:(UIButton *)btn
 {
+    [MobClick event:kEditEvent label:@"edit_photo"];
     [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
     NSLog(@"album");
 }
 
 - (void)intentToCamera:(UIButton *)btn
 {
+    [MobClick event:kEditEvent label:@"edit_camera"];
     [self presentToImagePickerWithType:UIImagePickerControllerSourceTypeCamera];
     NSLog(@"camera");
 }
 
 - (void)shareImage:(UIButton *)btn
 {
+    [MobClick event:kEditEvent label:@"edit_share"];
     NSLog(@"share");
     CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
@@ -461,7 +465,7 @@
     CropStyle style = [self getCropStyleWithIndex:_currentIndexPath andIndex:(((CoverFlowView *)tap.view).currentRenderingImageIndex)];
 //    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
     NSLog(@"self.currentCropStyle = %ld style = %ld",self.currentCropStyle,style);
-    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree) || !self.currentImage) {
+    if ((self.currentCropStyle == CropStyleFree || self.currentCropStyle == style || style == CropStyleFree) && !self.currentImage) {
         [self setScene];
     }else{
         [self resubImageWithStyle:style];
@@ -521,7 +525,16 @@
 //        editVC.style = CropStyleFree;
 //    }
     editVC.style = self.tempStyle;
-    [picker pushViewController:editVC animated:YES];
+    if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
+        editVC.isNav = YES;
+        [picker pushViewController:editVC animated:YES];
+    }else{
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editVC];
+        [picker dismissViewControllerAnimated:YES completion:^{
+            editVC.isNav = NO;
+            [self presentViewController:nav animated:YES completion:nil];
+        }];
+    }
 }
 
 - (void)imageEditResultImage:(UIImage *)image

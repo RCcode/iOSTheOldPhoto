@@ -27,7 +27,7 @@
 @property (nonatomic, strong) NSArray *iapArray;
 @property (nonatomic, strong) NSString *categoryName;
 @property (nonatomic, strong) NSIndexPath *indexPath;
-@property (nonatomic, strong) UIProgressView *progressView;
+//@property (nonatomic, strong) UIProgressView *progressView;
 @end
 
 @implementation MainTableViewCell
@@ -73,9 +73,9 @@
     [self.downloadBtn setImage:[UIImage imageNamed:@"classify_unlock_pressed"] forState:UIControlStateHighlighted];
     [self.contentView addSubview:self.downloadBtn];
     self.downloadBtn.alpha = 0;
-    self.progressView = [[UIProgressView alloc] initWithFrame:self.downloadBtn.frame];
-    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault];
-    [self.contentView addSubview:self.progressView];
+//    self.progressView = [[UIProgressView alloc] initWithFrame:self.downloadBtn.frame];
+//    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault];
+//    [self.contentView addSubview:self.progressView];
     
     self.buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.buyBtn.frame = self.downloadBtn.frame;
@@ -138,7 +138,7 @@
          [self.coverFlowView removeObserver:self forKeyPath:@"currentRenderingImageIndex"];
     }
     [self.coverFlowView removeFromSuperview];
-    self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:0.4 middleImageScale:0.6 target:target selector:seletor];
+    self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:setW(0.3) middleImageScale:setW(0.5) target:target selector:seletor];
     if (self.coverFlowView != nil) {
 //
         [self.coverFlowView addObserver:self forKeyPath:@"currentRenderingImageIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
@@ -250,16 +250,14 @@
             self.downloadBtn.alpha = 0;
         }
         
-        if (self.buyBtn.alpha == 1) {
-            self.coverFlowView.tapGestureRecognizer.enabled = NO;
-        }else{
-            self.coverFlowView.tapGestureRecognizer.enabled = YES;
-        }
-        
         if (self.downloadBtn.alpha == 1) {
             self.coverFlowView.tapGestureRecognizer.enabled = NO;
         }else{
-            self.coverFlowView.tapGestureRecognizer.enabled = YES;
+            if (self.buyBtn.alpha == 1) {
+                self.coverFlowView.tapGestureRecognizer = NO;
+            }else{
+                self.coverFlowView.tapGestureRecognizer.enabled = YES;
+            }
         }
 //        if ([DataUtil defaultUtil].downloadingIndexpath.row == self.indexPath.row && [DataUtil defaultUtil].downloadingIndex == index.integerValue) {
 //            if (self.downloadBtn.alpha == 1) {

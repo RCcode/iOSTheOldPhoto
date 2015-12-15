@@ -77,6 +77,7 @@
 - (void)initView
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.width)];
+    self.imageView.userInteractionEnabled = YES;
     self.arrow = [[ArrowLeftView alloc] initWithFrame:CGRectMake(windowWidth() - 19 - 5, self.imageView.center.y - 9, 18, 19)];
     [self.imageView addSubview:self.arrow];
     [self.arrow setAnimation];
@@ -100,7 +101,7 @@
     NSString *folderName = [NSString stringWithFormat:@"scene%ld_%ld",indexPath.row,index];
     NSString *fileName = [NSString stringWithFormat:@"FinalScene%ld_%ld",indexPath.row, index];
 //    for (NSString *fileName in arr) {
-          NSString *pathString = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];
+          NSString *pathString = [[NSBundle mainBundle] pathForResource:fileName ofType:@"data"];
         if (pathString != nil)
         {
             NSData *data = [NSData dataWithContentsOfFile:pathString];
@@ -111,7 +112,7 @@
             [resultArray addObject:returnDic];
             
         }else{
-            NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/Documents/Scene/%@/%@.txt",folderName,fileName]];
+            NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/Documents/Scene/%@/%@.data",folderName,fileName]];
             NSLog(@"filePath = %@",filePath);
             NSData *data = [NSData dataWithContentsOfFile:filePath];
             if (data ) {
@@ -267,6 +268,45 @@
 
 - (void)initFilterWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index oriImage:(UIImage *)image
 {
+    switch (indexpath.row) {
+        case 0:
+        {
+        
+        }
+            break;
+        case 1:
+        {
+            NSString *model = [NSString stringWithFormat:@"model_90%02ld",index+1];
+            [MobClick event:kModelEvent label:model];
+        }
+            break;
+        case 2:
+        {
+            NSString *model = [NSString stringWithFormat:@"model_80%02ld",index+1];
+            [MobClick event:kModelEvent label:model];
+        }
+            break;
+        case 3:
+        {
+            NSString *model = [NSString stringWithFormat:@"model_60%02ld",index+1];
+            [MobClick event:kModelEvent label:model];
+        }
+            break;
+        case 4:
+        {
+            NSString *model = [NSString stringWithFormat:@"model_40%02ld",index+1];
+            [MobClick event:kModelEvent label:model];
+        }
+            break;
+        case 5:
+        {
+            NSString *model = [NSString stringWithFormat:@"model_un%02ld",index+1];
+            [MobClick event:kModelEvent label:model];
+        }
+            break;
+        default:
+            break;
+    }
 //    self.previewView = nil;
 //    [self.previewView removeFromSuperview];
     [self.cfgArray removeAllObjects];

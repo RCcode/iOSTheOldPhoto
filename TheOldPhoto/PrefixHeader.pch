@@ -14,7 +14,7 @@
 //#import "MBProgressHUD.h"
 #import <UIKit/UIKit.h>
 #import "CMethods.h"
-//#import "MobClick.h"
+#import "MobClick.h"
 //#import "Flurry.h"
 #endif
 
@@ -30,6 +30,10 @@
 #define kAllPacks @"Oldphoto_all"
 #define kRateUserDefaultKey @"isRated"
 #define kUseTimesKey @"useTimes"
+#define PUSH_POST_URL_STRING @"http://iospush.rcplatformhk.net/IOSPushWeb/userinfo/regiUserInfo.do"
+#define DEVICE_TOKEN @"device_token"
+#define kModelEvent @"Model"
+#define kEditEvent @"Edit"
 
 #define kAppStoreScoreURLPre @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id="
 #define kAppStoreScoreURL [NSString stringWithFormat:@"%@%@", kAppStoreScoreURLPre, APPLE_ID]
