@@ -44,7 +44,7 @@
 - (void)initView
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), setH(44))];
+    self.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), 44)];
     self.titleView.backgroundColor = [UIColor whiteColor];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
     NSString *titleString = [NSString stringWithFormat:@"·    %@    ·",LocalizedString(@"setting_setting", nil)];
@@ -52,8 +52,8 @@
     label.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.titleView];
     [self.titleView addSubview:label];
-    label.center = CGPointMake(windowWidth() / 2.f, setH(44) / 2.f);
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, setH(44), windowWidth(), setH(44) * self.dataArray.count)];
+    label.center = CGPointMake(windowWidth() / 2.f, self.titleView.frame.size.height / 2.f);
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, windowWidth(), 44 * self.dataArray.count)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
@@ -80,12 +80,13 @@
         {
             //商店
             SettingStoreViewController *store = [[SettingStoreViewController alloc] init];
+            store.isPush = YES;
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:store];
             CATransition *animation = [CATransition animation];
             animation.duration = 0.3;
             animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
             //            animation.type = @"rippleEffect";
-            animation.type = kCATransitionMoveIn;
+            animation.type = kCATransitionPush;
             animation.subtype = kCATransitionFromRight;
             [self.window.layer addAnimation:animation forKey:nil];
             [self.target presentViewController:nav animated:NO completion:nil];
@@ -175,7 +176,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return setH(44);
+    return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

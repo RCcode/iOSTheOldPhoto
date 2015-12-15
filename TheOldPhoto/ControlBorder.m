@@ -27,10 +27,10 @@
     _rightUpBox.backgroundColor = clearColor;
     _rightDownBox.backgroundColor = clearColor;
     
-    _topLine.backgroundColor = clearColor;
-    _buttomLine.backgroundColor = clearColor;
-    _leftLine.backgroundColor = clearColor;
-    _rightLine.backgroundColor = clearColor;
+//    _topLine.backgroundColor = clearColor;
+//    _buttomLine.backgroundColor = clearColor;
+//    _leftLine.backgroundColor = clearColor;
+//    _rightLine.backgroundColor = clearColor;
 }
 
 

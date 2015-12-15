@@ -85,7 +85,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 - (void)getInAppPurchasesList
@@ -295,6 +295,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    for (id obj in tableView.subviews) {
+        if ([NSStringFromClass([obj class]) isEqualToString:@"UITableViewWrapperView"]) {
+            NSLog(@"no");
+            ((UITableView *)obj).delaysContentTouches = NO;
+        }
+    }
+    
     if (indexPath.row == self.titleArray.count) {
         static NSString *settingCellIde = @"settingCell";
         SettingCellTableViewCell *settingCell = [tableView dequeueReusableCellWithIdentifier:settingCellIde];

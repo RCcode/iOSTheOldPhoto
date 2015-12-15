@@ -626,13 +626,39 @@
         //    [view drawViewHierarchyInRect:imageview.frame afterScreenUpdates:YES];
         UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
+        if (isChineseS()) {
+            return [self addImageLogo:img text:[UIImage imageNamed:@"waterLogo"]];
+        }else{
+            return img;
         
-        return img;
-        
-        
+        }
     }else{
         return self.resultImage;
     }
+}
+
+- (UIImage *)addImageLogo:(UIImage *)img text:(UIImage *)logo
+{
+    if (logo == nil) {
+        return img;
+    }
+    //get image width and height
+    int w = img.size.width;
+    int h = img.size.height;
+    int logoWidth = 440;
+    int logoHeight = 160;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    //create a graphic context with CGBitmapContextCreate
+    CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast);
+    CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
+    CGContextDrawImage(context, CGRectMake(w-logoWidth, 0, logoWidth, logoHeight), [logo CGImage]);
+    CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+    UIImage *resultImage = [UIImage imageWithCGImage:imageMasked];
+    CGContextRelease(context);
+    CGImageRelease(imageMasked);
+    CGColorSpaceRelease(colorSpace);
+    return resultImage;
+    // CGContextDrawImage(contextRef, CGRectMake(100, 50, 200, 80), [smallImg CGImage]);
 }
 
 - (BOOL)isDownloadFileWithIndexPath:(NSIndexPath *)indexpath andIndex:(int)index

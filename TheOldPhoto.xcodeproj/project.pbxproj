@@ -25,6 +25,7 @@
 		C8161A031C1FF7330034A929 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = C81619FC1C1FF7330034A929 /* mztools.c */; };
 		C8161A041C1FF7330034A929 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C81619FE1C1FF7330034A929 /* unzip.c */; };
 		C8161A051C1FF7330034A929 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = C8161A001C1FF7330034A929 /* zip.c */; };
+		C8161A081C2027840034A929 /* waterLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C8161A071C2027840034A929 /* waterLogo.png */; };
 		C82F5BCC1BF0742300922A3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C82F5BCB1BF0742300922A3F /* main.m */; };
 		C82F5BCF1BF0742300922A3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C82F5BCE1BF0742300922A3F /* AppDelegate.m */; };
 		C82F5BD21BF0742300922A3F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C82F5BD11BF0742300922A3F /* ViewController.m */; };
@@ -443,6 +444,7 @@
 		C81619FF1C1FF7330034A929 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
 		C8161A001C1FF7330034A929 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		C8161A011C1FF7330034A929 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		C8161A071C2027840034A929 /* waterLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterLogo.png; sourceTree = "<group>"; };
 		C82F5BC71BF0742300922A3F /* TheOldPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOldPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82F5BCB1BF0742300922A3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C82F5BCD1BF0742300922A3F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1005,6 +1007,7 @@
 		C82F5BCA1BF0742300922A3F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C8161A071C2027840034A929 /* waterLogo.png */,
 				C870E7361C1B0350000B890F /* preview */,
 				C870E26C1C1B0241000B890F /* 40s */,
 				C870E3011C1B0241000B890F /* 60s */,
@@ -2138,6 +2141,7 @@
 				C870E1C21C1AD5EE000B890F /* 40s_8.acv in Resources */,
 				C870E7881C1B0350000B890F /* scene1_0.jpg in Resources */,
 				C870E7A71C1B0350000B890F /* scene3_0.jpg in Resources */,
+				C8161A081C2027840034A929 /* waterLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

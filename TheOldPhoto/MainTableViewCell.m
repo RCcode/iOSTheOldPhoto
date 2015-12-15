@@ -87,39 +87,48 @@
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.leftBtn setTitle:@"Album" forState:UIControlStateNormal];
-    [self.leftBtn setFrame:CGRectMake(setW(39), frame.origin.y + frame.size.height + setH(90), 49, 49)];
+    [self.leftBtn setFrame:CGRectMake(setW(39), frame.origin.y + frame.size.height + setH(90), 49, 60)];
+
     self.leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
     self.leftLabel.center = CGPointMake(self.leftBtn.center.x, self.leftBtn.center.y + 25 + 12);
     [self.leftLabel setText:LocalizedString(@"main_gallery", nil)];
     self.leftLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.leftLabel];
-    if (isChinese()) {
+    self.leftLabel.adjustsFontSizeToFitWidth = YES;
+    self.leftLabel.minimumScaleFactor = 0.5;
+//    if (isChinese()) {
         self.leftLabel.font = [UIFont systemFontOfSize:16];
-    }
+//    }
     
     self.middleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.middleBtn setTitle:@"Camera" forState:UIControlStateNormal];
-    [self.middleBtn setFrame:CGRectMake(width / 2 - self.leftBtn.frame.size.width / 2, self.leftBtn.frame.origin.y, 49, 49)];
+    [self.middleBtn setFrame:CGRectMake(width / 2 - self.leftBtn.frame.size.width / 2, self.leftBtn.frame.origin.y, 49, 60)];
+
     self.middleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
     self.middleLabel.center = CGPointMake(self.middleBtn.center.x, self.middleBtn.center.y + 25 + 12);
+    self.middleLabel.adjustsFontSizeToFitWidth = YES;
+    self.middleLabel.minimumScaleFactor = 0.5;
     [self.middleLabel setText:LocalizedString(@"main_camera", nil)];
     self.middleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.middleLabel];
-    if (isChinese()) {
+//    if (isChinese()) {
         self.middleLabel.font = [UIFont systemFontOfSize:16];
-    }
+//    }
     
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.rightBtn setTitle:@"Share" forState:UIControlStateNormal];
-    [self.rightBtn setFrame:CGRectMake(width - self.leftBtn.frame.size.width - setW(38) , self.leftBtn.frame.origin.y, 49, 49)];
+    [self.rightBtn setFrame:CGRectMake(width - self.leftBtn.frame.size.width - setW(38) , self.leftBtn.frame.origin.y, 49, 60)];
+
     self.rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
     self.rightLabel.center = CGPointMake(self.rightBtn.center.x, self.rightBtn.center.y + 25 + 12);
+    self.rightLabel.adjustsFontSizeToFitWidth = YES;
+    self.rightLabel.minimumScaleFactor = 0.5;
     [self.rightLabel setText:LocalizedString(@"main_share", nil)];
     self.rightLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.rightLabel];
-    if (isChinese()) {
+//    if (isChinese()) {
         self.rightLabel.font = [UIFont systemFontOfSize:16];
-    }
+//    }
     
     [self.contentView addSubview:self.leftBtn];
     [self.contentView addSubview:self.middleBtn];
@@ -147,7 +156,7 @@
          [self.coverFlowView removeObserver:self forKeyPath:@"currentRenderingImageIndex"];
     }
     [self.coverFlowView removeFromSuperview];
-    self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:setW(0.3) middleImageScale:setW(0.5) target:target selector:seletor];
+    self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:setW(0.5) middleImageScale:setW(0.5) target:target selector:seletor];
     if (self.coverFlowView != nil) {
 //
         [self.coverFlowView addObserver:self forKeyPath:@"currentRenderingImageIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
@@ -263,7 +272,7 @@
             self.coverFlowView.tapGestureRecognizer.enabled = NO;
         }else{
             if (self.buyBtn.alpha == 1) {
-                self.coverFlowView.tapGestureRecognizer = NO;
+                self.coverFlowView.tapGestureRecognizer.enabled = NO;
             }else{
                 self.coverFlowView.tapGestureRecognizer.enabled = YES;
             }

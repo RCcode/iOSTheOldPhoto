@@ -1,17 +1,17 @@
 /* Localizable.strings
-  TheOldPhoto
-
-  Created by MAXToooNG on 15/11/24.
-  Copyright © 2015年 MaxToooNG. All rights reserved. */
+ TheOldPhoto
+ 
+ Created by MAXToooNG on 15/11/24.
+ Copyright © 2015年 MaxToooNG. All rights reserved. */
 
 /* 分享 */
-"main_share" = "Share";
+"main_share" = "SHARE";
 
 /* 相机 */
-"main_camera" = "Camera";
+"main_camera" = "CAMERA";
 
 /* 保存 */
-"main_save" = "Save";
+"main_save" = "SAVE";
 
 /* 关于我们 */
 "setting_about" = "ABOUT US";
@@ -23,7 +23,7 @@
 "iap_one" = "Get this pack by $0.99";
 
 /* 隐私政策 */
-"setting_policy" = "Privacy Policy";
+"setting_policy" = "PRIVACY POLICY";
 
 /* 优惠50% */
 "setting_off_50" = "Save 50%";
@@ -35,10 +35,10 @@
 "title_remind" = "Remind me later";
 
 /* 反馈 */
-"setting_feedback" = "Feedback";
+"setting_feedback" = "FEEDBACK";
 
 /* 评论我们 */
-"setting_rate_us" = "Rate us";
+"setting_rate_us" = "RATE US";
 
 /* 保存路径 */
 "setting_savepath" = "Save path";
@@ -47,13 +47,13 @@
 "setting_gallary" = "Restore";
 
 /* 商店 */
-"setting_store" = "Store";
+"setting_store" = "STORE";
 
 /* 剪裁 */
-"main_crop" = "Crop";
+"main_crop" = "CROP";
 
 /* 使用条件 */
-"setting_terms" = "Terms of Use";
+"setting_terms" = "TERMS OF USE";
 
 /* 喜欢 Time Photo Studio */
 "title_like" = "Love Time Photo Studio?";
@@ -65,7 +65,7 @@
 "title_five_star" = "5-star";
 
 /* 相册 */
-"main_gallery" = "Gallery";
+"main_gallery" = "GALLERY";
 
 /* 污渍 */
 "tag_dirty" = "dirty";
@@ -125,10 +125,10 @@
 "iap_purchased" = "Already purchased";
 
 /* 设置 */
-"setting_setting" = "Setting";
+"setting_setting" = "SETTING";
 
 /* 版本号 */
-"setting_version" = "Version";
+"setting_version" = "VERSION";
 
 "main_download_failed" = "Download failed, please download again";
 

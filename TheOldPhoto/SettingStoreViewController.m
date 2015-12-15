@@ -111,7 +111,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(windowWidth() * i, 0, windowWidth(), setH(354))];
         imageView.image = [UIImage imageNamed:self.array[i]];
         [self.scrollView addSubview:imageView];
-        UIImageView *yearView = [[UIImageView alloc] initWithFrame:CGRectMake(0, imageView.frame.origin.y + imageView.frame.size.height , setW(157), setH(15))];
+        UIImageView *yearView = [[UIImageView alloc] initWithFrame:CGRectMake(0, imageView.frame.origin.y + imageView.frame.size.height , 157, 15)];
         yearView.center = CGPointMake(i * windowWidth() + windowWidth() / 2, yearView.center.y + 20);
         [self.scrollView addSubview:yearView];
         yearView.image =  [UIImage imageNamed:self.yearArray[i]];
@@ -221,7 +221,10 @@
     [super viewWillAppear:animated];
     NSString *titleName = [NSString stringWithFormat:@"·      %@      ·",LocalizedString(@"setting_store", nil)];
 //    [self.navigationController setTitle:titleName];
-    self.navigationItem.title = titleName;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 44)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = titleName;
+    self.navigationItem.titleView = label;
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
     [back setImage:[UIImage imageNamed:@"crop_back_normal"] forState:UIControlStateNormal];
     [back setImage:[UIImage imageNamed:@"crop_back_pressed"] forState:UIControlStateHighlighted];
