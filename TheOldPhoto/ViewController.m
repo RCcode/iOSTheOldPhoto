@@ -520,6 +520,7 @@
     editVC.style = self.tempStyle;
 //    [self pushViewController:editVC animated:YES];
     editVC.isNav = NO;
+    self.tempStyle = CropStyleFree;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editVC];
     [self presentViewController:nav animated:YES completion:nil];
 }
