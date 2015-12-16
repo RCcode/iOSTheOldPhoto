@@ -33,6 +33,24 @@
 	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>instagram</string>
+        <string>itms-apps</string>
+        <string>RCBestMe</string>
+        <string>MirrorApp</string>
+        <string>RCFontAPP</string>
+        <string>RCFilterGrid</string>
+        <string>RCIdeavid</string>
+        <string>RCIOSVenusApp</string>
+        <string>RCPhotoGridAPP</string>
+        <string>RCFIlterEditorApp</string>
+        <string>RCViddo</string>
+        <string>RCGetlikes</string>
+        <string>RCSaveRepost</string>
+        <string>rcApp</string>
+    </array>
+
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

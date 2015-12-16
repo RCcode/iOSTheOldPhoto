@@ -23,6 +23,7 @@
 #import "DataUtil.h"
 #import <Social/Social.h>
 #import "RateGuideView.h"
+#import "RC_moreAPPsLib.h"
 
 @interface ViewController () <UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, ImageEditDelegate,NSURLConnectionDelegate,UIDocumentInteractionControllerDelegate>
 {
@@ -47,6 +48,7 @@
 @property (nonatomic, strong) UIImage *default3_4;
 @property (nonatomic, strong) UIImage *default4_3;
 @property (nonatomic, assign) CropStyle tempStyle;
+
 
 @end
 
@@ -79,6 +81,7 @@
         imageView.alpha = 0;
     } completion:^(BOOL finished) {
         [imageView removeFromSuperview];
+        [[RC_moreAPPsLib shareAdManager] showAdsWithController:self];
     }];
 }
 
