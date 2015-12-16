@@ -254,7 +254,7 @@ typedef enum{
     
     //右下角
     if(corner == _rightDownBtn){
-        frame.size = CGSizeMake(frame.size.width+offset.width,frame.size.height+offset.height);
+        frame.size = CGSizeMake(frame.size.width + offset.width,frame.size.height + offset.height);
         
         //右上角
     }else if(corner == _rightUpBtn){
@@ -265,7 +265,7 @@ typedef enum{
         }
         else
         {
-            frame.origin.y = frame.origin.y - offset.height;
+//            frame.origin.y = frame.origin.y - offset.height;
             frame.size = CGSizeMake(frame.size.width+offset.width,frame.size.height+offset.height);
         }
         

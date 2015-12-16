@@ -166,7 +166,7 @@
             [textureArray addObject:chromKey];
             
             //blur setting
-            CGFloat blurValue = ((NSNumber *)[sceneDic objectForKey:@"zh_blur"]).floatValue;
+//            CGFloat blurValue = ((NSNumber *)[sceneDic objectForKey:@"zh_blur"]).floatValue;
 #warning to fix
             sceneModel.blurValue = 0;
             
@@ -182,12 +182,10 @@
                 [textureArray addObject:blendTexture];
             }
             sceneModel.textureConfigArray = [textureArray mutableCopy];
-            NSLog(@"sceneModel =                                                                                                                                                                                                                                                                                                                                                                                                                                                      %@",sceneModel.textureConfigArray);
+//            NSLog(@"sceneModel =                                                                                                                                                                                                                                                                                                                                                                                                                                                      %@",sceneModel.textureConfigArray);
             [self.cfgArray addObject:sceneModel];
         }
-        //        sceneModel.
-//    }
-    NSLog(@"cfgArray = %@",self.cfgArray);
+//    NSLog(@"cfgArray = %@",self.cfgArray);
 }
 
 /*
@@ -313,6 +311,7 @@
         default:
             break;
     }
+     @autoreleasepool {
     [self.cfgArray removeAllObjects];
     [self.sceneArray removeAllObjects];
     self.sceneArray = [self getCfgArrayWithIndexpath:indexpath_local index:index_local];
@@ -329,7 +328,7 @@
         return;
     }
     [self parseDic:self.sceneArray];
-    @autoreleasepool {
+   
         [self.pictureArray removeAllObjects];
         for (GPUImageOutput<GPUImageInput> *filter in self.filterArray) {
             [filter removeAllTargets];
@@ -381,7 +380,7 @@
                 [self.previewView setFrame:CGRectMake(0, 0, self.bounds.size.width * width, self.bounds.size.height * height)];
             }
         }
-        NSLog(@"angle = %f",M_PI_2);
+//        NSLog(@"angle = %f",M_PI_2);
         self.previewView.transform = CGAffineTransformRotate(self.previewView.transform, scene.frameAngle * M_PI / 180 );
         
         NSString *backImageName = scene.backgroundImageName;
@@ -395,10 +394,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self.previewView setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:0.0];
             self.previewView.backgroundColor = [UIColor clearColor];
-            //    self.previewView.frame = CGRectMake(0, 0, (int)self.view.bounds.size.width
-            //                                        * scene.imageWidth / kSceneWidth, (int)self.view.bounds.size.width
-            //                                        * scene.imageHeight / kSceneWidth);
-            NSLog(@"self.preview.frame = %@",NSStringFromCGRect(self.previewView.frame));
+//            NSLog(@"self.preview.frame = %@",NSStringFromCGRect(self.previewView.frame));
             self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
             if (image) {
                 self.oriImage = [[GPUImagePicture alloc] initWithImage:image];
@@ -410,7 +406,6 @@
             UIImage *noiseImage = nil;
             if (![noiseModel.textureImageName isEqualToString:@"null"]) {
                 noiseImage = [self imageWithIndexpath:indexpath_local index:index_local imageName:noiseModel.textureImageName];
-//                noiseImage =  [UIImage imageNamed:noiseModel.textureImageName];
                 NSUInteger type = noiseModel.filterType;
                 self.noiseFilter = [self setFilter:self.noiseFilter withType:type];
             }else{
@@ -418,7 +413,7 @@
             }
             [self.oriImage addTarget:self.noiseFilter atTextureLocation:0];
             if (noiseImage) {
-                NSLog(@"noiseImage = %@",noiseModel.textureImageName);
+//                NSLog(@"noiseImage = %@",noiseModel.textureImageName);
                 self.screenTexture = [[GPUImagePicture alloc] initWithImage:noiseImage];
                 [self.screenTexture addTarget:self.noiseFilter atTextureLocation:1];
                 [self.screenTexture processImage];
@@ -431,8 +426,7 @@
 //            [self.gaussianFIlter setBlurRadiusInPixels:scene.blurValue];
             
             self.lookupFilter = [[GPUImageLookupFilter alloc] init];
-            NSLog(@"lookupImageName = %@",scene.lookupImageName);
-//            self.lookupPicture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:scene.lookupImageName]];
+//            NSLog(@"lookupImageName = %@",scene.lookupImageName);
             UIImage *lookupImage = [self imageWithIndexpath:indexpath_local index:index_local imageName:scene
                                     .lookupImageName];
             if (lookupImage) {
@@ -450,7 +444,7 @@
             CGFloat scaleY = scene.imageHeight / scene.frameHeight;
             CGFloat moveX = scene.imageCenter.x - 0.5;
             CGFloat moveY = scene.imageCenter.y - 0.5;
-            NSLog(@"\n scale x = %f \n scale y = %f \n move x = %f \n move y = %f",scaleX, scaleY,moveX,moveY);
+//            NSLog(@"\n scale x = %f \n scale y = %f \n move x = %f \n move y = %f",scaleX, scaleY,moveX,moveY);
             transform = CGAffineTransformScale(transform, scaleX, scaleY);
             transform = CGAffineTransformTranslate(transform, moveX, moveY);
             self.transformFilter.affineTransform = transform;
@@ -478,8 +472,7 @@
                 }else{
                     filter =  [self setFilter:filter withType:0];
                 }
-                NSLog(@"textureName = %@",frameModel.textureImageName);
-                //        [self.transformFilter addTarget:self.filter1];
+//                NSLog(@"textureName = %@",frameModel.textureImageName);
                 if (textureImage) {
                     texture = [[GPUImagePicture alloc] initWithImage:textureImage];
                     
@@ -503,21 +496,14 @@
                 }
                 [self.filterArray addObject:filter];
             }
-            NSLog(@"filterArray = %@",self.filterArray);
-//            int i = 1;
-//            if (self.filterArray.count > i) {
-//                [(GPUImageOutput <GPUImageInput> *)self.filterArray[i] addTarget:self.previewView];
-//            }else{
-//            }
+//            NSLog(@"filterArray = %@",self.filterArray);
             [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject addTarget:self.previewView];
             [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject useNextFrameForImageCapture];
-//            [self.lookupFilter addTarget:self.previewView];
                 [self.oriImage processImageWithCompletionHandler:^{
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.imageView bringSubviewToFront:self.arrow];
                         
                         if (indexpath.row == 0) {
-//                            [self.arrow removeFromSuperview];
                             self.arrow.alpha = 0;
                         }else{
                             self.arrow.alpha = 1;
@@ -526,7 +512,7 @@
                         self.previewView.alpha = 0;
                         self.previewView.hidden = NO;
                         self.resultImage = [(GPUImageOutput <GPUImageInput> *)self.filterArray.lastObject  imageFromCurrentFramebuffer];
-                        NSLog(@"image %@",NSStringFromCGSize(image.size));
+//                        NSLog(@"image %@",NSStringFromCGSize(image.size));
                         self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
                         [UIView animateWithDuration:0.5 animations:^{
                             self.previewView.alpha =1;
@@ -535,7 +521,6 @@
                 }];
         });
     }
-//    [self.acvFilter addTarget:self.previewView];
 }
 
 - (UIImage *)imageWithIndexpath:(NSIndexPath *)indexpath index:(NSInteger)index imageName:(NSString *)imageName
@@ -555,7 +540,7 @@
 
 - (void)swipePage:(UISwipeGestureRecognizer *)recognizer
 {
-    NSLog(@"swipe");
+//    NSLog(@"swipe");
     if(recognizer.direction==UISwipeGestureRecognizerDirectionLeft) {
         
         //先加载数据，再加载动画特效
@@ -586,11 +571,11 @@
     self.sceneArray = [self getCfgArrayWithIndexpath:indexpath index:index];
     //    NSLog(@"cfgDic = %@",_cfgDictionary);
     [self parseDic:self.sceneArray];
-    NSLog(@"self.cfgArray = %@",self.cfgArray);
-    NSLog(@"index = %ld",index);
+//    NSLog(@"self.cfgArray = %@",self.cfgArray);
+//    NSLog(@"index = %ld",index);
     if (self.cfgArray.count > 0) {
         SceneModel *scene = self.cfgArray.firstObject;
-        NSLog(@"scene.width = %f  scene.height = %f",scene.frameWidth, scene.frameHeight);
+//        NSLog(@"scene.width = %f  scene.height = %f",scene.frameWidth, scene.frameHeight);
         if (scene.imageWidth > scene.imageHeight) {
             return CropStyleSquareness3;
         }else if (scene.imageHeight > scene.imageWidth){

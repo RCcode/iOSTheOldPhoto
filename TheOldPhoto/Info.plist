@@ -24,10 +24,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.rcplatform.iOSOldPhoto|OldPhoto</string>
+			<string>com.rcplatform.iOSOldPhoto</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.rcplatform.iOSOldPhoto|OldPhoto</string>
+				<string>OldPhoto</string>
 			</array>
 		</dict>
 	</array>

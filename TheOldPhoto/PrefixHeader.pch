@@ -22,7 +22,7 @@
 #define PIC_SAVE_PATH @"Documents/TimePhotoStudio.jpg"
 #define kBaseUrl @"http://mimage.rcplatformhk.net/oldpic/"
 #define kBaseUrlCN @"http://mimage.rcplatform.cn/oldpic/"
-#define kImportImageMaxResolution 3500.f
+#define kImportImageMaxResolution 1500
 #define k1940sPack @"Oldphoto_1940"
 #define k1960sPack @"Oldphoto_1960"
 #define k1980sPack @"Oldphoto_1980"

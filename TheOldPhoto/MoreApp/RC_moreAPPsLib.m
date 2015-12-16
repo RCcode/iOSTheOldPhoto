@@ -172,7 +172,7 @@ static RC_moreAPPsLib *picObject = nil;
 
 - (BOOL)isMultitaskingSupported{
     
-    BOOL result;
+    BOOL result = NO;
     if ([[UIDevice currentDevice]respondsToSelector:@selector(isMultitaskingSupported)]) {
         result = [[UIDevice currentDevice] isMultitaskingSupported];
     }
@@ -817,7 +817,7 @@ static RC_moreAPPsLib *picObject = nil;
         
         ret = sqlite3_exec(_database , "commit transaction" , 0 , 0 , & zErrorMsg);
         sqlite3_close(_database);
-        
+        NSLog(@"ret = %ld",(long)ret);
         return YES;
     }
     return NO;
