@@ -12,6 +12,7 @@
 #import "TextureModel.h"
 #import "JSONKit.h"
 #import <math.h>
+#import "DataUtil.h"
 
 
 #define kSceneWidth 2048
@@ -40,8 +41,6 @@
 @property (nonatomic, strong) SceneModel *sceneModel;
 @property (nonatomic, strong) TextureModel *textureModel;
 @property (nonatomic, strong) UIImage *resultImage;
-
-
 
 @end
 
@@ -270,10 +269,12 @@
 
 - (void)initFilterWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index oriImage:(UIImage *)image
 {
+    NSIndexPath *indexpath_local = indexpath;
+    NSInteger index_local = index;
     if (!image) {
         return;
     }
-    switch (indexpath.row) {
+    switch (indexpath_local.row) {
         case 0:
         {
         
@@ -281,25 +282,25 @@
             break;
         case 1:
         {
-            NSString *model = [NSString stringWithFormat:@"model_90%02ld",(long)index+1];
+            NSString *model = [NSString stringWithFormat:@"model_90%02ld",(long)index_local+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         case 2:
         {
-            NSString *model = [NSString stringWithFormat:@"model_80%02ld",(long)index+1];
+            NSString *model = [NSString stringWithFormat:@"model_80%02ld",(long)index_local+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         case 3:
         {
-            NSString *model = [NSString stringWithFormat:@"model_60%02ld",(long)index+1];
+            NSString *model = [NSString stringWithFormat:@"model_60%02ld",(long)index_local+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         case 4:
         {
-            NSString *model = [NSString stringWithFormat:@"model_40%02ld",(long)index+1];
+            NSString *model = [NSString stringWithFormat:@"model_40%02ld",(long)index_local+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
@@ -314,7 +315,14 @@
     }
     [self.cfgArray removeAllObjects];
     [self.sceneArray removeAllObjects];
-    self.sceneArray = [self getCfgArrayWithIndexpath:indexpath index:index];
+    self.sceneArray = [self getCfgArrayWithIndexpath:indexpath_local index:index_local];
+    if (self.sceneArray.count < 1) {
+        indexpath_local = [DataUtil defaultUtil].validIndexPath;
+        index_local = [DataUtil defaultUtil].validIndex;
+        self.sceneArray = [self getCfgArrayWithIndexpath:indexpath_local index:index_local];
+    }
+    [DataUtil defaultUtil].validIndexPath = indexpath_local;
+    [DataUtil defaultUtil].validIndex = index_local;
     //    NSLog(@"cfgDic = %@",_cfgDictionary);
     if (self.sceneArray.count < 1) {
         NSLog(@"fileNotFound");
@@ -348,7 +356,7 @@
                 }
                 self.previewView = [[GPUImageView alloc] initWithFrame: CGRectMake(0, 0, self.bounds.size.width * width, self.bounds.size.height * height)];
             }
-            
+            self.previewView.alpha = 0;
             [self.imageView addSubview:self.previewView];
         }else{
             self.previewView.hidden = YES;
@@ -401,7 +409,7 @@
             TextureModel *noiseModel = textureArray[0];
             UIImage *noiseImage = nil;
             if (![noiseModel.textureImageName isEqualToString:@"null"]) {
-                noiseImage = [self imageWithIndexpath:indexpath index:index imageName:noiseModel.textureImageName];
+                noiseImage = [self imageWithIndexpath:indexpath_local index:index_local imageName:noiseModel.textureImageName];
 //                noiseImage =  [UIImage imageNamed:noiseModel.textureImageName];
                 NSUInteger type = noiseModel.filterType;
                 self.noiseFilter = [self setFilter:self.noiseFilter withType:type];
@@ -425,7 +433,7 @@
             self.lookupFilter = [[GPUImageLookupFilter alloc] init];
             NSLog(@"lookupImageName = %@",scene.lookupImageName);
 //            self.lookupPicture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:scene.lookupImageName]];
-            UIImage *lookupImage = [self imageWithIndexpath:indexpath index:index imageName:scene
+            UIImage *lookupImage = [self imageWithIndexpath:indexpath_local index:index_local imageName:scene
                                     .lookupImageName];
             if (lookupImage) {
                 self.lookupPicture = [[GPUImagePicture alloc] initWithImage:lookupImage];
@@ -463,7 +471,7 @@
                 GPUImagePicture *texture = nil;
                 if (![frameModel.textureImageName isEqualToString:@"null"]) {
 //                    textureImage =  [UIImage imageNamed:frameModel.textureImageName];
-                    textureImage = [self imageWithIndexpath:indexpath index:index imageName:frameModel.textureImageName];
+                    textureImage = [self imageWithIndexpath:indexpath_local index:index_local imageName:frameModel.textureImageName];
                     NSUInteger type = frameModel.filterType;
                     NSLog(@"%lu",frameModel.filterType);
                     filter = [self setFilter:filter withType:type];

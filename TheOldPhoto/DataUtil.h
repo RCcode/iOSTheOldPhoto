@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UIImage *fullImage;
 @property (nonatomic, assign) NSInteger downloadingIndex;
 @property (nonatomic, strong) NSIndexPath *downloadingIndexpath;
+@property (nonatomic, strong) NSIndexPath *validIndexPath;
+@property (nonatomic, assign) NSInteger validIndex;
 
 + (DataUtil *)defaultUtil;
 

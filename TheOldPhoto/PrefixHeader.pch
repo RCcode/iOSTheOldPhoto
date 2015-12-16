@@ -42,6 +42,8 @@
 #define APPLE_ID @"1060473978"
 #define WEBVIEW_TERMS @"http://privacy.rcplatformhk.com/policy/timephotostudio_termsofservice.html"
 #define WEBVIEW_PRIVACY @"http://privacy.rcplatformhk.com/policy/timephotostudio_privacy.html"
+
+#define MORE_APPS_ID @
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #ifdef DEBUG

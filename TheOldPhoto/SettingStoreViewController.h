@@ -10,4 +10,5 @@
 
 @interface SettingStoreViewController : UIViewController
 @property (nonatomic, assign) BOOL isPush;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end

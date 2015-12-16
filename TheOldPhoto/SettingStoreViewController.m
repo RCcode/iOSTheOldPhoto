@@ -29,7 +29,11 @@
     self.all = @"Oldphoto_all";
     self.iapArray = @[k1980sPack,k1960sPack,k1940sPack,kUnknowPack];
     self.view.backgroundColor = colorWithHexString(@"#f6f6f6");
-    self.array = @[@"store_80.jpg",@"store_60.jpg",@"store_40.jpg",@"store_un.jpg"];
+    if (iPhone4()) {
+        self.array = @[@"store_80_4s.jpg",@"store_60_4s.jpg",@"store_40_4s.jpg",@"store_un_4s.jpg"];
+    }else{
+        self.array = @[@"store_80.jpg",@"store_60.jpg",@"store_40.jpg",@"store_un.jpg"];
+    }
     self.yearArray = @[@"store_1980s",@"store_1960s",@"store_1940s",@"store_unknow"];
     [self initView];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -99,28 +103,40 @@
 
 - (void)initView
 {
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowHeight() - setH(79) - 44)];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowHeight() - 49 - 44)];
     self.scrollView.contentSize = CGSizeMake(4 * windowWidth(), 1);
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(setW(127), setH(445), setW(100), setH(20))];
+    if (iPhone4()) {
+        self.pageControl.frame = CGRectMake(setW(127), setH(375), setW(100), setH(20));
+    }
     self.pageControl.center = CGPointMake(windowWidth() / 2, self.pageControl.center.y);
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
     [self.view addSubview:self.scrollView];
     for (int i = 0; i < 4 ; i ++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(windowWidth() * i, 0, windowWidth(), setH(354))];
+        if (iPhone4()) {
+            imageView.frame = CGRectMake(windowWidth() * i, 0, windowWidth(), setH(315));
+
+        }
         imageView.image = [UIImage imageNamed:self.array[i]];
         [self.scrollView addSubview:imageView];
         UIImageView *yearView = [[UIImageView alloc] initWithFrame:CGRectMake(0, imageView.frame.origin.y + imageView.frame.size.height , 157, 15)];
         yearView.center = CGPointMake(i * windowWidth() + windowWidth() / 2, yearView.center.y + 20);
-        [self.scrollView addSubview:yearView];
+        if (iPhone4()) {
+            yearView.center = CGPointMake(i * windowWidth() + windowWidth() / 2, yearView.center.y - 20);
+        }
         yearView.image =  [UIImage imageNamed:self.yearArray[i]];
+        NSLog(@"year = %@",NSStringFromCGSize(yearView.image.size));
+        [self.scrollView addSubview:yearView];
     }
     self.pageControl.numberOfPages = 4;
-    self.pageControl.currentPage = 0;
+    self.pageControl.currentPage = self.currentIndex;
     self.pageControl.currentPageIndicatorTintColor = colorWithHexString(@"#797979");
     self.pageControl.pageIndicatorTintColor = colorWithHexString(@"#d2d2d2");
     [self.view addSubview:self.pageControl];
+    [self.scrollView setContentOffset:CGPointMake(windowWidth() * self.currentIndex, 1)];
     
     self.bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, windowHeight() - setH(79), windowWidth(), setH(79))];
     self.bottomBar.backgroundColor = colorWithHexString(@"#1b1811");

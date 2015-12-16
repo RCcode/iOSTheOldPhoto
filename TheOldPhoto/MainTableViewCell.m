@@ -89,6 +89,10 @@
 //    [self.leftBtn setTitle:@"Album" forState:UIControlStateNormal];
     [self.leftBtn setFrame:CGRectMake(setW(39), frame.origin.y + frame.size.height + setH(90), 49, 60)];
 
+    if (iPhone4()) {
+        [self.leftBtn setFrame:CGRectMake(setW(39), frame.origin.y + frame.size.height + setH(35), 49, 60)];
+    }
+    
     self.leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
     self.leftLabel.center = CGPointMake(self.leftBtn.center.x, self.leftBtn.center.y + 25 + 12);
     [self.leftLabel setText:LocalizedString(@"main_gallery", nil)];
@@ -97,7 +101,7 @@
     self.leftLabel.adjustsFontSizeToFitWidth = YES;
     self.leftLabel.minimumScaleFactor = 0.5;
 //    if (isChinese()) {
-        self.leftLabel.font = [UIFont systemFontOfSize:16];
+        self.leftLabel.font = [UIFont systemFontOfSize:15];
 //    }
     
     self.middleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -112,8 +116,9 @@
     self.middleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.middleLabel];
 //    if (isChinese()) {
-        self.middleLabel.font = [UIFont systemFontOfSize:16];
+        self.middleLabel.font = [UIFont systemFontOfSize:15];
 //    }
+
     
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.rightBtn setTitle:@"Share" forState:UIControlStateNormal];
@@ -127,7 +132,7 @@
     self.rightLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.rightLabel];
 //    if (isChinese()) {
-        self.rightLabel.font = [UIFont systemFontOfSize:16];
+        self.rightLabel.font = [UIFont systemFontOfSize:15];
 //    }
     
     [self.contentView addSubview:self.leftBtn];
