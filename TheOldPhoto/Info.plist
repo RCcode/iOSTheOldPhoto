@@ -18,10 +18,40 @@
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.rcplatform.iOSOldPhoto|OldPhoto</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.rcplatform.iOSOldPhoto|OldPhoto</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.0</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>itms-apps</string>
+		<string>RCBestMe</string>
+		<string>MirrorApp</string>
+		<string>RCFontAPP</string>
+		<string>RCFilterGrid</string>
+		<string>RCIdeavid</string>
+		<string>RCIOSVenusApp</string>
+		<string>RCPhotoGridAPP</string>
+		<string>RCFIlterEditorApp</string>
+		<string>RCViddo</string>
+		<string>RCGetlikes</string>
+		<string>RCSaveRepost</string>
+		<string>rcApp</string>
+	</array>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
@@ -33,24 +63,6 @@
 	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>instagram</string>
-        <string>itms-apps</string>
-        <string>RCBestMe</string>
-        <string>MirrorApp</string>
-        <string>RCFontAPP</string>
-        <string>RCFilterGrid</string>
-        <string>RCIdeavid</string>
-        <string>RCIOSVenusApp</string>
-        <string>RCPhotoGridAPP</string>
-        <string>RCFIlterEditorApp</string>
-        <string>RCViddo</string>
-        <string>RCGetlikes</string>
-        <string>RCSaveRepost</string>
-        <string>rcApp</string>
-    </array>
-
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

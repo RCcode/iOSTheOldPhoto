@@ -1,8 +1,8 @@
 /* Localizable.strings
-  TheOldPhoto
-
-  Created by MAXToooNG on 15/11/24.
-  Copyright © 2015年 MaxToooNG. All rights reserved. */
+ TheOldPhoto
+ 
+ Created by MAXToooNG on 15/11/24.
+ Copyright © 2015年 MaxToooNG. All rights reserved. */
 
 /* 分享 */
 "main_share" = "Chia sẻ";
@@ -129,4 +129,13 @@
 
 /* 版本号 */
 "setting_version" = "Sürüm";
+
+/* 下载失败 */
+"main_download_failed" = "Tải về không thành công, xin vui lòng tải lại";
+
+/* 取消 */
+"main_cancel" = "hủy bỏ";
+
+/* 确定 */
+"main_confirm" = "xác nhận";
 

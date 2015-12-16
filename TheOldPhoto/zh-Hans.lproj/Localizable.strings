@@ -1,8 +1,8 @@
 /* Localizable.strings
-  TheOldPhoto
-
-  Created by MAXToooNG on 15/11/24.
-  Copyright © 2015年 MaxToooNG. All rights reserved. */
+ TheOldPhoto
+ 
+ Created by MAXToooNG on 15/11/24.
+ Copyright © 2015年 MaxToooNG. All rights reserved. */
 
 /* 分享 */
 "main_share" = "分享";
@@ -130,7 +130,12 @@
 /* 版本号 */
 "setting_version" = "版本号";
 
+/* 下载失败 */
 "main_download_failed" = "下载失败，请重新下载";
+
+/* 取消 */
 "main_cancel" = "取消";
 
+/* 确定 */
 "main_confirm" = "确定";
+

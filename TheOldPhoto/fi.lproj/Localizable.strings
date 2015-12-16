@@ -1,8 +1,8 @@
 /* Localizable.strings
-  TheOldPhoto
-
-  Created by MAXToooNG on 15/11/24.
-  Copyright © 2015年 MaxToooNG. All rights reserved. */
+ TheOldPhoto
+ 
+ Created by MAXToooNG on 15/11/24.
+ Copyright © 2015年 MaxToooNG. All rights reserved. */
 
 /* 分享 */
 "main_share" = "Jaa";
@@ -129,4 +129,13 @@
 
 /* 版本号 */
 "setting_version" = "Versio";
+
+/* 下载失败 */
+"main_download_failed" = "Lataus epäonnistui, lataa uudelleen";
+
+/* 取消 */
+"main_cancel" = "Peruuta";
+
+/* 确定 */
+"main_confirm" = "Vahvista";
 

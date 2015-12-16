@@ -130,8 +130,12 @@
 /* 版本号 */
 "setting_version" = "VERSION";
 
+/* 下载失败 */
 "main_download_failed" = "Download failed, please download again";
 
+/* 取消 */
 "main_cancel" = "Cancelar";
 
+/* 确定 */
 "main_confirm" = "Confirmar ";
+
