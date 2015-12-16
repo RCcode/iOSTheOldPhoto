@@ -126,7 +126,7 @@
     self.bottomBar.backgroundColor = colorWithHexString(@"#1b1811");
     [self.view addSubview:self.bottomBar];
     
-    buyOneBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buyOneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     buyOneBtn.frame = CGRectMake(0, setH(7), windowWidth() - 60, setH(30));
     buyOneBtn.center = CGPointMake(windowWidth() / 2, buyOneBtn.center.y);
     NSNumber *pur = [[NSUserDefaults standardUserDefaults] valueForKey:kAllPacks];
@@ -142,6 +142,7 @@
     buyOneBtn.layer.borderColor = colorWithHexString(@"#fdcf03").CGColor;
     buyOneBtn.layer.borderWidth = 1;
     [buyOneBtn setTitleColor:colorWithHexString(@"#fdcf03") forState:UIControlStateNormal];
+    [buyOneBtn setTitleColor:colorWithHexString(@"#4d3f07") forState:UIControlStateHighlighted];
     [buyOneBtn addTarget:self action:@selector(buyOne:) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *label;

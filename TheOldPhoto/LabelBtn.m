@@ -31,6 +31,7 @@
     self.lLabel.text = LocalizedString(@"iap_all", nil);
     self.lLabel.textColor = colorWithHexString(@"#fdcf03");
     self.lLabel.textAlignment = NSTextAlignmentRight;
+    self.lLabel.highlightedTextColor = colorWithHexString(@"#4d3f07");
     self.lLabel.adjustsFontSizeToFitWidth = YES;
     self.lLabel.minimumScaleFactor = 0.5;
     self.lLabel.font = [UIFont systemFontOfSize:15];
@@ -46,6 +47,7 @@
 
     self.rightLabel.text = [NSString stringWithFormat:@"- %@",LocalizedString(@"setting_off_50", nil)];
     self.rightLabel.textColor = colorWithHexString(@"#fa5745");
+    self.rightLabel.highlightedTextColor = colorWithHexString(@"#8a2b25");
     self.rightLabel.textAlignment = NSTextAlignmentLeft;
     self.rightLabel.adjustsFontSizeToFitWidth = YES;
     self.rightLabel.minimumScaleFactor = 0.5;
@@ -56,6 +58,22 @@
 //    [self addSubview:self.lLabel2];
     [self addSubview:self.rightLabel];
     [self addSubview:self.lineLabel];
+    [self addTarget:self action:@selector(setLabelHighlighted:) forControlEvents:UIControlEventTouchDown];
+    [self addTarget:self action:@selector(resetLabelHighlightedState:) forControlEvents:UIControlEventTouchUpInside];
+    [self addTarget:self action:@selector(resetLabelHighlightedState:) forControlEvents:UIControlEventTouchUpOutside   ];
+    [self addTarget:self action:@selector(resetLabelHighlightedState:) forControlEvents:UIControlEventTouchDragOutside   ];
+}
+
+- (void)setLabelHighlighted:(UIButton *)btn
+{
+    self.lLabel.highlighted = YES;
+    self.rightLabel.highlighted = YES;
+}
+
+- (void)resetLabelHighlightedState:(UIButton *)btn
+{
+    self.lLabel.highlighted = NO;
+    self.rightLabel.highlighted = NO;
 }
 
 - (void)setPurchasedBtnFrame:(CGRect)frame

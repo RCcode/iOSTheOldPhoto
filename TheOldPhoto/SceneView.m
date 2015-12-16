@@ -98,8 +98,8 @@
 //    for (int i = 1; i < 8; i++) {
 //        [arr addObject:[NSString stringWithFormat:@"scene_%d",i]];
 //    }
-    NSString *folderName = [NSString stringWithFormat:@"scene%ld_%ld",indexPath.row,index];
-    NSString *fileName = [NSString stringWithFormat:@"FinalScene%ld_%ld",indexPath.row, index];
+    NSString *folderName = [NSString stringWithFormat:@"scene%ld_%ld",(long)indexPath.row,(long)index];
+    NSString *fileName = [NSString stringWithFormat:@"FinalScene%ld_%ld",(long)indexPath.row, (long)index];
 //    for (NSString *fileName in arr) {
           NSString *pathString = [[NSBundle mainBundle] pathForResource:fileName ofType:@"data"];
         if (pathString != nil)
@@ -270,6 +270,9 @@
 
 - (void)initFilterWithIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index oriImage:(UIImage *)image
 {
+    if (!image) {
+        return;
+    }
     switch (indexpath.row) {
         case 0:
         {
@@ -278,39 +281,37 @@
             break;
         case 1:
         {
-            NSString *model = [NSString stringWithFormat:@"model_90%02ld",index+1];
+            NSString *model = [NSString stringWithFormat:@"model_90%02ld",(long)index+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         case 2:
         {
-            NSString *model = [NSString stringWithFormat:@"model_80%02ld",index+1];
+            NSString *model = [NSString stringWithFormat:@"model_80%02ld",(long)index+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         case 3:
         {
-            NSString *model = [NSString stringWithFormat:@"model_60%02ld",index+1];
+            NSString *model = [NSString stringWithFormat:@"model_60%02ld",(long)index+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         case 4:
         {
-            NSString *model = [NSString stringWithFormat:@"model_40%02ld",index+1];
+            NSString *model = [NSString stringWithFormat:@"model_40%02ld",(long)index+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         case 5:
         {
-            NSString *model = [NSString stringWithFormat:@"model_un%02ld",index+1];
+            NSString *model = [NSString stringWithFormat:@"model_un%02ld",(long)index+1];
             [MobClick event:kModelEvent label:model];
         }
             break;
         default:
             break;
     }
-//    self.previewView = nil;
-//    [self.previewView removeFromSuperview];
     [self.cfgArray removeAllObjects];
     [self.sceneArray removeAllObjects];
     self.sceneArray = [self getCfgArrayWithIndexpath:indexpath index:index];
@@ -330,7 +331,6 @@
         self.screenTexture = nil;
         self.lookupPicture = nil;
         [self.acvFilter removeAllTargets];
-//        NSLog(@"type = %lu",type);
         SceneModel *scene = self.cfgArray.firstObject;
         if (!self.previewView) {
             if (scene.frameWidth > 5 && scene.frameHeight >5) {
@@ -377,21 +377,11 @@
         self.previewView.transform = CGAffineTransformRotate(self.previewView.transform, scene.frameAngle * M_PI / 180 );
         
         NSString *backImageName = scene.backgroundImageName;
-//        self.imageView.backgroundColor = [UIColor whiteColor];
         if (![backImageName isEqualToString:@"null"]) {
             UIImage *image = [self imageWithIndexpath:indexpath index:index imageName:backImageName];
-//            if (image) {
             self.imageView.image = image;
-//            [self.previewView.layer setShadowOpacity:0];
-//            }
         }else{
-//            GPUImagePicture *ori = [[GPUImagePicture alloc] initWithImage:image];
-//            GPUImageiOSBlurFilter *blur = [[GPUImageiOSBlurFilter alloc] init];
-//            [blur setBlurRadiusInPixels:6];
             self.imageView.image = nil;
-//            self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-//            [self.previewView.layer setShadowRadius:3];
-//            [self.previewView.layer setShadowOpacity:1];
         }
  
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -402,7 +392,9 @@
             //                                        * scene.imageHeight / kSceneWidth);
             NSLog(@"self.preview.frame = %@",NSStringFromCGRect(self.previewView.frame));
             self.previewView.center = CGPointMake(scene.frameCenter.x * self.imageView.frame.size.width, scene.frameCenter.y * self.imageView.frame.size.height);
-            self.oriImage = [[GPUImagePicture alloc] initWithImage:image];
+            if (image) {
+                self.oriImage = [[GPUImagePicture alloc] initWithImage:image];
+            }
             
             NSArray *textureArray = scene.textureConfigArray;
             //noise filter
@@ -433,7 +425,11 @@
             self.lookupFilter = [[GPUImageLookupFilter alloc] init];
             NSLog(@"lookupImageName = %@",scene.lookupImageName);
 //            self.lookupPicture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:scene.lookupImageName]];
-            self.lookupPicture = [[GPUImagePicture alloc] initWithImage:[self imageWithIndexpath:indexpath index:index imageName:scene.lookupImageName]];
+            UIImage *lookupImage = [self imageWithIndexpath:indexpath index:index imageName:scene
+                                    .lookupImageName];
+            if (lookupImage) {
+                self.lookupPicture = [[GPUImagePicture alloc] initWithImage:lookupImage];
+            }
             [self.noiseFilter addTarget:self.lookupFilter atTextureLocation:0];
             [self.lookupPicture addTarget:self.lookupFilter atTextureLocation:1];
             [self.lookupPicture processImage];
@@ -538,10 +534,10 @@
 {
     UIImage *image = [UIImage imageNamed:imageName];
     if (!image){
-        NSString *filePath = [NSHomeDirectory() stringByAppendingString:[NSString stringWithFormat:@"/Documents/Scene/scene%ld_%ld/%@",indexpath.row,index,imageName]];
+        NSString *filePath = [NSHomeDirectory() stringByAppendingString:[NSString stringWithFormat:@"/Documents/Scene/scene%ld_%ld/%@",(long)indexpath.row,(long)index,imageName]];
         image = [UIImage imageWithContentsOfFile:filePath];
     }
-    return image;
+    return image?image:[UIImage imageNamed:@"lookup.png"];
 }
 
 - (void)resetPreviewFrame

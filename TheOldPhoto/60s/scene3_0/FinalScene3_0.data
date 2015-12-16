@@ -2,10 +2,10 @@
     "scene_frame": {
         "image_center": [
             0.5,
-            0.5
+            0.46
         ],
-        "imageWidth": 1149,
-        "imageHeight": 1532,
+        "imageWidth": 1006,
+        "imageHeight": 1341,
         "frame_center": [
             0.429,
             0.510
