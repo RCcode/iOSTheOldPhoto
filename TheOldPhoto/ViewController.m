@@ -400,22 +400,29 @@
 - (void)shareImage:(UIButton *)btn
 {
     [MobClick event:kEditEvent label:@"edit_share"];
+    showMBProgressHUD(nil, YES);
     NSLog(@"share");
     CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
     self.currentIndexPath = indexPath;
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
-    UIImage *result = [cell getResultImage];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *result = [cell getResultImage];
+        NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:PIC_SAVE_PATH];
+        unlink([path UTF8String]);
+        [UIImageJPEGRepresentation(result,0.7) writeToFile:path atomically:YES];
+        NSURL *fileURL = [NSURL fileURLWithPath:path];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _documetnInteractionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+            
+            NSLog(@"document = %@",_documetnInteractionController.icons);
+            _documetnInteractionController.delegate = self;
+            hideMBProgressHUD();
+            [_documetnInteractionController presentOptionsMenuFromRect:CGRectMake(0, 0, 0, 0) inView:self.view animated:YES];
+        });
+        
+    });
     
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:PIC_SAVE_PATH];
-    unlink([path UTF8String]);
-    [UIImageJPEGRepresentation(result,0.7) writeToFile:path atomically:YES];
-    NSURL *fileURL = [NSURL fileURLWithPath:path];
-    _documetnInteractionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
-    
-    NSLog(@"document = %@",_documetnInteractionController.icons);
-    _documetnInteractionController.delegate = self;
-    [_documetnInteractionController presentOptionsMenuFromRect:CGRectMake(0, 0, 0, 0) inView:self.view animated:YES];
     
 }
 
