@@ -56,7 +56,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, windowWidth(), 44 * self.dataArray.count)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-
+    
     UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, self.titleView.frame.size.height, windowWidth(), 1)];
     line.backgroundColor = colorWithHexString(@"#b2b2b2");
     line.alpha = 0.3;
@@ -68,7 +68,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -95,7 +95,7 @@
         case 1:
         {
             //评分
-             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreScoreURL]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreScoreURL]];
         }
             break;
         case 2:
@@ -105,11 +105,11 @@
             CATransition *animation = [CATransition animation];
             animation.duration = 0.3;
             animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-//            animation.type = @"rippleEffect";
+            //            animation.type = @"rippleEffect";
             animation.type = kCATransitionMoveIn;
             animation.subtype = kCATransitionFromRight;
             [self.window.layer addAnimation:animation forKey:nil];
-//            [self presentModalViewController:myNextViewController animated:NO completion:nil];
+            //            [self presentModalViewController:myNextViewController animated:NO completion:nil];
             [self.target presentViewController:about animated:NO completion:nil];
         }
             break;
@@ -134,7 +134,7 @@
             
             //本地语言
             NSString *language = [[NSLocale preferredLanguages] firstObject];
-
+            
             //            NSString *diveceInfo = @"app版本号 手机型号 手机系统版本 语言";
             NSString *diveceInfo = [NSString stringWithFormat:@"%@, %@, %@ %@, %@", app_Version, deviceName, deviceSystemName, deviceSystemVer, language];
             
@@ -154,7 +154,7 @@
             //使用条款
             HelpViewController *hvc = [[HelpViewController alloc] init];
             hvc.type = kWebViewTerms;
-//            [self.navigationController pushViewController:hvc animated:YES];
+            //            [self.navigationController pushViewController:hvc animated:YES];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:hvc];
             [self.target presentViewController:nav animated:YES completion:nil];
         }
@@ -165,7 +165,7 @@
             HelpViewController *hvc = [[HelpViewController alloc] init];
             hvc.type = kWebViewPrivacy;
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:hvc];
-//            [self.navigationController pushViewController:hvc animated:YES];
+            //            [self.navigationController pushViewController:hvc animated:YES];
             [self.target presentViewController:nav animated:YES completion:nil];
         }
             break;
@@ -194,6 +194,7 @@
     cell.textLabel.text = title;
     UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 44, 100)];
     label.textAlignment = NSTextAlignmentRight;
+    label.font = [UIFont systemFontOfSize:16];
     label.textColor = [UIColor lightGrayColor];
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     label.text = [infoDictionary objectForKey:@"CFBundleShortVersionString"];

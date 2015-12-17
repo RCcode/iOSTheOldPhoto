@@ -165,7 +165,7 @@
                 //                NSArray *purchases = model.elements;
                 //                SKPaymentTransaction *paymentTransaction = purchases[indexPath.row];
                 NSString *title = paymentTransaction.payment.productIdentifier;
-                
+                [self.tableView reloadData];
                 [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:title];
             }
             
@@ -478,7 +478,13 @@
     self.currentIndexPath = indexPath;
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
     //    if (cell.isCurrentModel) {
-    self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
+    CropStyle style = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
+    if (style == CropStyleOriginal) {
+        [cell setButtonAnimation];
+        return;
+    }else{
+        self.tempStyle = style;
+    }
     //    }else{
     //        self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
     //    }
@@ -777,17 +783,9 @@
         BOOL ret =  [fileManager removeItemAtPath:self.finalFileName error:nil];
         NSLog(@"ret = %d",ret);
         [[[UIAlertView alloc] initWithTitle:nil message:LocalizedString(@"main_download_failed", nil) delegate:nil cancelButtonTitle:LocalizedString(@"main_confirm", nil) otherButtonTitles:nil, nil] show];
-        //        self.asProgressView.hidden = YES;
-        //        self.downloadView.hidden = NO;
-        //        self.isDownload = NO;
-        //        self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
-        //        self.completeBtn.hidden = YES;
         
-        //        return ;
     }
     hideMBProgressHUD();
-    
-    
     [DataUtil defaultUtil].downloadingIndexpath = nil;
     [DataUtil defaultUtil].downloadingIndex = HUGE;
 }

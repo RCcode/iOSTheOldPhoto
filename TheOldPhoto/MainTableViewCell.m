@@ -35,7 +35,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier target:(id)target leftSelector:(SEL)lSelector middleSelector:(SEL)mSelector rightSelector:(SEL)rSelector downloadSelector:(SEL)downloadSelector buySelector:(SEL)buySelector
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-         self.iapArray = @[@"nowPack",@"1990packs",k1980sPack,k1960sPack,k1940sPack,kUnknowPack];
+        self.iapArray = @[@"nowPack",@"1990packs",k1980sPack,k1960sPack,k1940sPack,kUnknowPack];
         [self initView];
         [self setTarget:target leftSeletor:lSelector middleSelector:mSelector rightSeletor:rSelector downloadSelector:downloadSelector buySelector:buySelector];
     }
@@ -55,11 +55,11 @@
     self.coverView.image = [UIImage imageNamed:@"classify_shadow"];
     [self.contentView addSubview:self.coverView];
     self.displayView = [[SceneView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowWidth())];
-//    self.displayView.backgroundColor = [UIColor brownColor];
+    //    self.displayView.backgroundColor = [UIColor brownColor];
     [self addSubview:self.displayView];
     
     self.titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, frame.origin.y + frame.size.height + 11, windowWidth(), 12)];
-//    self.titleImageView.backgroundColor = [UIColor cyanColor];
+    //    self.titleImageView.backgroundColor = [UIColor cyanColor];
     self.titleImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:self.titleImageView];
     
@@ -73,9 +73,9 @@
     [self.downloadBtn setImage:[UIImage imageNamed:@"classify_unlock_pressed"] forState:UIControlStateHighlighted];
     [self.contentView addSubview:self.downloadBtn];
     self.downloadBtn.alpha = 0;
-//    self.progressView = [[UIProgressView alloc] initWithFrame:self.downloadBtn.frame];
-//    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault];
-//    [self.contentView addSubview:self.progressView];
+    //    self.progressView = [[UIProgressView alloc] initWithFrame:self.downloadBtn.frame];
+    //    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault];
+    //    [self.contentView addSubview:self.progressView];
     
     self.buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.buyBtn.frame = self.downloadBtn.frame;
@@ -86,9 +86,9 @@
     
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.leftBtn setTitle:@"Album" forState:UIControlStateNormal];
+    //    [self.leftBtn setTitle:@"Album" forState:UIControlStateNormal];
     [self.leftBtn setFrame:CGRectMake(setW(39), frame.origin.y + frame.size.height + setH(90), 49, 60)];
-
+    
     if (iPhone4()) {
         [self.leftBtn setFrame:CGRectMake(setW(39), frame.origin.y + frame.size.height + setH(35), 49, 60)];
     }
@@ -100,14 +100,14 @@
     [self.contentView addSubview:self.leftLabel];
     self.leftLabel.adjustsFontSizeToFitWidth = YES;
     self.leftLabel.minimumScaleFactor = 0.5;
-//    if (isChinese()) {
-        self.leftLabel.font = [UIFont systemFontOfSize:15];
-//    }
+    //    if (isChinese()) {
+    self.leftLabel.font = [UIFont systemFontOfSize:15];
+    //    }
     
     self.middleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.middleBtn setTitle:@"Camera" forState:UIControlStateNormal];
+    //    [self.middleBtn setTitle:@"Camera" forState:UIControlStateNormal];
     [self.middleBtn setFrame:CGRectMake(width / 2 - self.leftBtn.frame.size.width / 2, self.leftBtn.frame.origin.y, 49, 60)];
-
+    
     self.middleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
     self.middleLabel.center = CGPointMake(self.middleBtn.center.x, self.middleBtn.center.y + 25 + 12);
     self.middleLabel.adjustsFontSizeToFitWidth = YES;
@@ -115,15 +115,15 @@
     [self.middleLabel setText:LocalizedString(@"main_camera", nil)];
     self.middleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.middleLabel];
-//    if (isChinese()) {
-        self.middleLabel.font = [UIFont systemFontOfSize:15];
-//    }
-
+    //    if (isChinese()) {
+    self.middleLabel.font = [UIFont systemFontOfSize:15];
+    //    }
+    
     
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.rightBtn setTitle:@"Share" forState:UIControlStateNormal];
+    //    [self.rightBtn setTitle:@"Share" forState:UIControlStateNormal];
     [self.rightBtn setFrame:CGRectMake(width - self.leftBtn.frame.size.width - setW(38) , self.leftBtn.frame.origin.y, 49, 60)];
-
+    
     self.rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
     self.rightLabel.center = CGPointMake(self.rightBtn.center.x, self.rightBtn.center.y + 25 + 12);
     self.rightLabel.adjustsFontSizeToFitWidth = YES;
@@ -131,9 +131,9 @@
     [self.rightLabel setText:LocalizedString(@"main_share", nil)];
     self.rightLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.rightLabel];
-//    if (isChinese()) {
-        self.rightLabel.font = [UIFont systemFontOfSize:15];
-//    }
+    //    if (isChinese()) {
+    self.rightLabel.font = [UIFont systemFontOfSize:15];
+    //    }
     
     [self.contentView addSubview:self.leftBtn];
     [self.contentView addSubview:self.middleBtn];
@@ -158,15 +158,15 @@
 {
     NSLog(@"array.count = %lu",(unsigned long)array.count);
     if (self.coverFlowView != nil) {
-         [self.coverFlowView removeObserver:self forKeyPath:@"currentRenderingImageIndex"];
+        [self.coverFlowView removeObserver:self forKeyPath:@"currentRenderingImageIndex"];
     }
     [self.coverFlowView removeFromSuperview];
     self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:setW(0.5) middleImageScale:setW(0.5) target:target selector:seletor];
     if (self.coverFlowView != nil) {
-//
+        //
         [self.coverFlowView addObserver:self forKeyPath:@"currentRenderingImageIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     }
-   
+    
     self.coverFlowView.backgroundColor = [UIColor clearColor];
     self.coverFlowView.layer.masksToBounds = YES;
     //    self.mainImageView = [[UIImageView alloc] initWithFrame:self.scrollView.bounds];
@@ -183,7 +183,7 @@
     [self.displayView initFilterWithIndexPath:indexpath index:index oriImage:image];
     [[DataUtil defaultUtil].indexCfgArray removeObjectAtIndex:indexpath.row];
     [[DataUtil defaultUtil].indexCfgArray insertObject:[NSNumber numberWithInteger:index] atIndex:indexpath.row];
-//    [self.displayView initFilterWithType:type oriImage:displayImage];
+    //    [self.displayView initFilterWithType:type oriImage:displayImage];
 }
 
 - (void)setDisplayImage:(UIImage *)image
@@ -217,8 +217,8 @@
 {
     self.categoryName = self.iapArray[indexpath.row];
     self.indexPath = indexpath;
-        return [self.displayView cropStyleWithIndexPath:indexpath index:index];
-//    return [self.displayView isWidthLongerThanHeight:type];
+    return [self.displayView cropStyleWithIndexPath:indexpath index:index];
+    //    return [self.displayView isWidthLongerThanHeight:type];
 }
 
 - (BOOL)isCurrentModel
@@ -249,14 +249,14 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"currentRenderingImageIndex"]) {
-           NSNumber *index = [self.coverFlowView valueForKey:keyPath];
+        NSNumber *index = [self.coverFlowView valueForKey:keyPath];
         NSNumber *purAll = [[NSUserDefaults standardUserDefaults] objectForKey:kAllPacks];
         NSNumber *pur = [[NSUserDefaults standardUserDefaults] objectForKey:self.categoryName];
         if (self.indexPath.row <= 2) {
             self.downloadBtn.frame = CGRectMake(windowWidth() - 70 - 50, windowWidth() - 70 - 15, 36, 36);
             self.buyBtn.frame = CGRectMake(windowWidth() - 70 - 50, windowWidth() - 70 - 15, 36, 36);
         }else{
-             self.downloadBtn.frame = CGRectMake(windowWidth() - 70 - 15, windowWidth() - 70 - 15, 36, 36);
+            self.downloadBtn.frame = CGRectMake(windowWidth() - 70 - 15, windowWidth() - 70 - 15, 36, 36);
             self.buyBtn.frame = CGRectMake(windowWidth() - 70 - 15, windowWidth() - 70 - 15, 36, 36);
         }
         
@@ -290,19 +290,19 @@
                 self.coverFlowView.tapGestureRecognizer.enabled = YES;
             }
         }
-//        if ([DataUtil defaultUtil].downloadingIndexpath.row == self.indexPath.row && [DataUtil defaultUtil].downloadingIndex == index.integerValue) {
-//            if (self.downloadBtn.alpha == 1) {
-//                self.progressView.alpha = 1;
-//            }else{
-//                self.progressView.alpha = 0;
-//            }
-//        }else{
-//            if (self.downloadBtn.alpha == 1) {
-//                self.downloadBtn.enabled = NO;
-//            }else{
-//                self.downloadBtn.enabled = YES;
-//            }
-//        }
+        //        if ([DataUtil defaultUtil].downloadingIndexpath.row == self.indexPath.row && [DataUtil defaultUtil].downloadingIndex == index.integerValue) {
+        //            if (self.downloadBtn.alpha == 1) {
+        //                self.progressView.alpha = 1;
+        //            }else{
+        //                self.progressView.alpha = 0;
+        //            }
+        //        }else{
+        //            if (self.downloadBtn.alpha == 1) {
+        //                self.downloadBtn.enabled = NO;
+        //            }else{
+        //                self.downloadBtn.enabled = YES;
+        //            }
+        //        }
     }
 }
 
@@ -314,7 +314,66 @@
 
 - (void)setCoverFlowCurrentIndex:(NSInteger)index
 {
-    self.coverFlowView.currentRenderingImageIndex = index;
+    self.coverFlowView.currentRenderingImageIndex = (long)index;
+}
+
+- (void)setButtonAnimation
+{
+    CALayer *viewLayer = nil;
+    
+    
+    
+    
+    if (self.buyBtn.alpha == 1) {
+        viewLayer = self.buyBtn.layer;
+    }else{
+        if (self.downloadBtn.alpha == 1) {
+            viewLayer = self.downloadBtn.layer;
+        }
+    }
+    // 获取当前View的位置
+    
+    CGPoint position = viewLayer.position;
+    
+    // 移动的两个终点位置
+    
+    CGPoint x = CGPointMake(position.x + 10, position.y);
+    
+    CGPoint y = CGPointMake(position.x - 10, position.y);
+    
+    // 设置动画
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    
+    // 设置运动形式
+    
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    
+    // 设置开始位置
+    
+    [animation setFromValue:[NSValue valueWithCGPoint:x]];
+    
+    // 设置结束位置
+    
+    [animation setToValue:[NSValue valueWithCGPoint:y]];
+    
+    // 设置自动反转
+    
+    [animation setAutoreverses:YES];
+    
+    // 设置时间
+    
+    [animation setDuration:.06];
+    
+    // 设置次数
+    
+    [animation setRepeatCount:3];
+    
+    // 添加上动画
+    
+    [viewLayer addAnimation:animation forKey:nil];
+    
+    
 }
 
 //- (void)dealloc{

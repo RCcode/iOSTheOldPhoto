@@ -118,12 +118,12 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(windowWidth() * i, 0, windowWidth(), setH(354))];
         if (iPhone4()) {
             imageView.frame = CGRectMake(windowWidth() * i, 0, windowWidth(), setH(315));
-
+            
         }
         imageView.image = [UIImage imageNamed:self.array[i]];
         [self.scrollView addSubview:imageView];
-        UIImageView *yearView = [[UIImageView alloc] initWithFrame:CGRectMake(0, imageView.frame.origin.y + imageView.frame.size.height , 157, 15)];
-        yearView.center = CGPointMake(i * windowWidth() + windowWidth() / 2, yearView.center.y + 20);
+        UIImageView *yearView = [[UIImageView alloc] initWithFrame:CGRectMake(0, imageView.frame.origin.y + imageView.frame.size.height , 156, 15)];
+        yearView.center = CGPointMake(i * windowWidth() + windowWidth() / 2, yearView.center.y + 19);
         if (iPhone4()) {
             yearView.center = CGPointMake(i * windowWidth() + windowWidth() / 2, yearView.center.y - 20);
         }
@@ -148,7 +148,8 @@
     NSNumber *pur = [[NSUserDefaults standardUserDefaults] valueForKey:kAllPacks];
     NSNumber *pur80 = [[NSUserDefaults standardUserDefaults] valueForKey:k1980sPack];
     if (pur.boolValue || pur80.boolValue) {
-        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateNormal];
+        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateDisabled];
+        [buyOneBtn setEnabled:NO];
     }else{
         [buyOneBtn setTitle:LocalizedString(@"iap_one", nil) forState:UIControlStateNormal];
     }
@@ -157,6 +158,7 @@
     buyOneBtn.layer.cornerRadius = setH(15);
     buyOneBtn.layer.borderColor = colorWithHexString(@"#fdcf03").CGColor;
     buyOneBtn.layer.borderWidth = 1;
+    buyOneBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [buyOneBtn setTitleColor:colorWithHexString(@"#fdcf03") forState:UIControlStateNormal];
     [buyOneBtn setTitleColor:colorWithHexString(@"#4d3f07") forState:UIControlStateHighlighted];
     [buyOneBtn addTarget:self action:@selector(buyOne:) forControlEvents:UIControlEventTouchUpInside];
@@ -169,10 +171,10 @@
     LabelBtn *labelBtn = [LabelBtn buttonWithType:UIButtonTypeCustom];
     if (pur.boolValue) {
         labelBtn.hidden = YES;
-//        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateNormal];
+        //        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateNormal];
     }else{
         labelBtn.hidden = NO;
-//        [buyOneBtn setTitle:LocalizedString(@"iap_one", nil) forState:UIControlStateNormal];
+        //        [buyOneBtn setTitle:LocalizedString(@"iap_one", nil) forState:UIControlStateNormal];
     }
     labelBtn.frame = CGRectMake(0, self.bottomBar.frame.size.height - setH(12) - setH(30), windowWidth() - 60, setH(30));
     [labelBtn setTitle:nil forState:UIControlStateNormal];
@@ -185,7 +187,7 @@
 {
     NSNumber *pur = [[NSUserDefaults standardUserDefaults] valueForKey:idString];
     if (pur && pur.boolValue) {
-        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateNormal];
+        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateDisabled];
         buyOneBtn.enabled = NO;
     }else{
         [buyOneBtn setTitle:LocalizedString(@"iap_one", nil) forState:UIControlStateNormal];
@@ -222,7 +224,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     _pageControl.currentPage = scrollView.contentOffset.x / windowWidth();
-     NSNumber *pur = [[NSUserDefaults standardUserDefaults] valueForKey:kAllPacks];
+    NSNumber *pur = [[NSUserDefaults standardUserDefaults] valueForKey:kAllPacks];
     if (pur && pur.boolValue) {
         
     }else{
@@ -239,7 +241,7 @@
 {
     [super viewWillAppear:animated];
     NSString *titleName = [NSString stringWithFormat:@"·      %@      ·",LocalizedString(@"setting_store", nil)];
-//    [self.navigationController setTitle:titleName];
+    //    [self.navigationController setTitle:titleName];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 44)];
     label.textAlignment = NSTextAlignmentCenter;
     label.text = titleName;
@@ -289,13 +291,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

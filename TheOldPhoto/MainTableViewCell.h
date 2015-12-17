@@ -48,4 +48,5 @@
 - (UIImage *)getResultImage;
 - (void)updateDownloadBtnWithIndexPath:(NSIndexPath *)indexPath andIndex:(NSInteger)index;
 - (void)setCoverFlowCurrentIndex:(NSInteger)index;
+- (void)setButtonAnimation;
 @end

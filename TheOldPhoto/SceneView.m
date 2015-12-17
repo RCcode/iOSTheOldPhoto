@@ -585,21 +585,9 @@
             return CropStyleFree;
         }
     }else{
-        self.sceneArray = [self getCfgArrayWithIndexpath:[DataUtil defaultUtil].validIndexPath index:[DataUtil defaultUtil].validIndex];
-        [self parseDic:self.sceneArray];
-        if (self.cfgArray.count > 0) {
-            SceneModel *scene = self.cfgArray.firstObject;
-            //        NSLog(@"scene.width = %f  scene.height = %f",scene.frameWidth, scene.frameHeight);
-            if (scene.imageWidth > scene.imageHeight) {
-                return CropStyleSquareness3;
-            }else if (scene.imageHeight > scene.imageWidth){
-                return CropStyleSquareness4;
-            }else{
-                return CropStyleFree;
-            }
-        }
+        return CropStyleOriginal;
     }
-    return CropStyleFree;
+    return CropStyleOriginal;
 }
 
 - (UIImage *)getResultImage
