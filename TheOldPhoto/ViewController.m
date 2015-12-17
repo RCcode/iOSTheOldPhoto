@@ -615,7 +615,7 @@
 {
     CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
+    MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSInteger index = cell.coverFlowView.currentRenderingImageIndex;
     NSString *fileName = [NSString stringWithFormat:@"scene%ld_%ld",indexPath.row,index];
     
