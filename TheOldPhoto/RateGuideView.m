@@ -22,15 +22,15 @@
         self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         self.alertView = [[UIView alloc] initWithFrame:CGRectMake(setW(20), windowHeight() / 2 - setH(125) - setH(50), setW(280), setH(250))];
         [self addSubview:self.alertView];
-//        self.alertView.layer.masksToBounds = YES;
+        //        self.alertView.layer.masksToBounds = YES;
         [self.alertView.layer setCornerRadius:setW(8)];
         [self.alertView.layer setShadowColor:[UIColor lightGrayColor].CGColor];
         [self.alertView.layer setShadowOffset:CGSizeMake(0, 0)];
         [self.alertView.layer setShadowRadius:5];
         [self.alertView.layer setShadowOpacity:0.5];
-//        self.alertView.clipsToBounds = YES;
+        //        self.alertView.clipsToBounds = YES;
         [self initViews];
-//        self.userInteractionEnabled = YES;
+        //        self.userInteractionEnabled = YES;
         self.alertView.userInteractionEnabled = YES;
     }
     return self;
@@ -40,7 +40,7 @@
 {
     self.alertView.backgroundColor = [UIColor whiteColor];
     UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake((setW(280) - setW(50)) / 2, setH(9), setW(50), setW(50))];
-//    logo.center = CGPointMake(self.frame.size.width / 2, logo.center.y - 5);
+    //    logo.center = CGPointMake(self.frame.size.width / 2, logo.center.y - 5);
     logo.image = [UIImage imageNamed:@"love"];
     [self.alertView addSubview:logo];
     
@@ -76,7 +76,7 @@
     [self.leftButton setFrame:CGRectMake(0, self.alertView.bounds.size.height - setH(44), setW(140), setH(44))];
     [self.leftButton setBackgroundColor:colorWithHexString(@"#999999")];
     [self.leftButton setTitle:LocalizedString(@"title_remind", nil) forState:UIControlStateNormal];
-    [self.leftButton setTitleColor:colorWithHexString(@"#ffffff") forState:UIControlStateNormal];
+    [self.leftButton setTitleColor:colorWithHexString(@"#b2b2b2") forState:UIControlStateNormal];
     self.leftButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:setW(15)];
     self.leftButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.leftButton.titleLabel.minimumScaleFactor = 0.5f;
@@ -102,7 +102,7 @@
     maskLayerR.frame = self.rightButton.bounds;
     maskLayerR.path = maskPathR.CGPath;
     self.rightButton.layer.mask = maskLayerR;
-//    [self.rightButton addTarget:self.target action:@selector(rateNowEvent) forControlEvents:UIControlEventTouchUpInside];
+    //    [self.rightButton addTarget:self.target action:@selector(rateNowEvent) forControlEvents:UIControlEventTouchUpInside];
     [self.rightButton addTarget:self action:@selector(rateApp) forControlEvents:UIControlEventTouchUpInside];
     [self.alertView addSubview:self.rightButton];
     
@@ -130,15 +130,15 @@
 {
     [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:kRateUserDefaultKey];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreScoreURL]];
-     [self removeFromSuperview];
+    [self removeFromSuperview];
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
