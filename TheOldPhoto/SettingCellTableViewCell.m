@@ -194,7 +194,7 @@
     cell.textLabel.text = title;
     UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 44, 100)];
     label.textAlignment = NSTextAlignmentRight;
-    label.font = [UIFont systemFontOfSize:16];
+    label.font = [UIFont systemFontOfSize:15];
     label.textColor = [UIColor lightGrayColor];
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     label.text = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
