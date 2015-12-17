@@ -168,9 +168,11 @@
     
     LabelBtn *labelBtn = [LabelBtn buttonWithType:UIButtonTypeCustom];
     if (pur.boolValue) {
-        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateNormal];
+        labelBtn.hidden = YES;
+//        [buyOneBtn setTitle:LocalizedString(@"iap_purchased", nil) forState:UIControlStateNormal];
     }else{
-        [buyOneBtn setTitle:LocalizedString(@"iap_one", nil) forState:UIControlStateNormal];
+        labelBtn.hidden = NO;
+//        [buyOneBtn setTitle:LocalizedString(@"iap_one", nil) forState:UIControlStateNormal];
     }
     labelBtn.frame = CGRectMake(0, self.bottomBar.frame.size.height - setH(12) - setH(30), windowWidth() - 60, setH(30));
     [labelBtn setTitle:nil forState:UIControlStateNormal];

@@ -252,6 +252,14 @@
            NSNumber *index = [self.coverFlowView valueForKey:keyPath];
         NSNumber *purAll = [[NSUserDefaults standardUserDefaults] objectForKey:kAllPacks];
         NSNumber *pur = [[NSUserDefaults standardUserDefaults] objectForKey:self.categoryName];
+        if (self.indexPath.row <= 2) {
+            self.downloadBtn.frame = CGRectMake(windowWidth() - 70 - 50, windowWidth() - 70 - 15, 36, 36);
+            self.buyBtn.frame = CGRectMake(windowWidth() - 70 - 50, windowWidth() - 70 - 15, 36, 36);
+        }else{
+             self.downloadBtn.frame = CGRectMake(windowWidth() - 70 - 15, windowWidth() - 70 - 15, 36, 36);
+            self.buyBtn.frame = CGRectMake(windowWidth() - 70 - 15, windowWidth() - 70 - 15, 36, 36);
+        }
+        
         if (![self.categoryName isEqualToString:@"1990packs"]) {
             if ((purAll.boolValue || pur.boolValue) ) {
                 self.buyBtn.alpha = 0;
