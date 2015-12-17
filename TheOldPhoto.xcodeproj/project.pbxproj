@@ -339,7 +339,6 @@
 		C88278C61BFC73F40019BCFA /* ScreenshotBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C88278C01BFC73F40019BCFA /* ScreenshotBorderView.m */; };
 		C88278CA1BFC81430019BCFA /* UIImage+SubImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C88278C91BFC81430019BCFA /* UIImage+SubImage.m */; };
 		C88278CD1BFC81B90019BCFA /* ImageScaleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C88278CC1BFC81B90019BCFA /* ImageScaleUtil.m */; };
-		C88279941BFDD9A20019BCFA /* bc_btn_Shear_Point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C88279931BFDD9A20019BCFA /* bc_btn_Shear_Point@2x.png */; };
 		C88DB43B1C196E1E006B4E40 /* store_40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C88DB4371C196E1E006B4E40 /* store_40.jpg */; };
 		C88DB43C1C196E1E006B4E40 /* store_60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C88DB4381C196E1E006B4E40 /* store_60.jpg */; };
 		C88DB43D1C196E1E006B4E40 /* store_80.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C88DB4391C196E1E006B4E40 /* store_80.jpg */; };
@@ -845,7 +844,6 @@
 		C88278C91BFC81430019BCFA /* UIImage+SubImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SubImage.m"; sourceTree = "<group>"; };
 		C88278CB1BFC81B90019BCFA /* ImageScaleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScaleUtil.h; sourceTree = "<group>"; };
 		C88278CC1BFC81B90019BCFA /* ImageScaleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScaleUtil.m; sourceTree = "<group>"; };
-		C88279931BFDD9A20019BCFA /* bc_btn_Shear_Point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bc_btn_Shear_Point@2x.png"; sourceTree = "<group>"; };
 		C88DB4371C196E1E006B4E40 /* store_40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = store_40.jpg; sourceTree = "<group>"; };
 		C88DB4381C196E1E006B4E40 /* store_60.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = store_60.jpg; sourceTree = "<group>"; };
 		C88DB4391C196E1E006B4E40 /* store_80.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = store_80.jpg; sourceTree = "<group>"; };
@@ -1699,7 +1697,6 @@
 			isa = PBXGroup;
 			children = (
 				C88278B71BFC73F40019BCFA /* CameraApertureView.h */,
-				C88279931BFDD9A20019BCFA /* bc_btn_Shear_Point@2x.png */,
 				C88278B81BFC73F40019BCFA /* CameraApertureView.m */,
 				C88278B91BFC73F40019BCFA /* ControlBorder.h */,
 				C88278BA1BFC73F40019BCFA /* ControlBorder.m */,
@@ -2025,7 +2022,6 @@
 				C870E5DF1C1B0242000B890F /* FinalScene1_12.data in Resources */,
 				C870E60F1C1B0242000B890F /* qll_7_filter_bg.jpg in Resources */,
 				C870E7BA1C1B0350000B890F /* scene4_11.jpg in Resources */,
-				C88279941BFDD9A20019BCFA /* bc_btn_Shear_Point@2x.png in Resources */,
 				C870E60A1C1B0242000B890F /* 7_frame.png in Resources */,
 				C870E4E01C1B0242000B890F /* hl_40s_6_bg.jpg in Resources */,
 				C870E5ED1C1B0242000B890F /* xy_90s_12_texture1_multiply.jpg in Resources */,
@@ -2589,6 +2585,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: / / (3D6JY37WUK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: / / (3D6JY37WUK)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TheOldPhoto/PrefixHeader.pch";
 				INFOPLIST_FILE = TheOldPhoto/Info.plist;
