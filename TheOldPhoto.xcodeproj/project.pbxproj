@@ -190,11 +190,6 @@
 		C870E6061C1B0242000B890F /* xy_90s_lookup7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C870E3FD1C1B0242000B890F /* xy_90s_lookup7.jpg */; };
 		C870E6071C1B0242000B890F /* xy_90s_lookup8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C870E3FE1C1B0242000B890F /* xy_90s_lookup8.jpg */; };
 		C870E6081C1B0242000B890F /* xy_90s_lookup9.png in Resources */ = {isa = PBXBuildFile; fileRef = C870E3FF1C1B0242000B890F /* xy_90s_lookup9.png */; };
-		C870E6091C1B0242000B890F /* 7_filter_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C870E4021C1B0242000B890F /* 7_filter_bg.jpg */; };
-		C870E60A1C1B0242000B890F /* 7_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C870E4031C1B0242000B890F /* 7_frame.png */; };
-		C870E60B1C1B0242000B890F /* 7_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C870E4041C1B0242000B890F /* 7_photo.jpg */; };
-		C870E60C1C1B0242000B890F /* 7_zh_nomal_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C870E4051C1B0242000B890F /* 7_zh_nomal_1.png */; };
-		C870E60D1C1B0242000B890F /* 7_zh_overlay_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C870E4061C1B0242000B890F /* 7_zh_overlay_2.png */; };
 		C870E60E1C1B0242000B890F /* FinalScene5_0.data in Resources */ = {isa = PBXBuildFile; fileRef = C870E4071C1B0242000B890F /* FinalScene5_0.data */; };
 		C870E60F1C1B0242000B890F /* qll_7_filter_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C870E4081C1B0242000B890F /* qll_7_filter_bg.jpg */; };
 		C870E6101C1B0242000B890F /* qll_7_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C870E4091C1B0242000B890F /* qll_7_frame.png */; };
@@ -672,11 +667,6 @@
 		C870E3FD1C1B0242000B890F /* xy_90s_lookup7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xy_90s_lookup7.jpg; sourceTree = "<group>"; };
 		C870E3FE1C1B0242000B890F /* xy_90s_lookup8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xy_90s_lookup8.jpg; sourceTree = "<group>"; };
 		C870E3FF1C1B0242000B890F /* xy_90s_lookup9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xy_90s_lookup9.png; sourceTree = "<group>"; };
-		C870E4021C1B0242000B890F /* 7_filter_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7_filter_bg.jpg; sourceTree = "<group>"; };
-		C870E4031C1B0242000B890F /* 7_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7_frame.png; sourceTree = "<group>"; };
-		C870E4041C1B0242000B890F /* 7_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7_photo.jpg; sourceTree = "<group>"; };
-		C870E4051C1B0242000B890F /* 7_zh_nomal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7_zh_nomal_1.png; sourceTree = "<group>"; };
-		C870E4061C1B0242000B890F /* 7_zh_overlay_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7_zh_overlay_2.png; sourceTree = "<group>"; };
 		C870E4071C1B0242000B890F /* FinalScene5_0.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinalScene5_0.data; sourceTree = "<group>"; };
 		C870E4081C1B0242000B890F /* qll_7_filter_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qll_7_filter_bg.jpg; sourceTree = "<group>"; };
 		C870E4091C1B0242000B890F /* qll_7_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qll_7_frame.png; sourceTree = "<group>"; };
@@ -1512,11 +1502,6 @@
 		C870E4011C1B0242000B890F /* scene5_0 */ = {
 			isa = PBXGroup;
 			children = (
-				C870E4021C1B0242000B890F /* 7_filter_bg.jpg */,
-				C870E4031C1B0242000B890F /* 7_frame.png */,
-				C870E4041C1B0242000B890F /* 7_photo.jpg */,
-				C870E4051C1B0242000B890F /* 7_zh_nomal_1.png */,
-				C870E4061C1B0242000B890F /* 7_zh_overlay_2.png */,
 				C870E4071C1B0242000B890F /* FinalScene5_0.data */,
 				C870E4081C1B0242000B890F /* qll_7_filter_bg.jpg */,
 				C870E4091C1B0242000B890F /* qll_7_frame.png */,
@@ -2022,7 +2007,6 @@
 				C870E5DF1C1B0242000B890F /* FinalScene1_12.data in Resources */,
 				C870E60F1C1B0242000B890F /* qll_7_filter_bg.jpg in Resources */,
 				C870E7BA1C1B0350000B890F /* scene4_11.jpg in Resources */,
-				C870E60A1C1B0242000B890F /* 7_frame.png in Resources */,
 				C870E4E01C1B0242000B890F /* hl_40s_6_bg.jpg in Resources */,
 				C870E5ED1C1B0242000B890F /* xy_90s_12_texture1_multiply.jpg in Resources */,
 				C870E5D71C1B0242000B890F /* xy_80s_lookup6.png in Resources */,
@@ -2042,7 +2026,6 @@
 				C870E5D21C1B0242000B890F /* xy_80s_lookup14.png in Resources */,
 				C870E6121C1B0242000B890F /* qll_7_lookup.png in Resources */,
 				C870E7BE1C1B0350000B890F /* scene4_15.jpg in Resources */,
-				C870E60D1C1B0242000B890F /* 7_zh_overlay_2.png in Resources */,
 				C870E1B81C1AD5EE000B890F /* 40s_12.acv in Resources */,
 				C870E1C31C1AD5EE000B890F /* 40s_9.acv in Resources */,
 				C870E78B1C1B0350000B890F /* scene1_11.jpg in Resources */,
@@ -2102,13 +2085,11 @@
 				C870E6641C1B0242000B890F /* qll_5_frame_zh_screenblend_1.png in Resources */,
 				C870E5EC1C1B0242000B890F /* xy_90s_10_texture1_multiply.jpg in Resources */,
 				C870E5B71C1B0242000B890F /* xy_80s_2_texture1_multiply.jpg in Resources */,
-				C870E60C1C1B0242000B890F /* 7_zh_nomal_1.png in Resources */,
 				C870E59D1C1B0242000B890F /* FinalScene2_2.data in Resources */,
 				C870E5611C1B0242000B890F /* qll_17_lookup.png in Resources */,
 				C870E7CF1C1B0350000B890F /* scene5_14.jpg in Resources */,
 				C88278C31BFC73F40019BCFA /* ControlBorder.xib in Resources */,
 				C870E5B61C1B0242000B890F /* xy_80s_1_texture2_multiply.png in Resources */,
-				C870E6091C1B0242000B890F /* 7_filter_bg.jpg in Resources */,
 				C870E52B1C1B0242000B890F /* qll_9_lookup.png in Resources */,
 				C870E5EB1C1B0242000B890F /* FinalScene1_9.data in Resources */,
 				C861ECB31C0EE530008BAEDA /* default4_3.jpg in Resources */,
@@ -2184,7 +2165,6 @@
 				C870E7901C1B0350000B890F /* scene1_16.jpg in Resources */,
 				C870E5F11C1B0242000B890F /* xy_90s_2_texture32_normal.png in Resources */,
 				C870E55D1C1B0242000B890F /* FinalScene3_3.data in Resources */,
-				C870E60B1C1B0242000B890F /* 7_photo.jpg in Resources */,
 				C870E6591C1B0242000B890F /* qll_12_frame_zh_multiply_3.png in Resources */,
 				C870E5F81C1B0242000B890F /* xy_90s_lookup1.jpg in Resources */,
 				C870E7AA1C1B0350000B890F /* scene3_11.jpg in Resources */,
@@ -2582,8 +2562,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: / / (3D6JY37WUK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: / / (3D6JY37WUK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2597,7 +2577,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcplatform.iOSOldPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5de97733-a6a8-42ef-a441-007174f5997f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TheOldPhoto/framework\" \"$(SRCROOT)/TheOldPhoto/framework/Source\" \"$(SRCROOT)/TheOldPhoto/framework/Source/iOS\"";
 			};
@@ -2608,8 +2588,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: / / (3D6JY37WUK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: / / (3D6JY37WUK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TheOldPhoto/PrefixHeader.pch";
@@ -2622,7 +2602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcplatform.iOSOldPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5de97733-a6a8-42ef-a441-007174f5997f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TheOldPhoto/framework\" \"$(SRCROOT)/TheOldPhoto/framework/Source\" \"$(SRCROOT)/TheOldPhoto/framework/Source/iOS\"";
 			};

@@ -491,7 +491,11 @@
 
 - (void)openAlbum:(UITapGestureRecognizer *)tap
 {
+    CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    self.currentIndexPath = indexPath;
     CropStyle style = [self getCropStyleWithIndex:_currentIndexPath andIndex:(((CoverFlowView *)tap.view).currentRenderingImageIndex)];
+    NSLog(@"currentRenderingImageIndex = %d",(((CoverFlowView *)tap.view).currentRenderingImageIndex));
     //    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
     NSLog(@"self.currentCropStyle = %ld style = %ld",self.currentCropStyle,style);
     if (( style == CropStyleFree )|| (self.currentCropStyle == style) || !self.currentImage) {
@@ -568,10 +572,10 @@
 
 - (void)setScene
 {
-//    self.currentCropStyle = self.tempStyle;
-    CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    self.currentIndexPath = indexPath;
+    //    self.currentCropStyle = self.tempStyle;
+    //    CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
+    //    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    //    self.currentIndexPath = indexPath;
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
     NSLog(@"cell = %@",cell );
     NSLog(@"indexPath = %ld",self.currentIndexPath.row);
