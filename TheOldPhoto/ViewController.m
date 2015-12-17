@@ -185,7 +185,7 @@
                 NSString *title = paymentTransaction.payment.productIdentifier;
                 
                 [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:title];
-                
+                [self.tableView reloadData];
                 NSLog(@"title  =  %@",title);
             }
         }
@@ -637,7 +637,11 @@
 {
     SettingStoreViewController *store = [[SettingStoreViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:store];
-    
+    CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    if (indexPath.row >= 2) {
+        store.currentIndex = indexPath.row - 2;
+    }
     [self presentViewController:nav animated:YES completion:nil];
 }
 

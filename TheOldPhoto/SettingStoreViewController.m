@@ -136,6 +136,7 @@
     self.pageControl.currentPageIndicatorTintColor = colorWithHexString(@"#797979");
     self.pageControl.pageIndicatorTintColor = colorWithHexString(@"#d2d2d2");
     [self.view addSubview:self.pageControl];
+    
     [self.scrollView setContentOffset:CGPointMake(windowWidth() * self.currentIndex, 1)];
     
     self.bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, windowHeight() - setH(79), windowWidth(), setH(79))];
@@ -162,6 +163,8 @@
     [buyOneBtn setTitleColor:colorWithHexString(@"#fdcf03") forState:UIControlStateNormal];
     [buyOneBtn setTitleColor:colorWithHexString(@"#4d3f07") forState:UIControlStateHighlighted];
     [buyOneBtn addTarget:self action:@selector(buyOne:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self resetBtnTitleWithId:self.iapArray[_pageControl.currentPage]];
     
     UILabel *label;
     label.minimumScaleFactor = YES;
