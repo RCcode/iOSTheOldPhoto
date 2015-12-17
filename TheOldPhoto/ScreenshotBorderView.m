@@ -44,7 +44,7 @@
 - (void)setSrcImage:(UIImage *)srcImage{
     
     [self setImage:srcImage];
-    
+    self.backgroundColor = colorWithHexString(@"#f6f6f6");
     
     //初始化其它子控件
     [self setupChildViews];
@@ -54,9 +54,9 @@
 {
     [self setImage:srcImage];
     [self setupChildViews];
-//    _imageView.image = srcImage;
-//    _imageView.contentMode = UIViewContentModeScaleAspectFit;
-
+    //    _imageView.image = srcImage;
+    //    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
 }
 
 - (void)setImage:(UIImage *)image
@@ -71,11 +71,11 @@
     //             @"被用于截图的图片，尺寸不能小于100*100");
     
     CGFloat scale = [ImageScaleUtil getTheScaleForImageSize:_srcImageSize];
-//    CGFloat scale = [self getTheScaleForImageSize:_srcImageSize];
+    //    CGFloat scale = [self getTheScaleForImageSize:_srcImageSize];
     
     _srcImageSize.height = _srcImageSize.height / scale;
     _srcImageSize.width = _srcImageSize.width / scale;
-
+    
     
     CGSize size = self.frame.size;
     //等比缩放（针对大图片超出界面的情况）
@@ -127,11 +127,11 @@
 #pragma mark 初始化子控件
 - (void)setupChildViews{
     
-//    _eagleContext = [[EAGLContext alloc]initWithAPI:kEAGLRenderingAPIOpenGLES2];
-//    NSMutableDictionary *options=[[NSMutableDictionary alloc]init];
-//    [options setObject:[NSNull null] forKey:kCIContextWorkingColorSpace];
-//    [options setObject:[NSNumber numberWithBool:YES] forKey:kCIContextUseSoftwareRenderer];
-//    _ciContext = [CIContext contextWithEAGLContext:_eagleContext options:options];
+    //    _eagleContext = [[EAGLContext alloc]initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    //    NSMutableDictionary *options=[[NSMutableDictionary alloc]init];
+    //    [options setObject:[NSNull null] forKey:kCIContextWorkingColorSpace];
+    //    [options setObject:[NSNumber numberWithBool:YES] forKey:kCIContextUseSoftwareRenderer];
+    //    _ciContext = [CIContext contextWithEAGLContext:_eagleContext options:options];
     
     if(_srcImage == nil) return;
     
@@ -139,8 +139,8 @@
     if (_imageView == nil) {
         _imageView = [[UIImageView alloc] initWithFrame:(CGRect){CGPointZero, _srcImageSize}];
         [self addSubview:_imageView];
-
-     }else{
+        
+    }else{
         _imageView.frame = (CGRect){CGPointZero,_srcImageSize};
     }
     _imageView.center = self.center;
@@ -181,14 +181,14 @@
     
     CGFloat margin = 15.0f;
     _controlBorder.frame = CGRectMake(_cameraAperture.frame.origin.x - margin,
-               _cameraAperture.frame.origin.y - margin,
-               _cameraAperture.frame.size.width + margin * 2 ,
-               _cameraAperture.frame.size.height + margin * 2);
-//    controlBorder.frame = _cameraAperture.frame;
+                                      _cameraAperture.frame.origin.y - margin,
+                                      _cameraAperture.frame.size.width + margin * 2 ,
+                                      _cameraAperture.frame.size.height + margin * 2);
+    //    controlBorder.frame = _cameraAperture.frame;
     
     _cameraAperture.controlBorder = _controlBorder;
     
-
+    
     //设置遮盖背景为半透明黑色
     UIColor * background = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     _topCover.backgroundColor = background;
@@ -215,31 +215,31 @@
 
 #pragma mark 截图
 - (UIImage *)subImage{
-
+    
     //缩放比例
     CGFloat scaleX = _srcImage.size.width / _imageView.frame.size.width;
     CGFloat scaleY =  _srcImage.size.height / _imageView.frame.size.height;
     
-//    NSLog(@"scaleX = %f",scaleX);
-//    NSLog(@"scaleY = %f",scaleY);
-//    NSLog(@"_srcImage = %@",NSStringFromCGSize(_srcImage.size));
-//    NSLog(@"_imageView.frame = %@",NSStringFromCGRect(_imageView.frame));
+    //    NSLog(@"scaleX = %f",scaleX);
+    //    NSLog(@"scaleY = %f",scaleY);
+    //    NSLog(@"_srcImage = %@",NSStringFromCGSize(_srcImage.size));
+    //    NSLog(@"_imageView.frame = %@",NSStringFromCGRect(_imageView.frame));
     
     CGFloat x = _cameraAperture.frame.origin.x * scaleX;
     CGFloat y = _cameraAperture.frame.origin.y * scaleY;
     CGFloat width = _cameraAperture.frame.size.width * scaleX;
     CGFloat height = _cameraAperture.frame.size.height * scaleY;
     
-//    CIImage *inputImage = [CIImage imageWithCGImage:_srcImage.CGImage];
-//    
-//    CIFilter *saveFilter = [CIFilter filterWithName:@"CICrop"];
-//    [saveFilter setValue:inputImage forKey:kCIInputImageKey];
-//    [saveFilter setValue:[CIVector vectorWithCGRect:CGRectMake(x, y, width, height)] forKey:@"inputRectangle"];
-//    
-//    CIImage *result = [saveFilter valueForKey: kCIOutputImageKey];
-//    CGImageRef cgimage = [self.ciContext createCGImage:result fromRect:[result extent]];
-//    UIImage *returnImage = [UIImage imageWithCGImage:cgimage];
-//    CGImageRelease(cgimage);
+    //    CIImage *inputImage = [CIImage imageWithCGImage:_srcImage.CGImage];
+    //    
+    //    CIFilter *saveFilter = [CIFilter filterWithName:@"CICrop"];
+    //    [saveFilter setValue:inputImage forKey:kCIInputImageKey];
+    //    [saveFilter setValue:[CIVector vectorWithCGRect:CGRectMake(x, y, width, height)] forKey:@"inputRectangle"];
+    //    
+    //    CIImage *result = [saveFilter valueForKey: kCIOutputImageKey];
+    //    CGImageRef cgimage = [self.ciContext createCGImage:result fromRect:[result extent]];
+    //    UIImage *returnImage = [UIImage imageWithCGImage:cgimage];
+    //    CGImageRelease(cgimage);
     if (x+width > _srcImage.size.width) {
         width = _srcImage.size.width - x;
     }
@@ -248,7 +248,7 @@
     }
     return [_srcImage subImageWithRect:CGRectMake(x, y, width, height)];
     
-//    return returnImage;
+    //    return returnImage;
 }
 
 - (CGRect)subRect
@@ -320,7 +320,7 @@
     } completion:^(BOOL finished) {
         
     }];
-
+    
 }
 
 - (void)setCameraCropStyle:(CameraCropStyle)style
@@ -362,7 +362,7 @@
         {
             
             CGFloat length = 0;
-               length = self.borderRect.size.width > self.borderRect.size.height ? self.borderRect.size.height : self.borderRect.size.width;
+            length = self.borderRect.size.width > self.borderRect.size.height ? self.borderRect.size.height : self.borderRect.size.width;
             
             frame = self.borderRect;
             frame.size = CGSizeMake(length, length);
@@ -443,7 +443,7 @@
                 }
                 
             }
-
+            
             _cameraAperture.style = CropStyleSquareness3;
         }
             break;

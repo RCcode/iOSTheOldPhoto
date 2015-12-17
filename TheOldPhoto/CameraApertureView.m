@@ -25,7 +25,7 @@ typedef enum{
     
     //是否显示网格线
     BOOL _isShowReseau;
-
+    
     //边角点与边框线，用于控制尺寸
     CornerView *_rightDownBtn;
     CornerView *_rightUpBtn;
@@ -119,7 +119,7 @@ typedef enum{
     
     //初始化成员变量并设置代理
     _controlBorder.delegate = self;
-
+    
     _rightDownBtn = _controlBorder.rightDownBox;
     _rightUpBtn = _controlBorder.rightUpBox;
     _leftDownBtn = _controlBorder.leftDownBox;
@@ -265,7 +265,7 @@ typedef enum{
         }
         else
         {
-//            frame.origin.y = frame.origin.y - offset.height;
+            //            frame.origin.y = frame.origin.y - offset.height;
             frame.size = CGSizeMake(frame.size.width+offset.width,frame.size.height+offset.height);
         }
         
@@ -444,7 +444,7 @@ typedef enum{
     
     self.frame = frame;
     
-//    _controlBorder.frame = frame;
+    //    _controlBorder.frame = frame;
     CGFloat margin = 15.0f;
     _controlBorder.frame = CGRectMake(self.frame.origin.x - margin ,
                                       self.frame.origin.y - margin ,

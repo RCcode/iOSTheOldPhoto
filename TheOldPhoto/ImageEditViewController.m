@@ -7,7 +7,7 @@
 //
 
 #import "ImageEditViewController.h"
-
+#import "DataUtil.h"
 @interface ImageEditViewController ()
 
 @property (nonatomic, strong) ScreenshotBorderView *screenShotView;
@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self initCropView]; 
+    //    [self initCropView]; 
     [self initView];
     // Do any additional setup after loading the view.
 }
@@ -48,6 +48,7 @@
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.rightBtn setFrame:CGRectMake(0, 0, 44, 44)];
     if (self.style == CropStyleFree) {
+        self.style = CropStyleSquareness4;
         _isWidthlongerThanHeight = NO;
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_43_normal"] forState:UIControlStateNormal];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_43_pressed"] forState:UIControlStateHighlighted];
@@ -62,16 +63,18 @@
 - (void)changeCropStyle:(UIButton *)btn
 {
     if (_isWidthlongerThanHeight) {
+        self.style = CropStyleSquareness3;
         [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness4];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_43_normal"] forState:UIControlStateNormal];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_43_pressed"] forState:UIControlStateHighlighted];
     }else{
+        self.style = CropStyleSquareness4;
         [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness3];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_34_normal"] forState:UIControlStateNormal];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_34_pressed"] forState:UIControlStateHighlighted];
     }
     _isWidthlongerThanHeight = !_isWidthlongerThanHeight;
-
+    
 }
 
 - (void)back
@@ -109,7 +112,9 @@
 {
     UIImage *image = self.screenShotView.subImage;
     if ([self.delegate respondsToSelector:@selector(imageEditResultImage:)]) {
-        [self.delegate performSelector:@selector(imageEditResultImage:) withObject:image];
+        [DataUtil defaultUtil].fullImage = self.srcImage;
+        NSArray *cfgArray = @[image,[NSNumber numberWithInt:self.style]];
+        [self.delegate performSelector:@selector(imageEditResultImage:) withObject:cfgArray];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -119,7 +124,7 @@
     CGFloat viewW = self.view.frame.size.width;
     CGFloat viewH = self.view.frame.size.height - 44 - 44 ;
     UIView *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 44, viewW, viewH)];
-//    view.backgroundColor = [UIColor yellowColor];
+    //    view.backgroundColor = [UIColor yellowColor];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:view];
     
@@ -135,18 +140,18 @@
     }else{
         [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness4];
     }
-//    [self.screenShotView hiddenBorderView];
+    //    [self.screenShotView hiddenBorderView];
     [view addSubview:self.screenShotView];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

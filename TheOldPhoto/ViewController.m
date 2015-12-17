@@ -28,7 +28,7 @@
 @interface ViewController () <UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, ImageEditDelegate,NSURLConnectionDelegate,UIDocumentInteractionControllerDelegate>
 {
     UIDocumentInteractionController *_documetnInteractionController;
-     long long totalBytes;
+    long long totalBytes;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *titleArray;
@@ -65,8 +65,8 @@
     self.imagePicker = [[UIImagePickerController alloc] init];
     self.imagePicker.delegate = self;
     [self getInAppPurchasesList];
-//    [self showActivityAlert];
-//    self.imagePicker.allowsEditing = YES;
+    //    [self showActivityAlert];
+    //    self.imagePicker.allowsEditing = YES;
     
     //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     // Do any additional setup after loading the view, typically from a nib.
@@ -88,12 +88,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self.tableView reloadData];
+    //    [self.tableView reloadData];
 }
 
 - (void)getInAppPurchasesList
 {
-     [[SKPaymentQueue defaultQueue] addTransactionObserver:[StoreObserver sharedInstance]];
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:[StoreObserver sharedInstance]];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleProductRequestNotification:)
                                                  name:IAPProductRequestNotification
@@ -123,7 +123,7 @@
             for (SKProduct *product in model.elements) {
                 NSLog(@"product.name = %@",product.localizedDescription);
                 NSLog(@"product.id = %@",product.productIdentifier);
-//                NSLog(@"product.price = %@",product.priceLocale.localeIdentifier);
+                //                NSLog(@"product.price = %@",product.priceLocale.localeIdentifier);
                 NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
                 [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
                 [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
@@ -134,13 +134,13 @@
                 [productPrice replaceOccurrencesOfString:@" " withString:@"" options:NSBackwardsSearch range:NSMakeRange(0, formattedPrice.length)];
                 NSLog(@"%@",productPrice);
             }
-//            NSLog(@"")
+            //            NSLog(@"")
         }
         // Switch to the iOSProductsList view controller and display its view
-//        [self cycleFromViewController:self.currentViewController toViewController:self.productsList];
+        //        [self cycleFromViewController:self.currentViewController toViewController:self.productsList];
         
         // Set the data source for the Products view
-//        [self.productsList reloadUIWithData:productRequestNotification.productRequestResponse];
+        //        [self.productsList reloadUIWithData:productRequestNotification.productRequestResponse];
     }
 }
 
@@ -162,8 +162,8 @@
         case IAPRestoredSucceeded:
         {
             for (SKPaymentTransaction *paymentTransaction in [StoreObserver sharedInstance].productsRestored) {
-//                NSArray *purchases = model.elements;
-//                SKPaymentTransaction *paymentTransaction = purchases[indexPath.row];
+                //                NSArray *purchases = model.elements;
+                //                SKPaymentTransaction *paymentTransaction = purchases[indexPath.row];
                 NSString *title = paymentTransaction.payment.productIdentifier;
                 
                 [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:title];
@@ -171,11 +171,11 @@
             
             
             
-//            self.segmentedControl.selectedSegmentIndex = 1;
-//            self.restoreWasCalled = YES;
-//            
-//            [self cycleFromViewController:self.currentViewController toViewController:self.purchasesList];
-//            [self.purchasesList reloadUIWithData:[self dataSourceForPurchasesUI]];
+            //            self.segmentedControl.selectedSegmentIndex = 1;
+            //            self.restoreWasCalled = YES;
+            //            
+            //            [self cycleFromViewController:self.currentViewController toViewController:self.purchasesList];
+            //            [self.purchasesList reloadUIWithData:[self dataSourceForPurchasesUI]];
         }
             break;
         case IAPPurchaseSucceeded:
@@ -196,27 +196,27 @@
             // Notify the user that downloading is about to start when receiving a download started notification
         case IAPDownloadStarted:
         {
-//            self.hasDownloadContent = YES;
-//            [self.view addSubview:self.statusMessage];
+            //            self.hasDownloadContent = YES;
+            //            [self.view addSubview:self.statusMessage];
         }
             break;
             // Display a status message showing the download progress
         case IAPDownloadInProgress:
         {
-//            self.hasDownloadContent = YES;
-//            NSString *title = [[StoreManager sharedInstance] titleMatchingProductIdentifier:purchasesNotification.purchasedID];
-//            NSString *displayedTitle = (title.length > 0) ? title : purchasesNotification.purchasedID;
-//            self.statusMessage.text = [NSString stringWithFormat:@" Downloading %@   %.2f%%",displayedTitle, purchasesNotification.downloadProgress];
+            //            self.hasDownloadContent = YES;
+            //            NSString *title = [[StoreManager sharedInstance] titleMatchingProductIdentifier:purchasesNotification.purchasedID];
+            //            NSString *displayedTitle = (title.length > 0) ? title : purchasesNotification.purchasedID;
+            //            self.statusMessage.text = [NSString stringWithFormat:@" Downloading %@   %.2f%%",displayedTitle, purchasesNotification.downloadProgress];
         }
             break;
             // Downloading is done, remove the status message
         case IAPDownloadSucceeded:
         {
-//            self.hasDownloadContent = NO;
-//            self.statusMessage.text = @"Download complete: 100%";
-//            
-//            // Remove the message after 2 seconds
-//            [self performSelector:@selector(hideStatusMessage) withObject:nil afterDelay:2];
+            //            self.hasDownloadContent = NO;
+            //            self.statusMessage.text = @"Download complete: 100%";
+            //            
+            //            // Remove the message after 2 seconds
+            //            [self performSelector:@selector(hideStatusMessage) withObject:nil afterDelay:2];
         }
             break;
         default:
@@ -289,7 +289,7 @@
     
     self.default3_4 = [UIImage imageNamed:@"default3_4.jpg"];
     self.default4_3 = [UIImage imageNamed:@"default4_3.jpg"];
-    self.currentCropStyle = CropStyleFree;
+    self.currentCropStyle = CropStyleSquareness4;
     self.titleArray = [[NSMutableArray alloc] initWithObjects:@"home_now",@"home_90",@"home_80",@"home_60",@"home_40",@"home_un",nil];
     self.leftBtnArray = [[NSMutableArray alloc] initWithObjects:@"home_now_library",@"home_90_library",@"home_80_library",@"home_60_library",@"home_40_library",@"home_un_library", nil];
     self.middleBtnArray = [[NSMutableArray alloc] initWithObjects:@"home_now_camera",@"home_90_camera",@"home_80_camera",@"home_60_camera",@"home_40_camera",@"home_un_camera", nil];
@@ -332,7 +332,7 @@
     NSNumber *indexNum = [DataUtil defaultUtil].indexCfgArray[indexPath.row];
     NSInteger index = indexNum.integerValue;
     CropStyle style = [cell cropStyleWithIndexpath:indexPath index:index];
-
+    
     if (self.currentImage) {
         if ([DataUtil defaultUtil].is3_4) {
             if (style == CropStyleSquareness3) {
@@ -344,21 +344,21 @@
             }
         }
         [cell setDisplayImage:self.currentImage withIndexPath:indexPath index:index];
-//        [cell setDisplayImage:self.currentImage withSceneType:indexPath.row];
+        //        [cell setDisplayImage:self.currentImage withSceneType:indexPath.row];
     }else{
         if ( style == CropStyleSquareness3) {
             [DataUtil defaultUtil].is3_4 = NO;
         }else if (style == CropStyleSquareness4){
             [DataUtil defaultUtil].is3_4 = YES;
         }
-
+        
         if ([DataUtil defaultUtil].is3_4) {
             [cell setDisplayImage:self.default3_4 withIndexPath:indexPath index:index];
         }else{
             [cell setDisplayImage:self.default4_3 withIndexPath:indexPath index:index];
         }
-//        cell setDisplayImage
-//        [cell setDisplayImage:[UIImage imageNamed:pics.firstObject]];
+        //        cell setDisplayImage
+        //        [cell setDisplayImage:[UIImage imageNamed:pics.firstObject]];
     }
     [cell setCoverFlowCurrentIndex:index];
     [cell.arrow setAnimation];
@@ -429,7 +429,7 @@
 - (void)documentInteractionControllerWillPresentOptionsMenu:(UIDocumentInteractionController *)controller
 {
     NSLog(@"OPEN");
-
+    
 }
 
 - (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller
@@ -451,7 +451,7 @@
         }
         [[NSUserDefaults standardUserDefaults] setObject:useTimes forKey:kUseTimesKey];
     }
-   
+    
     NSLog(@"DISMISS");
 }
 
@@ -477,12 +477,11 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
     self.currentIndexPath = indexPath;
     MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
-    if (cell.isCurrentModel) {
-        self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
-    }else{
-        self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
-//        self.currentCropStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
-    }
+    //    if (cell.isCurrentModel) {
+    self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
+    //    }else{
+    //        self.tempStyle = [cell cropStyleWithIndexpath:self.currentIndexPath index:cell.coverFlowView.currentRenderingImageIndex];
+    //    }
     self.imagePicker.sourceType = type;
     [self presentViewController:self.imagePicker animated:YES completion:^{
         
@@ -493,15 +492,15 @@
 - (void)openAlbum:(UITapGestureRecognizer *)tap
 {
     CropStyle style = [self getCropStyleWithIndex:_currentIndexPath andIndex:(((CoverFlowView *)tap.view).currentRenderingImageIndex)];
-//    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
+    //    NSInteger index = ((CoverFlowView *)tap.view).currentRenderingImageIndex;
     NSLog(@"self.currentCropStyle = %ld style = %ld",self.currentCropStyle,style);
-    if (( style == CropStyleFree )|| (self.currentCropStyle == style && self.currentCropStyle != CropStyleFree ) || !self.currentImage) {
+    if (( style == CropStyleFree )|| (self.currentCropStyle == style) || !self.currentImage) {
         [self setScene];
     }else{
         [self resubImageWithStyle:style];
-//        [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
+        //        [self presentToImagePickerWithType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
-
+    
 }
 
 - (void)resubImageWithStyle:(CropStyle)style
@@ -509,18 +508,15 @@
     ImageEditViewController *editVC = [[ImageEditViewController alloc] init];
     editVC.delegate = self;
     editVC.srcImage = [DataUtil defaultUtil].fullImage;
-    if (self.currentImage) {
-        self.tempStyle = style;
-        //        self.currentCropStyle = style;
-    }
-    if (_currentIndexPath.row<3) {
-        self.tempStyle = style;
-        //        self.currentCropStyle = CropStyleFree;
-    }
-    editVC.style = self.tempStyle;
-//    [self pushViewController:editVC animated:YES];
+    //    if (self.currentImage) {
+    //        self.tempStyle = style;
+    //    }
+    //    if (_currentIndexPath.row<3) {
+    //        self.tempStyle = style;
+    //    }
+    editVC.style = style;
     editVC.isNav = NO;
-    self.tempStyle = CropStyleFree;
+    //    self.tempStyle = CropStyleFree;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editVC];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -549,12 +545,6 @@
     editVC.isNav = YES;
     editVC.delegate = self;
     editVC.srcImage = [image fixOrientation:image.imageOrientation];
-    [DataUtil defaultUtil].fullImage = editVC.srcImage;
-//    if (self.currentCropStyle == CropStyleFree || self.currentCropStyle == CropStyleSquareness4 || self.currentCropStyle == CropStyleSquareness3) {
-//        editVC.style = self.currentCropStyle;
-//    }else{
-//        editVC.style = CropStyleFree;
-//    }
     editVC.style = self.tempStyle;
     if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
         editVC.isNav = YES;
@@ -568,16 +558,17 @@
     }
 }
 
-- (void)imageEditResultImage:(UIImage *)image
+- (void)imageEditResultImage:(NSArray *)cfgArray;
 {
-    self.currentImage = image;
+    self.currentImage = cfgArray.firstObject;
+    self.currentCropStyle = (CropStyle)((NSNumber *)cfgArray.lastObject).intValue;
     [self setScene];
-//    [cell setDisplayImage:image withSceneType:self.currentIndexPath.row];
+    //    [cell setDisplayImage:image withSceneType:self.currentIndexPath.row];
 }
 
 - (void)setScene
 {
-    self.currentCropStyle = self.tempStyle;
+//    self.currentCropStyle = self.tempStyle;
     CGPoint point = CGPointMake(self.tableView.contentOffset.x , self.tableView.contentOffset.y + self.tableView.frame.size.height / 2);
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
     self.currentIndexPath = indexPath;
@@ -596,10 +587,10 @@
     }else{
         CropStyle style = [cell cropStyleWithIndexpath:self.currentIndexPath index:index];
         if ( style == CropStyleSquareness4) {
-             [cell setDisplayImage:self.default3_4 withIndexPath:self.currentIndexPath index:index];
+            [cell setDisplayImage:self.default3_4 withIndexPath:self.currentIndexPath index:index];
             [DataUtil defaultUtil].is3_4 = YES;
         }else if(style == CropStyleSquareness3){
-             [cell setDisplayImage:self.default4_3 withIndexPath:self.currentIndexPath index:index];
+            [cell setDisplayImage:self.default4_3 withIndexPath:self.currentIndexPath index:index];
             [DataUtil defaultUtil].is3_4 = NO;
         }else{
             if ([DataUtil defaultUtil].is3_4) {
@@ -645,7 +636,7 @@
  */
 - (void)downloadFileURL:(NSString *)aUrl savePath:(NSString *)aSavePath fileName:(NSString *)aFileName tag:(NSInteger)aTag
 {
-//    _isDownload = YES;
+    //    _isDownload = YES;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //检查本地文件是否已存在
     NSString *fileName = [NSString stringWithFormat:@"%@/%@.zip", aSavePath, aFileName];
@@ -668,7 +659,7 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15];
     connection = nil;
     connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
- }
+}
 
 
 #pragma mark -
@@ -700,10 +691,10 @@
     [DataUtil defaultUtil].downloadingIndexpath = nil;
     [DataUtil defaultUtil].downloadingIndex = HUGE;
     //    }
-//    self.asProgressView.hidden = YES;
-//    self.downloadView.hidden = NO;
-//    self.isDownload = NO;
-//    self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
+    //    self.asProgressView.hidden = YES;
+    //    self.downloadView.hidden = NO;
+    //    self.isDownload = NO;
+    //    self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -714,14 +705,14 @@
     NSUInteger currentData = [_data length];
     float progress = (CGFloat)((currentData / 1.0f)/(totalBytes / 1.0f));
     NSLog(@"data.length = %f",progress);
-//    NSLog(@"is download：%lld",([_data length])/totalBytes);
+    //    NSLog(@"is download：%lld",([_data length])/totalBytes);
     //             [_progressView setProgress:progress animated:YES];
     
-//    [self.asProgressView setProgress:progress animated:YES];
-//    if (progress == 1) {
-//        self.isDownload = NO;
-//        //            [preview.asProgressView hidePopUpViewAnimated:YES];
-//    }
+    //    [self.asProgressView setProgress:progress animated:YES];
+    //    if (progress == 1) {
+    //        self.isDownload = NO;
+    //        //            [preview.asProgressView hidePopUpViewAnimated:YES];
+    //    }
     
 }
 
@@ -736,23 +727,23 @@
     
     NSLog(@"%@",self.finalFileName);
     
-//    NSLog(@"getMd5 = %@", [MD5Tools getFileMD5WithPath:self.finalFileName]);
-//    NSLog(@"file.md5 = %@",self.dataModel.stickerMd5String);
-//    if (![[MD5Tools getFileMD5WithPath:self.finalFileName] isEqualToString:self.dataModel.stickerMd5String] ) {
-//        NSLog(@"downloadFaild");
-//        //           BOOL ret =  [fileManager removeItemAtPath:fileName error:nil];
-//        //            NSLog(@"ret = %d",ret);
-//        [[[UIAlertView alloc] initWithTitle:nil message:LocalizedString(@"main_download_failed", nil) delegate:nil cancelButtonTitle:LocalizedString(@"main_confirm", nil) otherButtonTitles:nil, nil] show];
-//        self.asProgressView.hidden = YES;
-//        self.downloadView.hidden = NO;
-//        self.isDownload = NO;
-//        self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
-//        self.completeBtn.hidden = YES;
+    //    NSLog(@"getMd5 = %@", [MD5Tools getFileMD5WithPath:self.finalFileName]);
+    //    NSLog(@"file.md5 = %@",self.dataModel.stickerMd5String);
+    //    if (![[MD5Tools getFileMD5WithPath:self.finalFileName] isEqualToString:self.dataModel.stickerMd5String] ) {
+    //        NSLog(@"downloadFaild");
+    //        //           BOOL ret =  [fileManager removeItemAtPath:fileName error:nil];
+    //        //            NSLog(@"ret = %d",ret);
+    //        [[[UIAlertView alloc] initWithTitle:nil message:LocalizedString(@"main_download_failed", nil) delegate:nil cancelButtonTitle:LocalizedString(@"main_confirm", nil) otherButtonTitles:nil, nil] show];
+    //        self.asProgressView.hidden = YES;
+    //        self.downloadView.hidden = NO;
+    //        self.isDownload = NO;
+    //        self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
+    //        self.completeBtn.hidden = YES;
     
-//        return ;
-//    }
-//    [self.asProgressView hidePopUpViewAnimated:YES];
-
+    //        return ;
+    //    }
+    //    [self.asProgressView hidePopUpViewAnimated:YES];
+    
     NSLog(@"success");
     //检查本地文件是否已存在
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -776,23 +767,23 @@
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
         self.currentIndexPath = indexPath;
         MainTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
-            [cell updateDownloadBtnWithIndexPath:[DataUtil defaultUtil].downloadingIndexpath andIndex:[DataUtil defaultUtil].downloadingIndex];
+        [cell updateDownloadBtnWithIndexPath:[DataUtil defaultUtil].downloadingIndexpath andIndex:[DataUtil defaultUtil].downloadingIndex];
     }else{
         NSLog(@"UnzipFaild");
         BOOL ret =  [fileManager removeItemAtPath:self.finalFileName error:nil];
         NSLog(@"ret = %d",ret);
         [[[UIAlertView alloc] initWithTitle:nil message:LocalizedString(@"main_download_failed", nil) delegate:nil cancelButtonTitle:LocalizedString(@"main_confirm", nil) otherButtonTitles:nil, nil] show];
-//        self.asProgressView.hidden = YES;
-//        self.downloadView.hidden = NO;
-//        self.isDownload = NO;
-//        self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
-//        self.completeBtn.hidden = YES;
+        //        self.asProgressView.hidden = YES;
+        //        self.downloadView.hidden = NO;
+        //        self.isDownload = NO;
+        //        self.bottomView.backgroundColor = colorWithHexString(@"#42cf9b");
+        //        self.completeBtn.hidden = YES;
         
-//        return ;
+        //        return ;
     }
     hideMBProgressHUD();
-
-
+    
+    
     [DataUtil defaultUtil].downloadingIndexpath = nil;
     [DataUtil defaultUtil].downloadingIndex = HUGE;
 }
@@ -810,11 +801,11 @@
 {
     NSLog(@"弹出评论引导");
     RateGuideView *guide = [[RateGuideView alloc] initWithFrame:CGRectZero];
-//    guide.userInteractionEnabled = YES;
+    //    guide.userInteractionEnabled = YES;
     guide.target = self;
     [self.view addSubview:guide];
     [self.view bringSubviewToFront:guide];
-
+    
 }
 
 @end
