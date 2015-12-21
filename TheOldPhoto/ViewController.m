@@ -361,10 +361,10 @@
         //        cell setDisplayImage
         //        [cell setDisplayImage:[UIImage imageNamed:pics.firstObject]];
     }
-    [cell setCoverFlowCurrentIndex:index];
     [cell.arrow setAnimation];
     [cell resetDisplayView];
-    [cell setShowImages:pics target:self seletor:@selector(openAlbum:) ];
+    [cell setShowImages:pics target:self seletor:@selector(openAlbum:) andIndex:index];
+//    [cell setCoverFlowCurrentIndex:index];
     if (indexPath.row == 0) {
         [cell disableGestureRecognizer];
     }else{

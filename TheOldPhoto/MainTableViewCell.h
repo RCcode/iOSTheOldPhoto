@@ -25,7 +25,7 @@
 
 - (void)setTitleImage:(UIImage *)image;
 
-- (void)setShowImages:(NSMutableArray *)array target:(id)target seletor:(SEL)seletor;
+- (void)setShowImages:(NSMutableArray *)array target:(id)target seletor:(SEL)seletor andIndex:(NSInteger)index;
 
 - (void)setLeftImageName:(NSString *)lImage middleImageName:(NSString *)mImage rightImageName:(NSString *)rImage;
 

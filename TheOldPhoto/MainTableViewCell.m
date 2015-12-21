@@ -154,14 +154,14 @@
     [self.buyBtn addTarget:target action:buySelector forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)setShowImages:(NSMutableArray *)array target:(id)target seletor:(SEL)seletor
+- (void)setShowImages:(NSMutableArray *)array target:(id)target seletor:(SEL)seletor andIndex:(NSInteger)index
 {
     NSLog(@"array.count = %lu",(unsigned long)array.count);
     if (self.coverFlowView != nil) {
         [self.coverFlowView removeObserver:self forKeyPath:@"currentRenderingImageIndex"];
     }
     [self.coverFlowView removeFromSuperview];
-    self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:setW(0.5) middleImageScale:setW(0.5) target:target selector:seletor];
+    self.coverFlowView = [CoverFlowView coverFlowViewWithFrame:CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth()) andImages:array sideImageCount:3  sideImageScale:setW(0.5) middleImageScale:setW(0.5) target:target selector:seletor index:index];
     if (self.coverFlowView != nil) {
         //
         [self.coverFlowView addObserver:self forKeyPath:@"currentRenderingImageIndex" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];

@@ -39,7 +39,7 @@
     NSMutableArray *_images;
     NSMutableArray *_imageLayers;
     NSMutableArray *_templateLayers;
-//    int _currentRenderingImageIndex;
+    //    int _currentRenderingImageIndex;
     UIPageControl *_pageControl;
     int _sideVisibleImageCount;
     CGFloat _sideVisibleImageScale;
@@ -188,30 +188,30 @@
             [recognizer setTranslation:CGPointZero inView:recognizer.view];
             recognizer.delegate = nil;
         }else{
-//            NSLog(@"responder = %@",self.nextResponder.nextResponder.nextResponder.nextResponder);
-//            recognizer.view.userInteractionEnabled = NO;
-//            [self.nextResponder.nextResponder.nextResponder.nextResponder becomeFirstResponder];
+            //            NSLog(@"responder = %@",self.nextResponder.nextResponder.nextResponder.nextResponder);
+            //            recognizer.view.userInteractionEnabled = NO;
+            //            [self.nextResponder.nextResponder.nextResponder.nextResponder becomeFirstResponder];
         }
     }else if (recognizer.state == UIGestureRecognizerStateEnded){
         recognizer.delegate = self.target;
-//        recognizer.view.userInteractionEnabled = YES;
-//        NSLog(@"END");
+        //        recognizer.view.userInteractionEnabled = YES;
+        //        NSLog(@"END");
     }else if (recognizer.state == UIGestureRecognizerStateFailed){
         recognizer.delegate = self.target;
-//        NSLog(@"Failed");
+        //        NSLog(@"Failed");
     }
     
 }
 
 
-+ (id)coverFlowViewWithFrame:(CGRect)frame andImages:(NSMutableArray *)rawImages sideImageCount:(int)sideCount sideImageScale:(CGFloat)sideImageScale middleImageScale:(CGFloat)middleImageScale target:(id)target selector:(SEL)selector{
++ (id)coverFlowViewWithFrame:(CGRect)frame andImages:(NSMutableArray *)rawImages sideImageCount:(int)sideCount sideImageScale:(CGFloat)sideImageScale middleImageScale:(CGFloat)middleImageScale target:(id)target selector:(SEL)selector index:(NSInteger)index{
     CoverFlowView *flowView = [[CoverFlowView alloc] initWithFrame:frame];
     
     flowView.sideVisibleImageCount = sideCount;
     flowView.sideVisibleImageScale = sideImageScale;
     flowView.middleImageScale = middleImageScale;
     //default set middle image to the first image in the source images array
-    flowView.currentRenderingImageIndex = 0;
+    flowView.currentRenderingImageIndex = index;
     NSMutableArray *rawArray = [[NSMutableArray alloc]init];
     for (NSString *imageName in rawImages) {
         UIImage *image = [UIImage imageNamed:imageName];
@@ -228,7 +228,7 @@
     flowView.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:target action:selector];
     [flowView addGestureRecognizer:gestureRecognizer];
     [flowView addGestureRecognizer:flowView.tapGestureRecognizer];
-
+    
     //now almost setup
     [flowView setupTemplateLayers];
     
@@ -295,18 +295,18 @@
     // setup the visible area, and start index and end index
     int startingImageIndex = (self.currentRenderingImageIndex - self.sideVisibleImageCount <= 0) ? 0 : self.currentRenderingImageIndex - self.sideVisibleImageCount;
     int endImageIndex = (int)((self.currentRenderingImageIndex + self.sideVisibleImageCount < self.images.count )  ? (self.currentRenderingImageIndex + self.sideVisibleImageCount) : (self.images.count -1 ));
-//    UIImage *lockImage = [UIImage imageNamed:@"classify_unlock_normal"];
+    //    UIImage *lockImage = [UIImage imageNamed:@"classify_unlock_normal"];
     //step2: set up images that ready for rendering
     for (int i = startingImageIndex; i <= endImageIndex; i++) {
         UIImage *image = [self.images objectAtIndex:i];
         CALayer *imageLayer = [CALayer layer];
-//        CALayer *lockLayer = [CALayer layer];
-//        lockLayer.contents = (__bridge id)lockImage.CGImage;
+        //        CALayer *lockLayer = [CALayer layer];
+        //        lockLayer.contents = (__bridge id)lockImage.CGImage;
         imageLayer.contents = (__bridge id)image.CGImage;
         CGFloat scale = (i == self.currentRenderingImageIndex) ? self.middleImageScale : self.sideVisibleImageScale;
         imageLayer.bounds = CGRectMake(0, 0, image.size.width * scale, image.size.height*scale);
-//        lockLayer.bounds = CGRectMake(36, 36, 36, 36);
-//        [imageLayer addSublayer:lockLayer];
+        //        lockLayer.bounds = CGRectMake(36, 36, 36, 36);
+        //        [imageLayer addSublayer:lockLayer];
         [self.imageLayers addObject:imageLayer];
     }
     

@@ -38,11 +38,7 @@
 @property (nonatomic, strong) UIGestureRecognizer *ges;
 
 //factory method
-+ (id)coverFlowViewWithFrame:(CGRect)frame
-                   andImages: (NSMutableArray *)rawImages
-              sideImageCount:(int) sideCount
-              sideImageScale: (CGFloat) sideImageScale
-            middleImageScale: (CGFloat) middleImageScale target:(id)target selector:(SEL)selector;
++ (id)coverFlowViewWithFrame:(CGRect)frame andImages:(NSMutableArray *)rawImages sideImageCount:(int)sideCount sideImageScale:(CGFloat)sideImageScale middleImageScale:(CGFloat)middleImageScale target:(id)target selector:(SEL)selector index:(NSInteger)index;
 
 //get index for current image that in the middle in images
 - (int)getIndexForMiddle;
