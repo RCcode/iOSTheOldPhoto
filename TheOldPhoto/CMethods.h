@@ -69,6 +69,7 @@ CGFloat setH(CGFloat Height);
 //NSArray*getFilterPreviewArray();
 
 MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView);
+MBProgressHUD * showMBProgressHUDandButton(NSString *content,BOOL showView, id target, SEL action);
 void hideMBProgressHUD();
 NSString *doDevicePlatform();
 BOOL isChineseS();

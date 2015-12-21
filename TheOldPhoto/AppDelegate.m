@@ -26,6 +26,7 @@
     [self registNotification];
     [self umengSetting];
      [[RC_moreAPPsLib shareAdManager] requestWithMoreappId:MORE_APPS_ID];
+    [self doNotificationActionWithInfo:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
     return YES;
 }
 
@@ -98,15 +99,15 @@
             break;
         case 1:
         {
-            //            //Update
-            //            self.updateUrlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@",APPLE_ID];
-            //            //            self.UpdateUrlStr = urlStr;
-            //            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil
-            //                                                           message:LocalizedString(@"root_new_version", @"")
-            //                                                          delegate:self
-            //                                                 cancelButtonTitle:LocalizedString(@"root_update_later", @"")
-            //                                                 otherButtonTitles:LocalizedString(@"root_update_now", @""), nil];
-            //            [alert show];
+                        //Update
+                        self.updateUrlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@",APPLE_ID];
+                        //            self.UpdateUrlStr = urlStr;
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil
+                                                                       message:LocalizedString(@"root_new_version", @"")
+                                                                      delegate:self
+                                                             cancelButtonTitle:LocalizedString(@"root_update_later", @"")
+                                                             otherButtonTitles:LocalizedString(@"root_update_now", @""), nil];
+                        [alert show];
         }
             break;
         case 2:

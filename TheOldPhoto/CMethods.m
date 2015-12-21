@@ -122,7 +122,7 @@ BOOL IOS8(){
 
 BOOL iOS9(){
     return ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0 && [[UIDevice currentDevice].systemVersion floatValue] < 10.0)? YES : NO;
-
+    
 }
 
 //数学意义上的随机数在计算机上已被证明不可能实现。通常的随机数是使用随机数发生器在一个有限大的线性空间里取一个数。“随机”甚至不能保证数字的出现是无规律的。使用系统时间作为随机数发生器是常见的选择
@@ -173,7 +173,7 @@ UIColor* colorWithHexStringAndAlpha(NSString *stringToConvert, CGFloat alpha)
                            green:((float) g / 255.0f)
                             blue:((float) b / 255.0f)
                            alpha:alpha];
-
+    
 }
 
 UIColor* colorWithHexString(NSString *stringToConvert)
@@ -237,7 +237,7 @@ UIColor* cornerColorWithHexString(NSString *stringToConvert)
     [[NSScanner scannerWithString:rString] scanHexInt:&r];
     [[NSScanner scannerWithString:gString] scanHexInt:&g];
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
-
+    
     if (r <= 30) {
         r = 30;
     }
@@ -301,6 +301,51 @@ MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView)
     return mb;
 }
 
+UIButton *cancelBtn;
+MBProgressHUD * showMBProgressHUDandButton(NSString *content,BOOL showView, id target, SEL action)
+{
+    //显示LoadView
+    @try {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+            if (mb==nil) {
+                mb = [[MBProgressHUD alloc] initWithView:window];
+                mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+                [window addSubview:mb];
+                //如果设置此属性则当前的view置于后台
+                //            mb.dimBackground = YES;
+                mb.labelText = content;
+            }else{
+                mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+                mb.labelText = content;
+            }
+            if (cancelBtn == nil) {
+                cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                [cancelBtn setFrame:CGRectMake(mb.frame.size.width/2 - 137 / 2 - 12, mb.frame.size.height/2 - 100 / 2 - 12, 27, 27)];
+                NSLog(@"cancelBtn.Size = %@",NSStringFromCGSize(mb.size));
+                //                [cancelBtn setTitle:@"X" forState:UIControlStateNormal];
+                [cancelBtn setImage:[UIImage imageNamed:@"hud_cancel"] forState:UIControlStateNormal];
+                [cancelBtn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+            }else{
+                [cancelBtn removeFromSuperview];
+            }
+            [mb addSubview:cancelBtn];
+            [mb show:YES];
+            
+            mb.color = [UIColor colorWithWhite:0 alpha:0.7];
+        });
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"catch error for mbhud!!!!");
+    }
+    @finally {
+        
+    }
+    
+    return mb;
+}
+
 //MBProgressHUD *mbHud;
 MBProgressHUD * showMBProgressHUDWithoutText()
 {
@@ -314,10 +359,10 @@ MBProgressHUD * showMBProgressHUDWithoutText()
                 [window addSubview:mb];
                 //如果设置此属性则当前的view置于后台
                 //            mb.dimBackground = YES;
-//                mb.labelText = content;
+                //                mb.labelText = content;
             }else{
                 mb.mode = YES?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
-//                mb.labelText = content;
+                //                mb.labelText = content;
             }
             [mb show:YES];
             mb.color = [UIColor colorWithWhite:0 alpha:0.7];
@@ -337,6 +382,7 @@ MBProgressHUD * showMBProgressHUDWithoutText()
 void hideMBProgressHUD()
 {
     dispatch_async(dispatch_get_main_queue(), ^{
+        [cancelBtn removeFromSuperview];
         mb.removeFromSuperViewOnHide = YES;
         [mb hide:YES];
         //    [mb removeFromSuperview];
@@ -408,8 +454,8 @@ NSString *LocalizedString(NSString *translation_key, id none)
 {
     
     NSString *language = @"en";
-//    NSArray *arr = [NSLocale preferredLanguages];
-//    NSLog(@"current Language = %@",CURR_LANG);
+    //    NSArray *arr = [NSLocale preferredLanguages];
+    //    NSLog(@"current Language = %@",CURR_LANG);
     //只适配这么些种语言，其余一律用en
     if([CURR_LANG isEqualToString:@"zh-Hans"] ||
        [CURR_LANG isEqualToString:@"zh-Hant"] ||
@@ -518,12 +564,12 @@ CGFloat statusBarHeight()
 #pragma mark - 打印系统所有已注册的字体名称
 void enumerateFonts() {
     for(NSString *familyName in [UIFont familyNames]){
-//        NSLog(@"%@",familyName);
+        //        NSLog(@"%@",familyName);
         
         NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
         
         for(NSString *fontName in fontNames){
-//            NSLog(@"\t|- %@",fontName);
+            //            NSLog(@"\t|- %@",fontName);
         }
     }
 }

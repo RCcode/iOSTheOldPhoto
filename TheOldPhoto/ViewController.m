@@ -629,9 +629,17 @@
     NSString *downloadPath = [NSString stringWithFormat:@"%@%@.zip",isChinese()?kBaseUrlCN:kBaseUrl,fileName];
     NSString *basePath =  [NSHomeDirectory() stringByAppendingString:@"/Documents/Scene"];
     [self downloadFileURL:downloadPath savePath:basePath fileName:fileName tag:0];
-    showMBProgressHUD(@"downloading", YES);
+    //    showMBProgressHUD(@"downloading", YES);
+    showMBProgressHUDandButton(@"downloading", YES, self, @selector(cancelDownloads:));
     [DataUtil defaultUtil].downloadingIndex = index;
     [DataUtil defaultUtil].downloadingIndexpath = indexPath;
+}
+
+- (void)cancelDownloads:(UIButton *)btn
+{
+    hideMBProgressHUD();
+    [btn removeFromSuperview];
+    [connection cancel];
 }
 
 - (void)iapEvent:(UIButton *)btn
