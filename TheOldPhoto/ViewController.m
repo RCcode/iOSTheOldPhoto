@@ -156,6 +156,7 @@
     switch (status)
     {
         case IAPPurchaseFailed:
+            hideMBProgressHUD();
             [self alertWithTitle:@"Purchase Status" message:purchasesNotification.message];
             break;
             // Switch to the iOSPurchasesList view controller when receiving a successful restore notification

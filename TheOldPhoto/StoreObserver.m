@@ -4,9 +4,9 @@
  
  Abstract:
  Implements the SKPaymentTransactionObserver protocol. Handles purchasing and restoring products
-         as well as downloading hosted content using paymentQueue:updatedTransactions: and paymentQueue:updatedDownloads:,
-         respectively. Provides download progress information using SKDownload's progres. Logs the location of the downloaded
-         file using SKDownload's contentURL property.
+ as well as downloading hosted content using paymentQueue:updatedTransactions: and paymentQueue:updatedDownloads:,
+ respectively. Provides download progress information using SKDownload's progres. Logs the location of the downloaded
+ file using SKDownload's contentURL property.
  */
 
 
@@ -31,13 +31,13 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 
 - (instancetype)init
 {
-	self = [super init];
-	if (self != nil)
+    self = [super init];
+    if (self != nil)
     {
         _productsPurchased = [[NSMutableArray alloc] initWithCapacity:0];
         _productsRestored = [[NSMutableArray alloc] initWithCapacity:0];
     }
-	return self;
+    return self;
 }
 
 
@@ -48,7 +48,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 -(void)buy:(SKProduct *)product
 {
     SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
-	[[SKPaymentQueue defaultQueue] addPayment:payment];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
 
 
@@ -60,7 +60,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 {
     // productsPurchased keeps track of all our purchases.
     // Returns YES if it contains some items and NO, otherwise
-     return (self.productsPurchased.count > 0);
+    return (self.productsPurchased.count > 0);
 }
 
 
@@ -92,19 +92,19 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 // Called when there are trasactions in the payment queue
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
-	for(SKPaymentTransaction * transaction in transactions)
-	{
-		switch (transaction.transactionState )
-		{
-			case SKPaymentTransactionStatePurchasing:
-				break;
+    for(SKPaymentTransaction * transaction in transactions)
+    {
+        switch (transaction.transactionState )
+        {
+            case SKPaymentTransactionStatePurchasing:
+                break;
                 
             case SKPaymentTransactionStateDeferred:
                 // Do not block your UI. Allow the user to continue using your app.
                 NSLog(@"Allow the user to continue using your app.");
                 break;
-            // The purchase was successful
-			case SKPaymentTransactionStatePurchased:
+                // The purchase was successful
+            case SKPaymentTransactionStatePurchased:
             {
                 self.purchasedID = transaction.payment.productIdentifier;
                 [self.productsPurchased addObject:transaction];
@@ -121,7 +121,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
                 }
             }
                 break;
-            // There are restored products
+                // There are restored products
             case SKPaymentTransactionStateRestored:
             {
                 self.purchasedID = transaction.payment.productIdentifier;
@@ -135,21 +135,21 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
                 }
                 else
                 {
-                   [self completeTransaction:transaction forStatus:IAPRestoredSucceeded];
+                    [self completeTransaction:transaction forStatus:IAPRestoredSucceeded];
                 }
             }
-				break;
-            // The transaction failed
-			case SKPaymentTransactionStateFailed:
+                break;
+                // The transaction failed
+            case SKPaymentTransactionStateFailed:
             {
                 self.message = [NSString stringWithFormat:@"Purchase of %@ failed.",transaction.payment.productIdentifier];
                 [self completeTransaction:transaction forStatus:IAPPurchaseFailed];
             }
-            break;
-			default:
                 break;
-		}
-	}
+            default:
+                break;
+        }
+    }
 }
 
 
@@ -160,7 +160,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
     {
         switch (download.downloadState)
         {
-            // The content is being downloaded. Let's provide a download progress to the user
+                // The content is being downloaded. Let's provide a download progress to the user
             case SKDownloadStateActive:
             {
                 self.status = IAPDownloadInProgress;
@@ -209,11 +209,11 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 // Logs all transactions that have been removed from the payment queue
 - (void)paymentQueue:(SKPaymentQueue *)queue removedTransactions:(NSArray *)transactions
 {
-	for(SKPaymentTransaction * transaction in transactions)
-	{
+    for(SKPaymentTransaction * transaction in transactions)
+    {
         hideMBProgressHUD();
-		NSLog(@"%@ was removed from the payment queue.", transaction.payment.productIdentifier);
-	}
+        NSLog(@"%@ was removed from the payment queue.", transaction.payment.productIdentifier);
+    }
 }
 
 
@@ -233,6 +233,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
 // Called when all restorable transactions have been processed by the payment queue
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
+    hideMBProgressHUD();
     NSLog(@"All restorable transactions have been processed by the payment queue.");
 }
 
@@ -301,7 +302,7 @@ NSString * const IAPPurchaseNotification = @"IAPPurchaseNotification";
             self.status = IAPRestoredSucceeded;
             [[NSNotificationCenter defaultCenter] postNotificationName:IAPPurchaseNotification object:self];
         }
-
+        
     }
 }
 
