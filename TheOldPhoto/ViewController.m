@@ -572,6 +572,7 @@
 {
     self.currentImage = cfgArray.firstObject;
     self.currentCropStyle = (CropStyle)((NSNumber *)cfgArray.lastObject).intValue;
+    NSLog(@"self.currentCropStyle = %d",self.currentCropStyle);
     [self setScene];
     //    [cell setDisplayImage:image withSceneType:self.currentIndexPath.row];
 }

@@ -63,12 +63,12 @@
 - (void)changeCropStyle:(UIButton *)btn
 {
     if (_isWidthlongerThanHeight) {
-        self.style = CropStyleSquareness3;
+        self.style = CropStyleSquareness4;
         [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness4];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_43_normal"] forState:UIControlStateNormal];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_43_pressed"] forState:UIControlStateHighlighted];
     }else{
-        self.style = CropStyleSquareness4;
+        self.style = CropStyleSquareness3;
         [self.screenShotView setCameraCropStyle:CameraCropStyleSquareness3];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_34_normal"] forState:UIControlStateNormal];
         [self.rightBtn setImage:[UIImage imageNamed:@"crop_34_pressed"] forState:UIControlStateHighlighted];
