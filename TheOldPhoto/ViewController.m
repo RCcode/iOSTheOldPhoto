@@ -446,7 +446,7 @@
         
     }else{
         useTimes = [NSNumber numberWithInt:useTimes.intValue + 1];
-        if (useTimes.intValue == 2 || (useTimes.intValue - 2) % 3 == 0) {
+        if (useTimes.intValue == 2 || (useTimes.intValue - 2) % 6 == 0) {
             [self showActivityAlert];
         }
         [[NSUserDefaults standardUserDefaults] setObject:useTimes forKey:kUseTimesKey];

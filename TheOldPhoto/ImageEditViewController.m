@@ -89,6 +89,9 @@
 - (void)initView
 {
     [self initCropView];
+    UIView *hLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.screenShotView.frame.origin.y + self.screenShotView.frame.size.height + 43, windowWidth(), 1)];
+    [self.view addSubview:hLine];
+    hLine.backgroundColor = colorWithHexString(@"#b8b8b8");
     self.cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.cancelBtn setImage:[UIImage imageNamed:@"crop_cancel"] forState:UIControlStateNormal];
     [self.cancelBtn setImage:[UIImage imageNamed:@"crop_cancel_pressed"] forState:UIControlStateHighlighted];
@@ -105,7 +108,9 @@
     [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"crop_ok_pressed"] forState:UIControlStateHighlighted];
     [self.confirmBtn addTarget:self action:@selector(getResultImage:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.confirmBtn];
-    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(windowWidth() / 2 - 1, self.screenShotView.frame.origin.y + self.screenShotView.frame.size.height + 44, 1,44)];
+    line.backgroundColor = colorWithHexString(@"#b8b8b8");
+    [self.view addSubview:line];
 }
 
 - (void)getResultImage:(UIButton *)btn

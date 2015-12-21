@@ -44,8 +44,8 @@
 
 - (void)initView
 {
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    CGFloat width = window.bounds.size.width;
+    //    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    CGFloat width = windowWidth();
     CGRect frame = CGRectMake(0, statusBarHeight(), windowWidth(), windowWidth());
     self.backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowWidth())];
     self.backgroundImage.image = [UIImage imageNamed:@"classify_bg"];
