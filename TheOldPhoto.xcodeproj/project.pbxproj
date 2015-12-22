@@ -44,6 +44,7 @@
 		C861ECB21C0EE530008BAEDA /* default3_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C861ECB01C0EE530008BAEDA /* default3_4.jpg */; };
 		C861ECB31C0EE530008BAEDA /* default4_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C861ECB11C0EE530008BAEDA /* default4_3.jpg */; };
 		C861ECB61C0EE68E008BAEDA /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C861ECB51C0EE68E008BAEDA /* DataUtil.m */; };
+		C8673DC11C2901C200B41E6B /* BaseImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8673DC01C2901C200B41E6B /* BaseImagePickerController.m */; };
 		C86788141BF3198E00A5205E /* SceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C86788131BF3198E00A5205E /* SceneModel.m */; };
 		C86788171BF31C3200A5205E /* TextureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C86788161BF31C3200A5205E /* TextureModel.m */; };
 		C867881B1BF3285100A5205E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C867881A1BF3285100A5205E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -516,6 +517,8 @@
 		C861ECB11C0EE530008BAEDA /* default4_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default4_3.jpg; sourceTree = "<group>"; };
 		C861ECB41C0EE68E008BAEDA /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
 		C861ECB51C0EE68E008BAEDA /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
+		C8673DBF1C2901C200B41E6B /* BaseImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImagePickerController.h; sourceTree = "<group>"; };
+		C8673DC01C2901C200B41E6B /* BaseImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseImagePickerController.m; sourceTree = "<group>"; };
 		C86788121BF3198E00A5205E /* SceneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneModel.h; sourceTree = "<group>"; };
 		C86788131BF3198E00A5205E /* SceneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneModel.m; sourceTree = "<group>"; };
 		C86788151BF31C3200A5205E /* TextureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureModel.h; sourceTree = "<group>"; };
@@ -1132,6 +1135,8 @@
 				C87297211C0DC86200424C19 /* AboutViewController.h */,
 				C87297221C0DC86200424C19 /* AboutViewController.m */,
 				C87297231C0DC86200424C19 /* AboutViewController.xib */,
+				C8673DBF1C2901C200B41E6B /* BaseImagePickerController.h */,
+				C8673DC01C2901C200B41E6B /* BaseImagePickerController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2359,6 +2364,7 @@
 				C806AC8C1C06EE83002BD630 /* AFHTTPRequestOperation.m in Sources */,
 				C8D0DA7D1C214FB00040CA1B /* SDWebImagePrefetcher.m in Sources */,
 				C88278CD1BFC81B90019BCFA /* ImageScaleUtil.m in Sources */,
+				C8673DC11C2901C200B41E6B /* BaseImagePickerController.m in Sources */,
 				C88278C11BFC73F40019BCFA /* CameraApertureView.m in Sources */,
 				C85950851C1053BC00D69B46 /* ArrowUpView.m in Sources */,
 				C82F5BCC1BF0742300922A3F /* main.m in Sources */,

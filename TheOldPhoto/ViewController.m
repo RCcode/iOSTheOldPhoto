@@ -24,6 +24,7 @@
 #import <Social/Social.h>
 #import "RateGuideView.h"
 #import "RC_moreAPPsLib.h"
+#import "BaseImagePickerController.h"
 
 @interface ViewController () <UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, ImageEditDelegate,NSURLConnectionDelegate,UIDocumentInteractionControllerDelegate>
 {
@@ -34,7 +35,7 @@
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, strong) NSArray *currentPics;
 @property (nonatomic, strong) NSIndexPath *currentIndexPath;
-@property (nonatomic, strong) UIImagePickerController *imagePicker;
+@property (nonatomic, strong) BaseImagePickerController *imagePicker;
 @property (nonatomic, assign) CropStyle currentCropStyle;
 @property (nonatomic, strong) UIImage *currentImage;
 @property (nonatomic, strong) NSMutableArray *leftBtnArray;
@@ -62,7 +63,7 @@
     self.tableView.delaysContentTouches = NO;
     [self.tableView setPagingEnabled:YES];
     self.tableView.backgroundColor = [UIColor yellowColor];
-    self.imagePicker = [[UIImagePickerController alloc] init];
+    self.imagePicker = [[BaseImagePickerController alloc] init];
     self.imagePicker.delegate = self;
     [self getInAppPurchasesList];
     //    [self showActivityAlert];
@@ -364,7 +365,7 @@
     [cell.arrow setAnimation];
     [cell resetDisplayView];
     [cell setShowImages:pics target:self seletor:@selector(openAlbum:) andIndex:index];
-//    [cell setCoverFlowCurrentIndex:index];
+    //    [cell setCoverFlowCurrentIndex:index];
     if (indexPath.row == 0) {
         [cell disableGestureRecognizer];
     }else{
@@ -543,6 +544,7 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [picker dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -550,6 +552,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     ImageEditViewController *editVC = [[ImageEditViewController alloc] init];
     NSLog(@"image = %@",image);
@@ -822,6 +825,11 @@
     [self.view addSubview:guide];
     [self.view bringSubviewToFront:guide];
     
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES; // 返回NO表示要显示，返回YES将hiden
 }
 
 @end
