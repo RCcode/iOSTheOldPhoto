@@ -383,7 +383,12 @@
     CGContextRelease(ctx);
     CGImageRelease(cgimg);
     float multiple = 0.0 ,newHeight = 0.0 ,newWidth = 0.0;
-    float dustWidth = kImportImageMaxResolution;
+    float dustWidth = 0;
+    if (iPhone4()) {
+        dustWidth = 1000;
+    }else{
+        dustWidth = kImportImageMaxResolution;
+    }
     if (dustWidth >= MAX(img.size.width, img.size.height)) {
         return img;
     }

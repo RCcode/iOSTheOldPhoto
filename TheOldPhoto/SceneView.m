@@ -625,7 +625,11 @@
             
         }
     }else{
-        return self.resultImage;
+        if (isChineseS()) {
+            return [self addImageLogo:self.resultImage text:[UIImage imageNamed:@"waterLogo"]];
+        }else{
+            return self.resultImage;
+        }
     }
 }
 
@@ -639,6 +643,17 @@
     int h = img.size.height;
     int logoWidth = 440;
     int logoHeight = 160;
+    int stander = kImportImageMaxResolution;
+    if (iPhone4()) {
+        stander = 1000;
+    }
+    if (w > h) {
+        logoWidth = 440 * w / stander;
+        logoHeight = 160 * w / stander;
+    }else{
+        logoWidth = 440 * h/ stander;
+        logoHeight = 160 * h / stander;
+    }
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     //create a graphic context with CGBitmapContextCreate
     CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast);
