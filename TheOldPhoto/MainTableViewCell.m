@@ -175,6 +175,10 @@
     [self.contentView bringSubviewToFront:self.coverView];
     [self.contentView bringSubviewToFront:self.downloadBtn];
     [self.contentView bringSubviewToFront:self.buyBtn];
+    if (self.coverFlowView.currentRenderingImageIndex == 0) {
+        self.downloadBtn.alpha = 0;
+        self.buyBtn.alpha = 0;
+    }
 }
 
 - (void)setDisplayImage:(UIImage *)image withIndexPath:(NSIndexPath *)indexpath index:(NSInteger)index

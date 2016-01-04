@@ -645,14 +645,16 @@
     int logoHeight = 160;
     int stander = kImportImageMaxResolution;
     if (iPhone4()) {
+        logoWidth = 440 / 3.0 * 2.0;
+        logoHeight = 160 / 3.0 * 2.0;
         stander = 1000;
     }
     if (w > h) {
-        logoWidth = 440 * w / stander;
-        logoHeight = 160 * w / stander;
+        logoWidth *= w / stander;
+        logoHeight *= w / stander;
     }else{
-        logoWidth = 440 * h/ stander;
-        logoHeight = 160 * h / stander;
+        logoWidth *= h/ stander;
+        logoHeight *= h / stander;
     }
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     //create a graphic context with CGBitmapContextCreate
