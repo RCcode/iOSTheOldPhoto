@@ -10,6 +10,7 @@
 #import "LabelBtn.h"
 #import "StoreManager.h"
 #import "StoreObserver.h"
+#import "MyModel.h"
 
 @interface SettingStoreViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) NSArray *iapArray;
 @property (nonatomic, strong) NSString *all;
 @property (nonatomic, strong) UIButton *buyOneBtn;
+@property (nonatomic, strong) NSString *purchasesName;
 @end
 
 @implementation SettingStoreViewController
@@ -54,6 +56,7 @@
     switch (status)
     {
         case IAPPurchaseFailed:
+            [self alertWithTitle:@"Purchase Status" message:purchasesNotification.message];
             break;
             // Switch to the iOSPurchasesList view controller when receiving a successful restore notification
         case IAPRestoredSucceeded:
@@ -69,6 +72,8 @@
         }
             break;
         case IAPRestoredFailed:
+            [self alertWithTitle:@"Purchase Status" message:purchasesNotification.message];
+            //            hideMBProgressHUD();
             break;
             // Notify the user that downloading is about to start when receiving a download started notification
         case IAPDownloadStarted:
@@ -99,6 +104,23 @@
         default:
             break;
     }
+}
+
+#pragma mark Display message
+
+-(void)alertWithTitle:(NSString *)title message:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)initView
@@ -203,6 +225,7 @@
     StoreObserver *observer = [StoreObserver sharedInstance];
     StoreManager *manager = [StoreManager sharedInstance];
     NSString *nowPurchase = @"Oldphoto_all";
+    self.purchasesName = nowPurchase;
     for (SKProduct * product in manager.availableProducts) {
         if ([product.productIdentifier isEqualToString:nowPurchase]) {
             showMBProgressHUD(nil, YES);
@@ -216,11 +239,97 @@
     StoreObserver *observer = [StoreObserver sharedInstance];
     StoreManager *manager = [StoreManager sharedInstance];
     NSString *nowPurchase = self.iapArray[self.pageControl.currentPage];
+    self.purchasesName = nowPurchase;
+    if (manager.availableProducts.count <= 0) {
+        [self getInAppPurchasesList];
+        return;
+    }
     for (SKProduct * product in manager.availableProducts) {
         if ([product.productIdentifier isEqualToString:nowPurchase]) {
             showMBProgressHUD(nil, YES);
             [observer buy:product];
+            return;
         }
+    }
+}
+
+- (void)getInAppPurchasesList
+{
+    showMBProgressHUD(nil, YES);
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:[StoreObserver sharedInstance]];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleProductRequestNotification:)
+                                                 name:IAPProductRequestNotificationForStoreViewController
+                                               object:[StoreManager sharedInstance]];
+    
+    [self fetchProductInformation];
+}
+
+#pragma mark Handle product request notification
+
+// Update the UI according to the product request notification result
+-(void)handleProductRequestNotification:(NSNotification *)notification
+{
+    hideMBProgressHUD();
+    StoreManager *productRequestNotification = (StoreManager*)notification.object;
+    IAPProductRequestStatus result = (IAPProductRequestStatus)productRequestNotification.status;
+    NSLog(@"-------%@",productRequestNotification.availableProducts);
+    NSLog(@"======%@",productRequestNotification.invalidProductIds);
+    if (result == IAPProductRequestResponse)
+    {
+        for (MyModel *model in productRequestNotification.productRequestResponse) {
+            for (SKProduct *product in model.elements) {
+                NSLog(@"product.name = %@",product.localizedDescription);
+                NSLog(@"product.id = %@",product.productIdentifier);
+                //                NSLog(@"product.price = %@",product.priceLocale.localeIdentifier);
+                NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+                [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+                [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+                [numberFormatter setLocale:product.priceLocale];
+                
+                NSString *formattedPrice = [numberFormatter stringFromNumber:product.price];
+                NSMutableString *productPrice = [NSMutableString stringWithString:formattedPrice];
+                [productPrice replaceOccurrencesOfString:@" " withString:@"" options:NSBackwardsSearch range:NSMakeRange(0, formattedPrice.length)];
+                NSLog(@"%@",productPrice);
+            }
+            //            NSLog(@"")
+        }
+        // Switch to the iOSProductsList view controller and display its view
+        //        [self cycleFromViewController:self.currentViewController toViewController:self.productsList];
+        
+        // Set the data source for the Products view
+        //        [self.productsList reloadUIWithData:productRequestNotification.productRequestResponse];
+        StoreObserver *observer = [StoreObserver sharedInstance];
+        StoreManager *manager = [StoreManager sharedInstance];
+        NSString *nowPurchase = self.purchasesName;
+        for (SKProduct * product in manager.availableProducts) {
+            if ([product.productIdentifier isEqualToString:nowPurchase]) {
+                showMBProgressHUD(nil, YES);
+                [observer buy:product];
+            }
+        }
+    }
+}
+
+#pragma mark Fetch product information
+
+// Retrieve product information from the App Store
+-(void)fetchProductInformation
+{
+    // Query the App Store for product information if the user is is allowed to make purchases.
+    // Display an alert, otherwise.
+    if([SKPaymentQueue canMakePayments])
+    {
+        // Load the product identifiers fron ProductIds.plist
+        NSURL *plistURL = [[NSBundle mainBundle] URLForResource:@"ProductIds" withExtension:@"plist"];
+        NSArray *productIds = [NSArray arrayWithContentsOfURL:plistURL];
+        
+        [[StoreManager sharedInstance] fetchProductInformationForIds:productIds];
+    }
+    else
+    {
+        // Warn the user that they are not allowed to make purchases.
+        [self alertWithTitle:@"Warning" message:@"Purchases are disabled on this device."];
     }
 }
 

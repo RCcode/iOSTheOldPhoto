@@ -15,7 +15,7 @@
 #import "StoreManager.h"
 
 NSString * const IAPProductRequestNotification = @"IAPProductRequestNotification";
-
+NSString * const IAPProductRequestNotificationForStoreViewController = @"IAPProductRequestNotificationForStoreViewController";
 @interface StoreManager()<SKRequestDelegate, SKProductsRequestDelegate>
 @end
 
@@ -88,6 +88,7 @@ NSString * const IAPProductRequestNotification = @"IAPProductRequestNotification
     
     self.status = IAPProductRequestResponse;
     [[NSNotificationCenter defaultCenter] postNotificationName:IAPProductRequestNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IAPProductRequestNotificationForStoreViewController object:self];
 }
 
 
@@ -96,10 +97,27 @@ NSString * const IAPProductRequestNotification = @"IAPProductRequestNotification
 // Called when the product request failed.
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
 {
+    hideMBProgressHUD();
     // Prints the cause of the product request failure
     NSLog(@"Product Request Status: %@",error.localizedDescription);
+    [self alertWithTitle:@"Purchase Status" message:error.localizedDescription];
 }
 
+-(void)alertWithTitle:(NSString *)title message:(NSString *)message
+{
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+//                                                                   message:message
+//                                                            preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK"
+//                                                            style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action) {}];
+//    
+//    [alert addAction:defaultAction];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
+}
 
 #pragma mark Helper method
 

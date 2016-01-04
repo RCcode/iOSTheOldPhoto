@@ -15,8 +15,7 @@
 
 // Provide notification about the product request
 extern NSString * const IAPProductRequestNotification;
-
-
+extern NSString * const IAPProductRequestNotificationForStoreViewController;
 @interface StoreManager : NSObject
 typedef NS_ENUM(NSInteger, IAPProductRequestStatus)
 {
