@@ -308,6 +308,8 @@
                 [observer buy:product];
             }
         }
+    }else if(result == IAPRequestFailed){
+        [self alertWithTitle:@"Request Status" message:productRequestNotification.errorMessage];
     }
 }
 

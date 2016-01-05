@@ -4,10 +4,10 @@
  
  Abstract:
  Retrieves product information from the App Store using SKRequestDelegate,
-         SKProductsRequestDelegate,SKProductsResponse, and SKProductsRequest.
-         Notifies its observer with a list of products available for sale along with
-         a list of invalid product identifiers. Logs an error message if the product 
-         request failed.
+ SKProductsRequestDelegate,SKProductsResponse, and SKProductsRequest.
+ Notifies its observer with a list of products available for sale along with
+ a list of invalid product identifiers. Logs an error message if the product 
+ request failed.
  */
 #import <StoreKit/StoreKit.h>
 
@@ -98,22 +98,25 @@ NSString * const IAPProductRequestNotificationForStoreViewController = @"IAPProd
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
 {
     hideMBProgressHUD();
+    self.status = IAPRequestFailed;
+    self.errorMessage = error.localizedDescription;
+    [[NSNotificationCenter defaultCenter] postNotificationName:IAPProductRequestNotificationForStoreViewController object:self];
     // Prints the cause of the product request failure
     NSLog(@"Product Request Status: %@",error.localizedDescription);
-    [self alertWithTitle:@"Purchase Status" message:error.localizedDescription];
+    //    [self alertWithTitle:@"Purchase Status" message:error.localizedDescription];
 }
 
 -(void)alertWithTitle:(NSString *)title message:(NSString *)message
 {
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-//                                                                   message:message
-//                                                            preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK"
-//                                                            style:UIAlertActionStyleDefault
-//                                                          handler:^(UIAlertAction * action) {}];
-//    
-//    [alert addAction:defaultAction];
+    //    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+    //                                                                   message:message
+    //                                                            preferredStyle:UIAlertControllerStyleAlert];
+    //    
+    //    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK"
+    //                                                            style:UIAlertActionStyleDefault
+    //                                                          handler:^(UIAlertAction * action) {}];
+    //    
+    //    [alert addAction:defaultAction];
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertView show];

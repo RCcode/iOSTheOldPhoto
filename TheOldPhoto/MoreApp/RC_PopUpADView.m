@@ -35,6 +35,8 @@
 - (void)setName:(NSString *)name
 {
     self.nameLabel.text = name;
+    self.nameLabel.adjustsFontSizeToFitWidth = YES;
+    self.nameLabel.minimumScaleFactor = 0.5;
 }
 
 - (void)setAppInfo:(RC_AppInfo *)appInfo
@@ -51,13 +53,15 @@
 - (void)setDetail:(NSString *)detail
 {
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
-        self.detailLabel.font = [UIFont systemFontOfSize:11];
+        self.detailLabel.font = [UIFont systemFontOfSize:10.5];
     }
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:detail];
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineSpacing:3];
-    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [detail length])];
-    [self.detailLabel setAttributedText:attributedString];    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [detail length] )];
+    [self.detailLabel setAttributedText:attributedString];
+    self.detailLabel.adjustsFontSizeToFitWidth = YES;
+    self.detailLabel.minimumScaleFactor = 0.5;
 }
 
 - (void)setBackViewColor:(UIColor *)backgroundColor
@@ -70,11 +74,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"call" object:self];
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
