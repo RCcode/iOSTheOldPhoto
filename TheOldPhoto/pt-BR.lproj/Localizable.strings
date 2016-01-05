@@ -1,0 +1,141 @@
+/* Localizable.strings
+ TheOldPhoto
+ 
+ Created by MAXToooNG on 15/11/24.
+ Copyright © 2015年 MaxToooNG. All rights reserved. */
+
+/* 分享 */
+"main_share" = "Compartilhar";
+
+/* 相机 */
+"main_camera" = "Câmera";
+
+/* 保存 */
+"main_save" = "Salvar";
+
+/* 关于我们 */
+"setting_about" = "Quem somos";
+
+/* 解锁所有 */
+"iap_all" = "Desbloqueie tudo por US$ 1,99";
+
+/* 年代购买 */
+"iap_one" = "Compre este pacote por US$ 0,99";
+
+/* 隐私政策 */
+"setting_policy" = "Política de Privacidade ";
+
+/* 优惠50% */
+"setting_off_50" = "Economize 50%";
+
+/* 图片保存到 */
+"setting_saved" = "Photo saved to Time Photo StudioX";
+
+/* 稍后评论 */
+"title_remind" = "Lembre-me depois";
+
+/* 反馈 */
+"setting_feedback" = "Feedback";
+
+/* 评论我们 */
+"setting_rate_us" = "Avalie-nos";
+
+/* 保存路径 */
+"setting_savepath" = "Salvar caminho";
+
+/* 恢复购买 */
+"setting_gallary" = "Restaurar";
+
+/* 商店 */
+"setting_store" = "Loja";
+
+/* 剪裁 */
+"main_crop" = "Cortar";
+
+/* 使用条件 */
+"setting_terms" = "Termos de Uso";
+
+/* 喜欢 Time Photo Studio */
+"title_like" = "Gosta do Time Photo Studio?";
+
+/* 喜欢我们去评5星 */
+"title_rate_five" = "Compartilhe e nos dê 5 estrelas";
+
+/* 五星好评 */
+"title_five_star" = "5 estrelas";
+
+/* 相册 */
+"main_gallery" = "Galeria";
+
+/* 污渍 */
+"tag_dirty" = "dirty";
+
+/* 模糊 */
+"tag_blur" = "blur";
+
+/* 破损 */
+"tag_broken" = "broken";
+
+/* 珍贵 */
+"tag_precious" = "precious";
+
+/* 皱巴巴 */
+"tag_crumpled" = "crumpled";
+
+/* 宝丽来 */
+"tag_polaroid" = "Polaroid";
+
+/* 划痕 */
+"tag_scratch" = "scratch ";
+
+/* 斑驳 */
+"tag_motley" = "motley";
+
+/* 褪色 */
+"tag_fade" = "fade";
+
+/* 彩色 */
+"tag_colorful" = "colorful";
+
+/* 摩登 */
+"tag_modern" = "modern";
+
+/* 黑白 */
+"tag_blackwhite" = "black & white";
+
+/* LOMO */
+"tag_lomo" = "lomo";
+
+/* 损坏 */
+"tag_damaged" = "damaged";
+
+/* 污点 */
+"tag_stain" = "Stain";
+
+/* 尘封 */
+"tag_dusty" = "dusty";
+
+/* 皱 */
+"tag_wrinkled" = "wrinkled";
+
+/* 压碎 */
+"tag_crushed" = "crushed";
+
+/* 已购买 */
+"iap_purchased" = "Já comprou";
+
+/* 设置 */
+"setting_setting" = "Configuração";
+
+/* 版本号 */
+"setting_version" = "Versão";
+
+/* 下载失败 */
+"main_download_failed" = "Falha no carregamento, por favor, baixe novamente";
+
+/* 取消 */
+"main_cancel" = "Cancelar";
+
+/* 确定 */
+"main_confirm" = "Confirmar";
+

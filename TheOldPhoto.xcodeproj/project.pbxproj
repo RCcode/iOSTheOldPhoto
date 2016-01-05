@@ -464,6 +464,8 @@
 		C8161A001C1FF7330034A929 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		C8161A011C1FF7330034A929 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		C8161A071C2027840034A929 /* waterLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterLogo.png; sourceTree = "<group>"; };
+		C82077681C3BA38D00FC3518 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C820776A1C3BAD6A00FC3518 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C82F5BC71BF0742300922A3F /* TheOldPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOldPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82F5BCB1BF0742300922A3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C82F5BCD1BF0742300922A3F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1948,6 +1950,8 @@
 				da,
 				ar,
 				fr,
+				"pt-PT",
+				"pt-BR",
 			);
 			mainGroup = C82F5BBE1BF0742300922A3F;
 			productRefGroup = C82F5BC81BF0742300922A3F /* Products */;
@@ -2464,6 +2468,8 @@
 				C872971F1C0DBE2C00424C19 /* da */,
 				C87297201C0DBE3300424C19 /* ar */,
 				C8546F511C16F9A300446594 /* fr */,
+				C82077681C3BA38D00FC3518 /* pt-PT */,
+				C820776A1C3BAD6A00FC3518 /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

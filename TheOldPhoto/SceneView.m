@@ -641,13 +641,16 @@
     //get image width and height
     int w = img.size.width;
     int h = img.size.height;
-    int logoWidth = 440;
-    int logoHeight = 160;
-    int stander = kImportImageMaxResolution;
+    float logoWidth = 440.f;
+    float logoHeight = 160.f;
+    float stander = kImportImageMaxResolution;
     if (iPhone4()) {
         logoWidth = 440 / 3.0 * 2.0;
         logoHeight = 160 / 3.0 * 2.0;
         stander = 1000;
+    }else{
+        logoWidth = 440;
+        logoHeight = 160;
     }
     if (w > h) {
         logoWidth *= w / stander;
@@ -656,6 +659,7 @@
         logoWidth *= h/ stander;
         logoHeight *= h / stander;
     }
+    NSLog(@" w = %d, h = %d, width = %f, height = %f",w,h,logoWidth,logoHeight);
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     //create a graphic context with CGBitmapContextCreate
     CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast);

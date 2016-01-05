@@ -53,7 +53,16 @@
 - (void)setDetail:(NSString *)detail
 {
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
-        self.detailLabel.font = [UIFont systemFontOfSize:10.5];
+        if (iPhone4()) {
+            self.detailLabel.font = [UIFont systemFontOfSize:10.5];
+        }else{
+            self.detailLabel.font = [UIFont systemFontOfSize:11];
+        }
+        
+    }else{
+        if (iPhone4()) {
+            self.detailLabel.font = [UIFont systemFontOfSize:10.5];
+        }
     }
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:detail];
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];

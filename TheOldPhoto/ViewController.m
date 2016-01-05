@@ -76,14 +76,21 @@
 - (void)initSplashView
 {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, windowWidth(), windowHeight())];
-    imageView.image = [UIImage imageNamed:@"LaunchImage"];
+    imageView.image = [UIImage imageNamed:@"splash"];
+    if (windowHeight() <= 480) {
+        imageView.image = [UIImage imageNamed:@"splash_4"];
+    }
+    NSLog(@"imageView.image = %@",imageView.image);
+    imageView.backgroundColor = [UIColor blackColor];
+    sleep(2);
     [[UIApplication sharedApplication].keyWindow addSubview:imageView];
-    [UIView animateWithDuration:0.3 delay:4 options:0 animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:0 animations:^{
         imageView.alpha = 0;
     } completion:^(BOOL finished) {
         [imageView removeFromSuperview];
         [[RC_moreAPPsLib shareAdManager] showAdsWithController:self];
     }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
