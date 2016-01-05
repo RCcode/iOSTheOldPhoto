@@ -453,35 +453,35 @@ BOOL isChinese(){
 NSString *LocalizedString(NSString *translation_key, id none)
 {
     
-    NSString *language = @"en";
-    //    NSArray *arr = [NSLocale preferredLanguages];
-    //    NSLog(@"current Language = %@",CURR_LANG);
-    //只适配这么些种语言，其余一律用en
-    if([CURR_LANG isEqualToString:@"zh-Hans"] ||
-       [CURR_LANG isEqualToString:@"zh-Hant"] ||
-       [CURR_LANG isEqualToString:@"de"] ||
-       [CURR_LANG isEqualToString:@"es"] ||
-       [CURR_LANG isEqualToString:@"es-MX"] ||
-       [CURR_LANG isEqualToString:@"fr"] ||
-       [CURR_LANG isEqualToString:@"it"] ||
-       [CURR_LANG isEqualToString:@"js"] ||
-       [CURR_LANG isEqualToString:@"ko"] ||
-       [CURR_LANG isEqualToString:@"ja"] ||
-       [CURR_LANG isEqualToString:@"pt"] ||
-       [CURR_LANG isEqualToString:@"pt-PT"] ||
-       [CURR_LANG isEqualToString:@"id"] ||
-       [CURR_LANG isEqualToString:@"th"] ||
-       [CURR_LANG isEqualToString:@"ru"] ||
-       [CURR_LANG isEqualToString:@"ar"] ||
-       [CURR_LANG isEqualToString:@"tr"]){
-        language = CURR_LANG;
-    }
-    if (iOS9()) {
+//    NSString *language = @"en";
+//    //    NSArray *arr = [NSLocale preferredLanguages];
+//    //    NSLog(@"current Language = %@",CURR_LANG);
+//    //只适配这么些种语言，其余一律用en
+//    if([CURR_LANG isEqualToString:@"zh-Hans"] ||
+//       [CURR_LANG isEqualToString:@"zh-Hant"] ||
+//       [CURR_LANG isEqualToString:@"de"] ||
+//       [CURR_LANG isEqualToString:@"es"] ||
+//       [CURR_LANG isEqualToString:@"es-MX"] ||
+//       [CURR_LANG isEqualToString:@"fr"] ||
+//       [CURR_LANG isEqualToString:@"it"] ||
+//       [CURR_LANG isEqualToString:@"js"] ||
+//       [CURR_LANG isEqualToString:@"ko"] ||
+//       [CURR_LANG isEqualToString:@"ja"] ||
+//       [CURR_LANG isEqualToString:@"pt"] ||
+//       [CURR_LANG isEqualToString:@"pt-PT"] ||
+//       [CURR_LANG isEqualToString:@"id"] ||
+//       [CURR_LANG isEqualToString:@"th"] ||
+//       [CURR_LANG isEqualToString:@"ru"] ||
+//       [CURR_LANG isEqualToString:@"ar"] ||
+//       [CURR_LANG isEqualToString:@"tr"]){
+//        language = CURR_LANG;
+//    }
+//    if (iOS9()) {
         return NSLocalizedString(translation_key, nil);
-    }
-    NSString * path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
-    NSBundle * languageBundle = [NSBundle bundleWithPath:path];
-    return [languageBundle localizedStringForKey:translation_key value:@"" table:nil];
+//    }
+//    NSString * path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
+//    NSBundle * languageBundle = [NSBundle bundleWithPath:path];
+//    return [languageBundle localizedStringForKey:translation_key value:@"" table:nil];
 }
 
 NSString *doDevicePlatform()
