@@ -129,6 +129,7 @@
 - (void)rateApp
 {
     [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:kRateUserDefaultKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreScoreURL]];
     [self removeFromSuperview];
 }

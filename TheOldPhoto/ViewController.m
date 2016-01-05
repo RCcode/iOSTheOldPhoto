@@ -174,8 +174,9 @@
                 //                NSArray *purchases = model.elements;
                 //                SKPaymentTransaction *paymentTransaction = purchases[indexPath.row];
                 NSString *title = paymentTransaction.payment.productIdentifier;
-                [self.tableView reloadData];
                 [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:title];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self.tableView reloadData];
             }
             
             
@@ -192,8 +193,8 @@
             for (SKPaymentTransaction *paymentTransaction in [StoreObserver sharedInstance].productsPurchased) {
                 
                 NSString *title = paymentTransaction.payment.productIdentifier;
-                
                 [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:title];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 [self.tableView reloadData];
                 NSLog(@"title  =  %@",title);
             }
@@ -295,7 +296,7 @@
     if (![[NSUserDefaults standardUserDefaults] valueForKey:kAllPacks]) {
         [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:kAllPacks];
     }
-    
+    [[NSUserDefaults standardUserDefaults] synchronize];
     self.default3_4 = [UIImage imageNamed:@"default3_4.jpg"];
     self.default4_3 = [UIImage imageNamed:@"default4_3.jpg"];
     self.currentCropStyle = CropStyleSquareness4;

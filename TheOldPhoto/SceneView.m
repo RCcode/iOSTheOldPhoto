@@ -645,26 +645,30 @@
     float logoHeight = 160.f;
     float stander = kImportImageMaxResolution;
     if (iPhone4()) {
-        logoWidth = 440 / 3.0 * 2.0;
-        logoHeight = 160 / 3.0 * 2.0;
+        logoWidth = 440 / 3.0 * 1.8;
+        logoHeight = 160 / 3.0 * 1.8;
         stander = 1000;
     }else{
         logoWidth = 440;
         logoHeight = 160;
     }
     if (w > h) {
-        logoWidth *= w / stander;
-        logoHeight *= w / stander;
+        logoWidth *= (w / stander);
+        logoHeight *= (w / stander);
     }else{
-        logoWidth *= h/ stander;
-        logoHeight *= h / stander;
+        logoWidth *= (h/ stander);
+        logoHeight *= (h / stander);
     }
     NSLog(@" w = %d, h = %d, width = %f, height = %f",w,h,logoWidth,logoHeight);
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     //create a graphic context with CGBitmapContextCreate
     CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast);
     CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
-    CGContextDrawImage(context, CGRectMake(w-logoWidth, 0, logoWidth, logoHeight), [logo CGImage]);
+    if (iPhone4()) {
+        CGContextDrawImage(context, CGRectMake(w-300, 0, logoWidth, logoHeight), [logo CGImage]);
+    }else{
+        CGContextDrawImage(context, CGRectMake(w-logoWidth, 0, logoWidth, logoHeight), [logo CGImage]);
+    }
     CGImageRef imageMasked = CGBitmapContextCreateImage(context);
     UIImage *resultImage = [UIImage imageWithCGImage:imageMasked];
     CGContextRelease(context);
